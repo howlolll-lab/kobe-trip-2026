@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>神戶 2026 旅遊行程</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
 window.addEventListener('load', () => {
   const active = document.querySelector('.page.active');
   if (window.innerWidth <= 768 && active && active.id === 'p0') {
@@ -22,7 +20,9 @@ window.addEventListener('resize', () => {
     document.body.classList.remove('cover-lock');
   }
 });
+
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 /* ── Reset & Base ── */
 *{margin:0;padding:0;box-sizing:border-box}
@@ -837,25 +837,20 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
     <div class="section-label">13:30–19:00 下午行程（選一）</div>
     <div class="split" style="grid-template-columns:1fr 1fr 1fr;padding-bottom:8px">
       <div class="opt a">
-        <div class="opt-label a">Option A · 最推薦</div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">13:30–15:30<br><a class="place-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">三宮</a>／<a class="place-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">元町</a>逛街<span class="opt-sub">購物＋隨意散步</span></div></div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">16:00–17:00<br><a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE</a><span class="opt-sub">下午咖啡休息（12:00–18:00）</span></div></div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:30<br>繼續逛街<span class="opt-sub">小店／咖啡／藥妝</span></div></div>
+        <div class="opt-label a">Option A</div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">三宮</a>・<a class="place-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">元町</a>逛街<span class="opt-sub">咖啡廳＋購物</span></div></div>
       </div>
       <div class="opt b">
-        <div class="opt-label b">Option B · 港區</div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">13:30–15:30<br><a class="place-link" href="https://maps.google.com/?q=Kobe+Port" target="_blank">神戶港</a> → <a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a><span class="opt-sub"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a>拍照看海</span></div></div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">16:00–17:00<br><a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE</a><span class="opt-sub">回市區喝咖啡休息</span></div></div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">17:00–18:30<br>回港區或市區散步<span class="opt-sub">看夜景前先慢慢逛</span></div></div>
+        <div class="opt-label b">Option B</div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port" target="_blank">神戶港</a>・<a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a><span class="opt-sub"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></span></div></div>
       </div>
       <div class="opt c">
-        <div class="opt-label c">Option C · 懶人版</div>
-        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">13:30–15:30<br>回飯店補體力<span class="opt-sub">休息就是行程</span></div></div>
-        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">16:00–17:00<br><a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE</a><span class="opt-sub">下午咖啡休息</span></div></div>
-        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">17:00–18:30<br>隨便晃<span class="opt-sub">視體力決定</span></div></div>
+        <div class="opt-label c">Option C</div>
+        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">回飯店補體力<span class="opt-sub">休息就是行程</span></div></div>
       </div>
     </div>
-<hr class="divider">
+
+    <hr class="divider">
     <div class="section-label">🏪 港區備忘・營業時間</div>
     <div class="info-block">
       <div class="info-row cream-bg">
@@ -872,11 +867,12 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
 
     <hr class="divider">
     <div class="tl">
-      <div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
-      <div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">可散步、看港區夜景或回市區隨意晃</div></div></div>
+      <div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
+      <div class="tl-row"><div class="tl-time">16:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">☕ <a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE</a></div><div class="tl-note">建議排在 Day2 下午三宮 / 元町 / 港區行程中段休息<br>營業時間 12:00–18:00</div></div></div>
       <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🐙 宵夜・明石燒</div><div class="tl-note">飯店附近 · 營業 18:00–02:00</div><div class="tl-tag info"><a class="place-link" href="https://maps.google.com/?q=蛸之壺+本店+Kobe" target="_blank">蛸之壺本店：三宮町3-3-3（元町站1分）</a></div></div></div>
       <div class="tl-row"><div class="tl-time">24:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🏪 <a class="place-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">唐吉訶德</a> 24小時</div><div class="tl-note">三宮周邊 · 24小時營業 · 深夜購物</div></div></div>
     </div>
+  </div>
 </div>
 
 <!-- ══ PAGE 4: DAY 3 ══ -->
