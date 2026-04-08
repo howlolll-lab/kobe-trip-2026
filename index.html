@@ -1,1004 +1,586 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>神戶 KOBE · 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+TC:wght@300;400&family=Josefin+Sans:wght@100;200;300&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --ink: #1a1410;
-  --paper: #f5f0e8;
-  --mist: #9e9490;
-  --accent: #8b4a3c;
-  --gold: #c4a35a;
-  --pale: #f9f6f0;
-  --deep: #110e0b;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--ink); color: var(--paper); font-family: 'Josefin Sans', sans-serif; overflow-x: hidden; }
+  <meta charset="UTF-8">
+  <title>神戶自由行行程 DAY 1-3</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 3rem;
-  background: linear-gradient(to bottom, rgba(17,14,11,0.95), transparent);
-  backdrop-filter: blur(4px);
-}
-.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 0.3em; color: var(--gold); font-weight: 300; }
-.nav-links { display: flex; gap: 2rem; }
-.nav-links a { font-size: 10px; letter-spacing: 0.4em; color: var(--mist); text-decoration: none; transition: color 0.3s; font-weight: 200; }
-.nav-links a:hover { color: var(--gold); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* HERO */
-.hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,74,60,0.12) 0%, transparent 70%), linear-gradient(160deg, #0d0b09 0%, #1a1410 40%, #22180f 100%); }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(196,163,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(196,163,90,0.04) 1px, transparent 1px); background-size: 60px 60px; }
-.hero-illustration { position: absolute; bottom: 0; left: 0; right: 0; height: 65%; pointer-events: none; }
-.hero-content { position: relative; z-index: 10; text-align: center; padding: 0 2rem; }
-.hero-eyebrow { font-weight: 100; font-size: clamp(10px,1.5vw,13px); letter-spacing: 0.5em; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s 0.3s forwards; }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(72px,14vw,160px); line-height: 0.9; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
-.hero-title .jp { font-family: 'Noto Serif TC', serif; font-weight: 300; font-size: clamp(18px,3vw,36px); letter-spacing: 0.5em; display: block; margin-top: 0.5rem; color: rgba(245,240,232,0.6); }
-.hero-dates { font-weight: 100; font-size: clamp(11px,1.8vw,14px); letter-spacing: 0.4em; color: var(--mist); margin-top: 2rem; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
-.hero-dates span { color: var(--gold); margin: 0 0.5rem; }
-.scroll-hint { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
-.scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: scrollPulse 2s 2s infinite; }
-.scroll-text { font-size: 9px; letter-spacing: 0.3em; color: var(--mist); }
-@keyframes scrollPulse { 0%{opacity:0;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    body, .root {
+      background: #1a1814;
+      color: #e8e0d0;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
 
-/* DIVIDER */
-.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 4rem; opacity: 0.3; }
+    /* PDF 下載按鈕 */
+    .pdf-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #c9a96e;
+      color: #1a1814;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: all 0.2s;
+    }
+    .pdf-btn:hover {
+      background: #dfc188;
+      transform: translateY(-2px);
+    }
 
-/* SECTION */
-section { padding: 8rem 2rem; }
-.section-label { font-size: 10px; letter-spacing: 0.6em; color: var(--gold); font-weight: 200; margin-bottom: 1rem; text-transform: uppercase; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px,5vw,64px); line-height: 1.1; }
+    /* ---- HERO ---- */
+    .hero {
+      background: #1a1814;
+      padding: 48px 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+    }
+    .day-tag {
+      display: inline-block;
+      background: #c9a96e;
+      color: #1a1814;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      padding: 4px 14px;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: #f0ebe0;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #8a7f6e;
+      letter-spacing: 2px;
+    }
 
-/* OVERVIEW */
-.overview-inner { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.overview-text p { font-family: 'Noto Serif TC', serif; font-size: 15px; line-height: 2; color: rgba(245,240,232,0.7); margin-top: 2rem; font-weight: 300; }
-.info-card { border: 0.5px solid rgba(196,163,90,0.2); padding: 2rem; position: relative; }
-.info-card::before { content:''; position:absolute; top:-1px;left:-1px; width:30px;height:30px; border-top:1px solid var(--gold);border-left:1px solid var(--gold); }
-.info-card::after { content:''; position:absolute; bottom:-1px;right:-1px; width:30px;height:30px; border-bottom:1px solid var(--gold);border-right:1px solid var(--gold); }
-.info-row { display:flex; justify-content:space-between; align-items:center; padding:0.9rem 0; border-bottom:0.5px solid rgba(196,163,90,0.12); }
-.info-row:last-child { border-bottom:none; }
-.info-label { color:var(--mist); letter-spacing:0.2em; font-size:10px; font-weight:200; }
-.info-value { color:var(--paper); font-family:'Cormorant Garamond',serif; font-size:15px; text-align:right; }
-.badge { background: rgba(196,163,90,0.15); border: 0.5px solid rgba(196,163,90,0.3); color: var(--gold); font-size: 10px; letter-spacing: 0.2em; padding: 3px 10px; }
+    /* ---- LIGHT SECTION (行程) ---- */
+    .light-section {
+      background: #f0ebe0;
+      padding: 40px 32px;
+      color: #2c2a25;
+    }
 
-/* FLIGHTS */
-.flights { background: rgba(26,20,16,0.6); }
-.flights-inner { max-width: 980px; margin: 0 auto; }
-.flights-header { margin-bottom: 3rem; }
-.flight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(196,163,90,0.1); border: 0.5px solid rgba(196,163,90,0.1); }
-.flight-card { background: var(--ink); padding: 2.5rem; }
-.flight-tag { font-size: 9px; letter-spacing: 0.5em; color: var(--gold); font-weight: 200; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
-.flight-tag::after { content:''; flex:1; height:1px; background:rgba(196,163,90,0.2); }
-.flight-route { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-.flight-city { text-align: center; }
-.flight-code { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--paper); line-height: 1; }
-.flight-name { font-size: 10px; color: var(--mist); letter-spacing: 0.2em; margin-top: 4px; font-weight: 200; }
-.flight-arrow { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.flight-line { width: 100%; height: 1px; background: linear-gradient(90deg, rgba(196,163,90,0.3), rgba(196,163,90,0.8), rgba(196,163,90,0.3)); position: relative; }
-.flight-line::after { content:'▶'; position:absolute; right:-4px; top:-7px; color:var(--gold); font-size:10px; }
-.flight-duration { font-size: 10px; color: var(--gold); letter-spacing: 0.2em; font-weight: 200; }
-.flight-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-.flight-meta-item { }
-.flight-meta-label { font-size: 9px; color: var(--mist); letter-spacing: 0.3em; font-weight: 200; margin-bottom: 3px; }
-.flight-meta-value { font-size: 14px; color: var(--paper); font-family: 'Cormorant Garamond', serif; }
-.flight-ref { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 0.5px solid rgba(196,163,90,0.12); font-size: 10px; color: var(--mist); letter-spacing: 0.2em; font-weight: 200; }
-.flight-ref strong { color: var(--gold); }
+    /* ---- TIMELINE ---- */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 58px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: #ccc5b5;
+    }
 
-/* HOTEL */
-.hotel-inner { max-width: 980px; margin: 0 auto; }
-.hotel-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
-.hotel-main { padding: 2.5rem; border: 0.5px solid rgba(196,163,90,0.2); position: relative; }
-.hotel-main::before { content:''; position:absolute; top:0;left:0; width:100%;height:2px; background:linear-gradient(90deg,var(--gold),transparent); opacity:0.5; }
-.hotel-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,3vw,32px); line-height: 1.2; margin-bottom: 0.3rem; }
-.hotel-name-jp { font-family: 'Noto Serif TC', serif; font-size: 13px; color: var(--mist); letter-spacing: 0.2em; font-weight: 300; margin-bottom: 1.5rem; }
-.hotel-address { font-size: 12px; color: rgba(245,240,232,0.5); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 200; }
-.hotel-address a { color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-size: 10px; letter-spacing: 0.2em; margin-top: 8px; }
-.hotel-address a:hover { text-decoration: underline; }
-.hotel-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,163,90,0.1); }
-.hotel-detail-item { background: rgba(245,240,232,0.02); padding: 1rem; }
-.hotel-detail-label { font-size: 9px; letter-spacing: 0.3em; color: var(--mist); font-weight: 200; margin-bottom: 5px; }
-.hotel-detail-value { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--paper); }
-.hotel-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-.sidebar-card { padding: 1.5rem; border: 0.5px solid rgba(196,163,90,0.15); }
-.sidebar-title { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); font-weight: 200; margin-bottom: 1rem; }
-.sidebar-content { font-family: 'Noto Serif TC', serif; font-size: 13px; color: rgba(245,240,232,0.65); line-height: 1.9; font-weight: 300; }
-.checkin-row { display: flex; gap: 1rem; }
-.checkin-item { flex: 1; padding: 1rem; background: rgba(245,240,232,0.03); text-align: center; }
-.checkin-type { font-size: 9px; letter-spacing: 0.3em; color: var(--mist); font-weight: 200; margin-bottom: 8px; }
-.checkin-date { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--paper); margin-bottom: 3px; }
-.checkin-time { font-size: 11px; color: var(--gold); letter-spacing: 0.1em; font-weight: 200; }
-.price-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 0.5px solid rgba(196,163,90,0.1); font-size: 12px; }
-.price-row:last-child { border-bottom: none; font-weight: 400; }
-.price-row .label { color: var(--mist); font-weight: 200; }
-.price-row .value { color: var(--paper); font-family: 'Cormorant Garamond', serif; font-size: 15px; }
-.price-row.total .label { color: var(--gold); }
-.price-row.total .value { color: var(--gold); font-size: 20px; }
-.price-row.discount .value { color: #7dba84; }
+    .tl-item {
+      display: flex;
+      gap: 0;
+      margin-bottom: 28px;
+      position: relative;
+      page-break-inside: avoid; /* 避免列印時被切斷 */
+    }
 
-/* ITINERARY */
-.itinerary-inner { max-width: 980px; margin: 0 auto; }
-.itinerary-header { text-align: center; margin-bottom: 4rem; }
-.days-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(196,163,90,0.12); border: 0.5px solid rgba(196,163,90,0.12); }
-.day-block { background: var(--ink); padding: 2.5rem 1.8rem; transition: background 0.4s; }
-.day-block:hover { background: rgba(245,240,232,0.03); }
-.day-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: rgba(196,163,90,0.15); line-height: 1; margin-bottom: 0.3rem; }
-.day-date { font-size: 10px; letter-spacing: 0.35em; color: var(--gold); margin-bottom: 1.2rem; font-weight: 200; }
-.day-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--paper); margin-bottom: 1.2rem; font-style: italic; line-height: 1.3; }
-.timeline { display: flex; flex-direction: column; gap: 0; }
-.tl-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid rgba(196,163,90,0.08); }
-.tl-item:last-child { border-bottom: none; }
-.tl-time { font-size: 9px; color: var(--gold); font-weight: 200; letter-spacing: 0.1em; width: 38px; flex-shrink: 0; margin-top: 2px; }
-.tl-content { flex: 1; }
-.tl-place { font-size: 11px; color: var(--paper); letter-spacing: 0.05em; font-weight: 200; line-height: 1.4; }
-.tl-note { font-size: 10px; color: var(--mist); margin-top: 2px; font-weight: 200; }
-.tl-transport { font-size: 9px; color: rgba(196,163,90,0.6); margin-top: 3px; font-weight: 200; letter-spacing: 0.05em; }
-.tl-maplink { display: inline-block; font-size: 9px; color: rgba(196,163,90,0.5); text-decoration: none; letter-spacing: 0.1em; margin-top: 2px; border-bottom: 0.5px solid rgba(196,163,90,0.3); transition: color 0.2s; }
-.tl-maplink:hover { color: var(--gold); }
+    .tl-time {
+      width: 58px;
+      flex-shrink: 0;
+      font-size: 12px;
+      color: #8a7f6e;
+      letter-spacing: 0.5px;
+      padding-top: 2px;
+      text-align: right;
+      padding-right: 16px;
+    }
 
-/* SPOTS */
-.spots-inner { max-width: 980px; margin: 0 auto; }
-.spots-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 3rem; }
-.spot-item { position: relative; padding: 2rem 1.5rem 1.8rem; border: 0.5px solid rgba(196,163,90,0.1); background: rgba(245,240,232,0.02); transition: background 0.4s; }
-.spot-item:hover { background: rgba(245,240,232,0.04); }
-.spot-num { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; color: rgba(196,163,90,0.07); position: absolute; top: -8px; right: 12px; line-height: 1; }
-.spot-icon { font-size: 28px; margin-bottom: 0.8rem; }
-.spot-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 4px; font-style: italic; }
-.spot-name-jp { font-size: 10px; color: var(--mist); letter-spacing: 0.25em; font-weight: 200; margin-bottom: 0.8rem; }
-.spot-address { font-size: 10px; color: rgba(245,240,232,0.45); line-height: 1.7; font-weight: 200; margin-bottom: 0.5rem; }
-.spot-hours { font-size: 10px; color: rgba(196,163,90,0.7); font-weight: 200; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-.spot-map-btn { display: inline-block; font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-decoration: none; padding: 5px 12px; border: 0.5px solid rgba(196,163,90,0.3); transition: all 0.3s; font-weight: 200; margin-top: 0.5rem; }
-.spot-map-btn:hover { background: rgba(196,163,90,0.1); }
+    .tl-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #c9a96e;
+      flex-shrink: 0;
+      margin-top: 5px;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-dot.red { background: #c9604e; }
+    .tl-dot.gray { background: #9a9080; }
 
-/* FOOD */
-.food-inner { max-width: 980px; margin: 0 auto; }
-.food-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3rem; }
-.food-desc { font-family: 'Noto Serif TC', serif; font-size: 14px; color: rgba(245,240,232,0.6); line-height: 2; font-weight: 300; }
-.food-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(196,163,90,0.1); border: 0.5px solid rgba(196,163,90,0.1); }
-.food-item { background: var(--ink); padding: 1.5rem; transition: background 0.3s; }
-.food-item:hover { background: rgba(245,240,232,0.03); }
-.food-emoji { font-size: 26px; margin-bottom: 0.8rem; display: block; }
-.food-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 4px; }
-.food-desc-sm { font-size: 10px; color: var(--mist); letter-spacing: 0.1em; font-weight: 200; line-height: 1.7; }
+    .tl-content {
+      flex: 1;
+      padding-left: 18px;
+    }
 
-/* BAGGAGE */
-.baggage-inner { max-width: 980px; margin: 0 auto; }
-.baggage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(196,163,90,0.1); border: 0.5px solid rgba(196,163,90,0.1); margin-top: 3rem; }
-.baggage-card { background: var(--ink); padding: 2rem; }
-.baggage-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 0.3rem; }
-.baggage-sub { font-size: 10px; color: var(--gold); letter-spacing: 0.3em; font-weight: 200; margin-bottom: 1.5rem; }
-.baggage-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-.baggage-list li { font-size: 12px; color: rgba(245,240,232,0.7); padding-left: 1rem; position: relative; line-height: 1.6; font-weight: 200; }
-.baggage-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.6; }
-.baggage-warn { background: rgba(139,74,60,0.12); border-left: 2px solid var(--accent); padding: 1rem 1.2rem; margin-top: 1.5rem; font-size: 11px; color: rgba(245,240,232,0.75); line-height: 1.8; font-weight: 200; }
-.baggage-warn strong { color: #e8917a; display: block; margin-bottom: 4px; font-size: 10px; letter-spacing: 0.3em; }
+    .tl-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2c2a25;
+      margin-bottom: 4px;
+    }
+    .tl-desc {
+      font-size: 13px;
+      color: #5a5348;
+      line-height: 1.6;
+    }
+    .tl-transport {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #e5dfd3;
+      border-radius: 3px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #5a5348;
+      margin-top: 6px;
+    }
+    .tl-transport span { color: #c9a96e; }
 
-/* TRAIN GUIDE */
-.train-inner { max-width: 980px; margin: 0 auto; }
-.train-header { margin-bottom: 3rem; }
-.train-intro { font-family: 'Noto Serif TC', serif; font-size: 14px; color: rgba(245,240,232,0.65); line-height: 2; margin-top: 1.5rem; font-weight: 300; }
-.train-lines { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(196,163,90,0.1); border: 0.5px solid rgba(196,163,90,0.1); margin-bottom: 3rem; }
-.train-line { background: var(--ink); padding: 1.8rem; border-left: 3px solid transparent; transition: background 0.3s; }
-.train-line:hover { background: rgba(245,240,232,0.03); }
-.train-line.port-liner { border-left-color: #4a90d9; }
-.train-line.jr { border-left-color: #f0882a; }
-.train-line.subway { border-left-color: #e84d4d; }
-.train-line.hanshin { border-left-color: #d4af37; }
-.train-line.city-loop { border-left-color: #6abf69; }
-.train-line.hankyu { border-left-color: #9b59b6; }
-.train-line-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 4px; }
-.train-line-jp { font-size: 10px; color: var(--mist); letter-spacing: 0.2em; font-weight: 200; margin-bottom: 1rem; }
-.train-line-detail { font-size: 11px; color: rgba(245,240,232,0.65); line-height: 1.8; font-weight: 200; }
-.train-line-price { display: inline-block; background: rgba(196,163,90,0.1); padding: 3px 10px; font-size: 10px; color: var(--gold); letter-spacing: 0.15em; margin-top: 0.8rem; }
-.icoca-box { padding: 2rem; border: 0.5px solid rgba(196,163,90,0.2); background: rgba(196,163,90,0.04); margin-bottom: 2rem; }
-.icoca-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 0.5rem; }
-.icoca-sub { font-size: 10px; color: var(--gold); letter-spacing: 0.4em; font-weight: 200; margin-bottom: 1.2rem; }
-.icoca-content { font-size: 12px; color: rgba(245,240,232,0.7); line-height: 2; font-weight: 200; }
-.step-box { margin-top: 2rem; }
-.step-title { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); font-weight: 200; margin-bottom: 1.5rem; }
-.steps { display: flex; flex-direction: column; gap: 0; }
-.step { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 0.5px solid rgba(196,163,90,0.1); }
-.step:last-child { border-bottom: none; }
-.step-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: rgba(196,163,90,0.3); line-height: 1; flex-shrink: 0; width: 40px; }
-.step-content { }
-.step-name { font-size: 14px; color: var(--paper); font-weight: 200; margin-bottom: 4px; }
-.step-desc { font-size: 11px; color: var(--mist); line-height: 1.8; font-weight: 200; }
+    .reserved-badge {
+      display: inline-block;
+      background: #c9604e;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-weight: normal;
+    }
 
-/* FOOTER */
-footer { padding: 5rem 2rem 4rem; text-align: center; border-top: 0.5px solid rgba(196,163,90,0.12); }
-.footer-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(50px,10vw,120px); font-weight: 300; color: rgba(245,240,232,0.05); line-height: 1; margin-bottom: 2rem; letter-spacing: -0.02em; }
-.footer-sub { font-size: 11px; letter-spacing: 0.5em; color: var(--mist); font-weight: 100; }
-.footer-gold { color: var(--gold); margin: 0 0.4rem; }
-.footer-members { margin: 2rem auto 0; max-width: 300px; padding: 1.5rem; border: 0.5px solid rgba(196,163,90,0.15); }
-.footer-member-label { font-size: 9px; letter-spacing: 0.4em; color: var(--mist); font-weight: 200; margin-bottom: 0.8rem; }
-.footer-member-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--paper); }
+    /* Option blocks */
+    .option-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .option-row.three-cols {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .option-block {
+      background: #e5dfd3;
+      border-radius: 4px;
+      padding: 12px 14px;
+    }
+    .option-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #8a7f6e;
+      margin-bottom: 6px;
+    }
+    .option-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2c2a25;
+      margin-bottom: 4px;
+    }
+    .option-desc { font-size: 12px; color: #6b6358; }
 
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+    /* Note block */
+    .note-block {
+      background: #1a1814;
+      padding: 32px;
+      margin-top: 0;
+      border-bottom: 1px solid #2e2a22;
+    }
+    .note-title {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #c9a96e;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .note-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .note-card {
+      background: #252219;
+      border: 1px solid #3a3628;
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+    .note-card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #e8e0d0;
+      margin-bottom: 6px;
+    }
+    .note-card-desc {
+      font-size: 12px;
+      color: #9a9080;
+      line-height: 1.6;
+    }
+    .note-card-desc strong { color: #c9a96e; font-weight: 400; }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { gap: 1.2rem; }
-  .overview-inner, .hotel-grid, .flight-grid, .food-header { grid-template-columns: 1fr; gap: 2rem; }
-  .days-grid { grid-template-columns: 1fr 1fr; }
-  .spots-grid { grid-template-columns: 1fr 1fr; }
-  .food-grid { grid-template-columns: 1fr 1fr; }
-  .baggage-grid { grid-template-columns: 1fr; }
-  .train-lines { grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  section { padding: 5rem 1.2rem; }
-  nav { padding: 1rem; }
-  .nav-links { display: none; }
-  .days-grid { grid-template-columns: 1fr; }
-  .spots-grid { grid-template-columns: 1fr; }
-  .food-grid { grid-template-columns: 1fr; }
-  .flight-grid { grid-template-columns: 1fr; }
-  .divider { margin: 0 1.5rem; }
-  .checkin-row { flex-direction: column; }
-}
-</style>
+    /* footer stripe */
+    .footer-stripe {
+      background: #1a1814;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-stripe span {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #6b6358;
+    }
+    .footer-stripe .gold { color: #c9a96e; }
+
+    /* 列印最佳化 */
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .pdf-btn { display: none !important; }
+      .hero { padding: 30px 32px 20px; page-break-after: avoid; }
+      .light-section { padding: 20px 32px; }
+      .tl-item { page-break-inside: avoid; margin-bottom: 20px; }
+      .option-block, .note-card { page-break-inside: avoid; }
+      /* 強制分頁讓每天的行程更獨立，視需求可拿掉 */
+      .day-divider { page-break-before: always; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">KOBE 2026</div>
-  <div class="nav-links">
-    <a href="#flights">航班</a>
-    <a href="#hotel">住宿</a>
-    <a href="#itinerary">行程</a>
-    <a href="#spots">景點</a>
-    <a href="#food">美食</a>
-    <a href="#baggage">行李</a>
-    <a href="#train">交通</a>
-  </div>
-</nav>
+  <button onclick="downloadPDF()" class="pdf-btn">⬇ 下載 PDF</button>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-illustration">
-    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;opacity:0.13;">
-      <rect x="580" y="80" width="8" height="320" fill="#c4a35a"/>
-      <rect x="570" y="200" width="28" height="12" fill="#c4a35a"/>
-      <rect x="565" y="230" width="38" height="8" fill="#c4a35a"/>
-      <circle cx="584" cy="75" r="12" fill="none" stroke="#c4a35a" stroke-width="2"/>
-      <polygon points="584,50 578,75 590,75" fill="#c4a35a"/>
-      <rect x="80" y="200" width="120" height="200" fill="#f5f0e8" opacity="0.6"/>
-      <rect x="100" y="180" width="80" height="220" fill="#f5f0e8" opacity="0.8"/>
-      <rect x="220" y="220" width="90" height="180" fill="#f5f0e8" opacity="0.5"/>
-      <rect x="310" y="170" width="60" height="230" fill="#f5f0e8" opacity="0.7"/>
-      <rect x="370" y="210" width="100" height="190" fill="#f5f0e8" opacity="0.4"/>
-      <rect x="460" y="190" width="70" height="210" fill="#f5f0e8" opacity="0.6"/>
-      <rect x="110" y="195" width="6" height="8" fill="#c4a35a" opacity="0.4"/>
-      <rect x="122" y="195" width="6" height="8" fill="#c4a35a" opacity="0.4"/>
-      <rect x="134" y="195" width="6" height="8" fill="#c4a35a" opacity="0.6"/>
-      <rect x="640" y="190" width="80" height="210" fill="#f5f0e8" opacity="0.6"/>
-      <rect x="720" y="170" width="110" height="230" fill="#f5f0e8" opacity="0.8"/>
-      <rect x="830" y="220" width="75" height="180" fill="#f5f0e8" opacity="0.5"/>
-      <rect x="900" y="195" width="90" height="205" fill="#f5f0e8" opacity="0.7"/>
-      <rect x="990" y="210" width="130" height="190" fill="#f5f0e8" opacity="0.4"/>
-      <polygon points="1050,230 1120,100 1200,230" fill="#f5f0e8" opacity="0.07"/>
-      <line x1="0" y1="385" x2="1200" y2="385" stroke="#c4a35a" stroke-width="0.5" opacity="0.15"/>
-    </svg>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">TRAVEL JOURNAL · 旅行紀錄</p>
-    <h1 class="hero-title">KOBE<span class="jp">神　戶</span></h1>
-    <p class="hero-dates">JUNE 5 <span>—</span> JUNE 8 <span>·</span> 2026</p>
-  </div>
-  <div class="scroll-hint"><div class="scroll-line"></div><p class="scroll-text">SCROLL</p></div>
-</section>
+  <div id="itinerary-wrapper" class="root">
 
-<!-- OVERVIEW -->
-<section id="overview">
-  <div class="overview-inner">
-    <div class="overview-text reveal">
-      <p class="section-label">About the Trip · 關於此行</p>
-      <h2 class="section-title">港都之旅</h2>
-      <p>神戶，日本最具異國情調的港口城市。山與海之間，東西方文化在此交融，歷史的街道與現代的都市共存共生。四天三夜，四人同行，細細品味這座城市的溫柔。</p>
+    <div class="hero">
+      <div class="day-tag">DAY 1</div>
+      <div class="hero-title">抵達與神戶牛之夜</div>
+      <div class="hero-sub">6月5日（週五）· 神戶</div>
     </div>
-    <div class="info-card reveal d2">
-      <div class="info-row"><span class="info-label">DESTINATION</span><span class="info-value">神戶 · Kobe, Japan</span></div>
-      <div class="info-row"><span class="info-label">DATES</span><span class="info-value">Jun 5 — Jun 8, 2026</span></div>
-      <div class="info-row"><span class="info-label">DURATION</span><span class="info-value">4 Days · 3 Nights</span></div>
-      <div class="info-row"><span class="info-label">TRAVELLERS</span><span class="info-value">4 Adults</span></div>
-      <div class="info-row"><span class="info-label">FLIGHT</span><span class="info-value">EVA Air BR134 / BR133</span></div>
-      <div class="info-row"><span class="info-label">主要住客</span><span class="info-value">Xing-Ru Li</span></div>
-      <div class="info-row"><span class="info-label">STATUS</span><span class="badge">CONFIRMED</span></div>
-    </div>
-  </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- FLIGHTS -->
-<section id="flights" class="flights">
-  <div class="flights-inner">
-    <div class="flights-header reveal">
-      <p class="section-label">Flights · 機票資訊</p>
-      <h2 class="section-title">長榮航空<br/>BR134 / BR133</h2>
-    </div>
-    <div class="flight-grid">
-      <div class="flight-card reveal">
-        <p class="flight-tag">OUTBOUND · 去程</p>
-        <div class="flight-route">
-          <div class="flight-city">
-            <div class="flight-code">TPE</div>
-            <div class="flight-name">台北桃園</div>
-          </div>
-          <div class="flight-arrow">
-            <div class="flight-line"></div>
-            <div class="flight-duration">2H 40M</div>
-          </div>
-          <div class="flight-city">
-            <div class="flight-code">UKB</div>
-            <div class="flight-name">神戶機場</div>
+    <div class="light-section">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">抵達神戶機場 (UKB)</div>
+            <div class="tl-desc">辦理入境手續，搭乘機場接送專車直達飯店（四人共乘費用 ¥10,000）。</div>
           </div>
         </div>
-        <div class="flight-meta">
-          <div class="flight-meta-item"><div class="flight-meta-label">DATE</div><div class="flight-meta-value">Fri, Jun 5, 2026</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">FLIGHT</div><div class="flight-meta-value">EVA BR 134</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">DEPART</div><div class="flight-meta-value">06:20 出發</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">ARRIVE</div><div class="flight-meta-value">10:00 抵達</div></div>
-          <div class="flight-meta-item" style="grid-column:1/-1"><div class="flight-meta-label">CLASS</div><div class="flight-meta-value">Economy 經濟艙</div></div>
-        </div>
-        <div class="flight-ref">參考編號 <strong>FBC9VM</strong></div>
-      </div>
-      <div class="flight-card reveal d2">
-        <p class="flight-tag">RETURN · 回程</p>
-        <div class="flight-route">
-          <div class="flight-city">
-            <div class="flight-code">UKB</div>
-            <div class="flight-name">神戶機場</div>
-          </div>
-          <div class="flight-arrow">
-            <div class="flight-line"></div>
-            <div class="flight-duration">2H 55M</div>
-          </div>
-          <div class="flight-city">
-            <div class="flight-code">TPE</div>
-            <div class="flight-name">台北桃園</div>
-          </div>
-        </div>
-        <div class="flight-meta">
-          <div class="flight-meta-item"><div class="flight-meta-label">DATE</div><div class="flight-meta-value">Mon, Jun 8, 2026</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">FLIGHT</div><div class="flight-meta-value">EVA BR 133</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">DEPART</div><div class="flight-meta-value">11:00 出發</div></div>
-          <div class="flight-meta-item"><div class="flight-meta-label">ARRIVE</div><div class="flight-meta-value">12:55 抵達</div></div>
-          <div class="flight-meta-item" style="grid-column:1/-1"><div class="flight-meta-label">CLASS</div><div class="flight-meta-value">Economy 經濟艙</div></div>
-        </div>
-        <div class="flight-ref">參考編號 <strong>FBC9VM</strong></div>
-      </div>
-    </div>
-    <div style="margin-top:1.5rem;padding:1rem 1.5rem;border:0.5px solid rgba(196,163,90,0.15);font-size:11px;color:rgba(245,240,232,0.6);line-height:2;font-weight:200;" class="reveal d2">
-      ✦ 抵達神戶機場後，搭乘 <strong style="color:var(--gold)">Port Liner（港灣人工島線）</strong>至三宮站，約 18 分鐘，車資 ¥340。三宮站步行約 1 分鐘可抵達飯店。
-    </div>
-  </div>
-</section>
 
-<div class="divider"></div>
+        <div class="tl-item">
+          <div class="tl-time">11:00</div>
+          <div class="tl-dot gray"></div>
+          <div class="tl-content">
+            <div class="tl-title">飯店寄放行李</div>
+            <div class="tl-desc">抵達艾美麗飯店（Hotel Monte Hermana Kobe Amalie），先寄放行李（預計 15:00 後可 Check-in）。</div>
+            <div class="tl-transport"><span>📍</span> 中央區中山手通2-2-28</div>
+          </div>
+        </div>
 
-<!-- HOTEL -->
-<section id="hotel">
-  <div class="hotel-inner">
-    <div class="reveal">
-      <p class="section-label">Accommodation · 住宿</p>
-      <h2 class="section-title">Hotel Monte<br/>Hermana Kobe</h2>
-    </div>
-    <div class="hotel-grid">
-      <div class="hotel-main reveal d1">
-        <p class="hotel-name">Hotel Monte Hermana<br/>Kobe Amalie</p>
-        <p class="hotel-name-jp">ホテル モンテ エルマーナ神戸 アマリー</p>
-        <div class="hotel-address">
-          2-2-28 Nakayamate-dori, Chuo-ku, Kobe<br/>
-          兵庫県神戸市中央区中山手通２丁目２−２８<br/>
-          〒650-0004
-          <br/>
-          <a href="https://maps.google.com/maps?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">📍 Google Maps で見る →</a>
+        <div class="tl-item">
+          <div class="tl-time">11:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">午餐時間</div>
+            <div class="tl-desc">於飯店周邊或麵包超人博物館附近隨意覓食，輕鬆解決。</div>
+          </div>
         </div>
-        <div class="hotel-details">
-          <div class="hotel-detail-item"><div class="hotel-detail-label">ROOM TYPE</div><div class="hotel-detail-value">Connected Room</div></div>
-          <div class="hotel-detail-item"><div class="hotel-detail-label">ROOMS</div><div class="hotel-detail-value">1 Room · 4 Adults</div></div>
-          <div class="hotel-detail-item"><div class="hotel-detail-label">NIGHTS</div><div class="hotel-detail-value">3 Nights</div></div>
-          <div class="hotel-detail-item"><div class="hotel-detail-label">WI-FI</div><div class="hotel-detail-value">免費 · Free</div></div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">麵包超人博物館</div>
+            <div class="tl-desc">逛一樓免費購物商場（營業時間 10:00-19:00），預計停留約 3 小時。</div>
+            <div class="tl-transport"><span>🚶</span> JR 神戶站步行 8 分</div>
+          </div>
         </div>
-        <div style="margin-top:1.5rem;padding:1rem;background:rgba(245,240,232,0.02);border-left:2px solid rgba(196,163,90,0.3);">
-          <div style="font-size:9px;letter-spacing:0.4em;color:var(--mist);font-weight:200;margin-bottom:0.6rem;">SPECIAL REQUESTS</div>
-          <div style="font-size:11px;color:rgba(245,240,232,0.55);line-height:1.8;font-weight:200;">非煙草房 · 高樓層 · 雙床 · 安靜客房 · 行李寄存</div>
+
+        <div class="tl-item">
+          <div class="tl-time">15:00</div>
+          <div class="tl-dot gray"></div>
+          <div class="tl-content">
+            <div class="tl-title">飯店入住與休息</div>
+            <div class="tl-desc">返回飯店辦理 Check-in，自由活動休息。</div>
+          </div>
         </div>
-      </div>
-      <div class="hotel-sidebar reveal d2">
-        <div class="sidebar-card">
-          <div class="sidebar-title">CHECK-IN / CHECK-OUT</div>
-          <div class="checkin-row">
-            <div class="checkin-item">
-              <div class="checkin-type">CHECK IN</div>
-              <div class="checkin-date">Jun 5</div>
-              <div style="font-size:10px;color:var(--mist);margin-bottom:4px;">星期五</div>
-              <div class="checkin-time">15:00 以後</div>
-            </div>
-            <div class="checkin-item">
-              <div class="checkin-type">CHECK OUT</div>
-              <div class="checkin-date">Jun 8</div>
-              <div style="font-size:10px;color:var(--mist);margin-bottom:4px;">星期一</div>
-              <div class="checkin-time">11:00 以前</div>
+
+        <div class="tl-item">
+          <div class="tl-time">17:00</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">傍晚行程（選一）</div>
+            <div class="option-row">
+              <div class="option-block">
+                <div class="option-label">OPTION A · 有體力</div>
+                <div class="option-title">Concerto 協奏曲號 🚢</div>
+                <div class="option-desc">搭乘神戶觀光船享受 1 小時的夕陽郵輪航程，欣賞海上日落。</div>
+              </div>
+              <div class="option-block">
+                <div class="option-label">OPTION B · 累了</div>
+                <div class="option-title">周邊漫步 🚶</div>
+                <div class="option-desc">在飯店周邊隨意逛逛或直接在房間休息養神。</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="sidebar-card">
-          <div class="sidebar-title">PAYMENT DETAIL · 費用明細</div>
-          <div class="price-row"><span class="label">客房費用（1間×3晚）</span><span class="value">¥70,945</span></div>
-          <div class="price-row"><span class="label">稅金及其他費用</span><span class="value">¥21,141</span></div>
-          <div class="price-row discount"><span class="label">Agoda 優惠折扣 10.1%</span><span class="value">-¥7,167</span></div>
-          <div class="price-row total"><span class="label">TOTAL</span><span class="value">¥84,919</span></div>
-          <div style="margin-top:1rem;font-size:10px;color:rgba(245,240,232,0.4);font-weight:200;line-height:1.7;">扣款日期：May 31, 2026<br/>促銷：金省專案</div>
+
+        <div class="tl-item">
+          <div class="tl-time">19:00</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">石田屋・神戶牛燒肉 <span class="reserved-badge">已預約</span></div>
+            <div class="tl-desc">務必準時抵達！備有中文菜單（預算約 ¥7,000-12,000/人）。</div>
+            <div class="tl-transport"><span>🚶</span> 北長狹通 1-20-9 2F（三宮站步行 2 分）</div>
+          </div>
         </div>
-        <div class="sidebar-card">
-          <div class="sidebar-title">HOTEL ACCESS · 交通</div>
-          <div class="sidebar-content">
-            <strong style="color:var(--gold)">神戶機場</strong> → Port Liner → 三宮站 → 步行約1分鐘<br/>
-            <strong style="color:var(--gold)">新神戶站</strong>（新幹線）→ 地鐵山手線 → 三宮站 → 步行5分鐘<br/>
-            <strong style="color:var(--gold)">JR 三宮站</strong> → 西口出站 → 步行5分鐘
+
+        <div class="tl-item">
+          <div class="tl-time">20:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">晚餐後自由活動</div>
+            <div class="tl-desc">依據當下體力決定要散步去港邊看夜景，或是直接回飯店休息。</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- ITINERARY -->
-<section id="itinerary">
-  <div class="itinerary-inner">
-    <div class="itinerary-header reveal">
-      <p class="section-label">Itinerary · 詳細行程</p>
-      <h2 class="section-title">四日行程</h2>
+    <div class="hero day-divider">
+      <div class="day-tag">DAY 2</div>
+      <div class="hero-title">異國風情與自由探索</div>
+      <div class="hero-sub">6月6日（週六）· 神戶</div>
     </div>
-    <div class="days-grid">
-      <!-- DAY 1 -->
-      <div class="day-block reveal">
-        <div class="day-num">01</div>
-        <p class="day-date">JUN 5 · FRI · 出發日</p>
-        <p class="day-title">抵達·<br/>初識神戶</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-time">06:20</div>
-            <div class="tl-content">
-              <div class="tl-place">✈ EVA BR134 起飛</div>
-              <div class="tl-note">桃園機場 T2 出發</div>
-            </div>
+
+    <div class="light-section">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">起床 · 當地早餐</div>
+            <div class="tl-desc">飯店附近三宮商圈隨意覓食，或前往西村咖啡享用神戶式早餐</div>
+            <div class="tl-transport"><span>🚶</span> 飯店步行 5 分即可到達三宮</div>
           </div>
-          <div class="tl-item">
-            <div class="tl-time">10:00</div>
-            <div class="tl-content">
-              <div class="tl-place">神戶機場（UKB）抵達</div>
-              <div class="tl-transport">🚇 Port Liner → 三宮 18分 ¥340</div>
-            </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">生田神社</div>
+            <div class="tl-desc">神戶最古老神社，求良緣能量景點，紅色鳥居在市中心格外醒目（24H開放/免費）</div>
+            <div class="tl-transport"><span>🚶</span> 飯店步行約 6 分即達</div>
           </div>
-          <div class="tl-item">
-            <div class="tl-time">11:30</div>
-            <div class="tl-content">
-              <div class="tl-place">飯店行李寄存</div>
-              <div class="tl-note">15:00 後正式入住</div>
-            </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">北野天滿神社 · 異人館散步</div>
+            <div class="tl-desc">沿北野坂往上走，順遊北野天滿神社，再漫步異人館街。推薦參觀：風見雞館、萌黃之館。<br>💡 <b>雨天備案：</b>可改去兵庫縣立美術館或竹中大工道具館。</div>
           </div>
-          <div class="tl-item">
-            <div class="tl-time">12:00</div>
-            <div class="tl-content">
-              <div class="tl-place">南京町中華街 午餐</div>
-              <div class="tl-note">元町站附近 · 豚まん必食</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=神戸南京町" target="_blank">📍 Google Maps</a>
-            </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">13:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">北野一帶午餐</div>
+            <div class="tl-desc">異人館周邊餐廳選擇豐富，或下山回三宮覓食。</div>
           </div>
-          <div class="tl-item">
-            <div class="tl-time">14:00</div>
-            <div class="tl-content">
-              <div class="tl-place">北野異人館街散策</div>
-              <div class="tl-note">風見鶏の館 ¥500 · 10:00-18:00</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=北野異人館街+神戸" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">15:00</div>
-            <div class="tl-content">
-              <div class="tl-place">飯店 Check-in</div>
-              <div class="tl-note">Hotel Monte Hermana Kobe Amalie</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">18:00</div>
-            <div class="tl-content">
-              <div class="tl-place">三宮商店街 &amp; 夜晚散步</div>
-              <div class="tl-note">神戸牛ステーキ ディナー</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=三宮センター街" target="_blank">📍 Google Maps</a>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">13:30</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">下午行程（選一）</div>
+            <div class="option-row three-cols">
+              <div class="option-block">
+                <div class="option-label">OPTION A · 逛街</div>
+                <div class="option-title">三宮 / 元町 🛍️</div>
+                <div class="option-desc">商店街、南京町中華街、百貨、藥妝。飯店步行 5-7 分即達。</div>
+              </div>
+              <div class="option-block">
+                <div class="option-label">OPTION B · 港區</div>
+                <div class="option-title">神戶港區 🎡</div>
+                <div class="option-desc">馬賽克廣場、Umie 商城、摩天輪，黃昏時刻最美。</div>
+              </div>
+              <div class="option-block">
+                <div class="option-label">OPTION C · 補眠</div>
+                <div class="option-title">回飯店休息 🛏️</div>
+                <div class="option-desc">累了就睡！養精蓄銳迎接晚餐跟宵夜。</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- DAY 2 -->
-      <div class="day-block reveal d1">
-        <div class="day-num">02</div>
-        <p class="day-date">JUN 6 · SAT · 探索日</p>
-        <p class="day-title">港灣·<br/>異文化巡禮</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-time">09:00</div>
-            <div class="tl-content">
-              <div class="tl-place">神戶港 晨間散步</div>
-              <div class="tl-note">メリケンパーク（美利堅公園）</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=メリケンパーク+神戸" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">10:00</div>
-            <div class="tl-content">
-              <div class="tl-place">Kobe Port Tower</div>
-              <div class="tl-note">¥1,000 · 9:00-23:00</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=神戸ポートタワー" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">11:30</div>
-            <div class="tl-content">
-              <div class="tl-place">神戶海洋博物館</div>
-              <div class="tl-note">¥900 · 10:00-18:00 (週一休)</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=神戸海洋博物館" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">13:00</div>
-            <div class="tl-content">
-              <div class="tl-place">Harborland umie 午餐</div>
-              <div class="tl-transport">🚌 City Loop 巴士 ¥260/次</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=ハーバーランド+神戸" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">15:00</div>
-            <div class="tl-content">
-              <div class="tl-place">布引ハーブ園 香草園</div>
-              <div class="tl-note">纜車來回 ¥1,800 · 10:00-17:00</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=布引ハーブ園+神戸" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">18:00</div>
-            <div class="tl-content">
-              <div class="tl-place">神戸餃子・ディナー</div>
-              <div class="tl-note">三宮周邊</div>
-            </div>
+
+        <div class="tl-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">晚餐（彈性安排）</div>
+            <div class="tl-desc">可簡單吃，或補上前一天沒吃到的料理。三宮站周邊選擇超多。</div>
           </div>
         </div>
-      </div>
-      <!-- DAY 3 -->
-      <div class="day-block reveal d2">
-        <div class="day-num">03</div>
-        <p class="day-date">JUN 7 · SUN · 溫泉日</p>
-        <p class="day-title">有馬·<br/>溫泉秘境</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-time">09:00</div>
-            <div class="tl-content">
-              <div class="tl-place">三宮 → 有馬溫泉</div>
-              <div class="tl-transport">🚌 神姬巴士 直通 約40分 ¥830</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=有馬温泉" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">10:00</div>
-            <div class="tl-content">
-              <div class="tl-place">金の湯 溫泉入浴</div>
-              <div class="tl-note">¥700 · 8:00-22:00 (週二休)</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=金の湯+有馬" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">11:30</div>
-            <div class="tl-content">
-              <div class="tl-place">銀の湯 溫泉入浴</div>
-              <div class="tl-note">¥550 · 9:00-21:00 (週四休)</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=銀の湯+有馬" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">13:00</div>
-            <div class="tl-content">
-              <div class="tl-place">有馬老街漫遊 &amp; 午餐</div>
-              <div class="tl-note">炭酸せんべい・各種土産</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">16:00</div>
-            <div class="tl-content">
-              <div class="tl-place">返回神戶</div>
-              <div class="tl-transport">🚌 神姬バス 約40分</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">19:00</div>
-            <div class="tl-content">
-              <div class="tl-place">六甲山 夜景觀賞</div>
-              <div class="tl-note">日本三大夜景 · 建議搭計程車</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=六甲山展望台" target="_blank">📍 Google Maps</a>
-            </div>
+
+        <div class="tl-item">
+          <div class="tl-time">22:00</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">宵夜 · 明石燒</div>
+            <div class="tl-desc">飯店附近品嚐明石燒，有別於章魚燒的柔嫩口感（營業至 02:00）。</div>
           </div>
         </div>
-      </div>
-      <!-- DAY 4 -->
-      <div class="day-block reveal d3">
-        <div class="day-num">04</div>
-        <p class="day-date">JUN 8 · MON · 返程日</p>
-        <p class="day-title">告別·<br/>帶走記憶</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-time">08:00</div>
-            <div class="tl-content">
-              <div class="tl-place">飯店早餐</div>
-              <div class="tl-note">西式 &amp; 日式自助早餐</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">09:00</div>
-            <div class="tl-content">
-              <div class="tl-place">旧居留地 晨間咖啡</div>
-              <div class="tl-note">歐式建築街道散步</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=神戸旧居留地" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">10:00</div>
-            <div class="tl-content">
-              <div class="tl-place">元町商店街 購物</div>
-              <div class="tl-note">伴手禮・神戸洋菓子</div>
-              <a class="tl-maplink" href="https://maps.google.com/maps?q=元町商店街+神戸" target="_blank">📍 Google Maps</a>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">11:00</div>
-            <div class="tl-content">
-              <div class="tl-place">飯店 Check-out</div>
-              <div class="tl-note">11:00前退房 · 可寄存行李</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">09:30</div>
-            <div class="tl-content">
-              <div class="tl-place">三宮 → 神戶機場</div>
-              <div class="tl-transport">🚇 Port Liner 18分 ¥340</div>
-              <div class="tl-note">建議 09:30 前出發</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">11:00</div>
-            <div class="tl-content">
-              <div class="tl-place">✈ EVA BR133 起飛</div>
-              <div class="tl-note">神戶機場 → 台北桃園</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-time">12:55</div>
-            <div class="tl-content">
-              <div class="tl-place">台灣桃園機場 抵達</div>
-              <div class="tl-note">旅程結束 · またね神戶</div>
-            </div>
+
+        <div class="tl-item">
+          <div class="tl-time">00:00</div>
+          <div class="tl-dot gray"></div>
+          <div class="tl-content">
+            <div class="tl-title">當地唐吉訶德</div>
+            <div class="tl-desc">24 小時營業，藥妝、零食、伴手禮一站搞定。步行 5 分鐘。</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- SPOTS -->
-<section id="spots">
-  <div class="spots-inner">
-    <div class="reveal">
-      <p class="section-label">Must-See · 必訪景點</p>
-      <h2 class="section-title">六大亮點</h2>
-    </div>
-    <div class="spots-grid">
-      <div class="spot-item reveal">
-        <div class="spot-num">01</div>
-        <div class="spot-icon">⛩</div>
-        <p class="spot-name">北野異人館</p>
-        <p class="spot-name-jp">KITANO IJINKAN</p>
-        <p class="spot-address">北野町山本通 / Kitanomachi<br/>中央区北野町</p>
-        <p class="spot-hours">⏰ 9:00–18:00 · 各館票價 ¥500~</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=北野異人館街+神戸" target="_blank">📍 MAP</a>
-      </div>
-      <div class="spot-item reveal d1">
-        <div class="spot-num">02</div>
-        <div class="spot-icon">🗼</div>
-        <p class="spot-name">神戶港タワー</p>
-        <p class="spot-name-jp">KOBE PORT TOWER</p>
-        <p class="spot-address">中央区波止場町2-4<br/>メリケンパーク内</p>
-        <p class="spot-hours">⏰ 9:00–23:00 · ¥1,000</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=神戸ポートタワー" target="_blank">📍 MAP</a>
-      </div>
-      <div class="spot-item reveal d2">
-        <div class="spot-num">03</div>
-        <div class="spot-icon">♨️</div>
-        <p class="spot-name">有馬温泉</p>
-        <p class="spot-name-jp">ARIMA ONSEN</p>
-        <p class="spot-address">北区有馬町<br/>金の湯 / 銀の湯</p>
-        <p class="spot-hours">⏰ 金の湯 8:00-22:00 · ¥700</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=有馬温泉" target="_blank">📍 MAP</a>
-      </div>
-      <div class="spot-item reveal">
-        <div class="spot-num">04</div>
-        <div class="spot-icon">🌿</div>
-        <p class="spot-name">布引ハーブ園</p>
-        <p class="spot-name-jp">NUNOBIKI HERB GARDEN</p>
-        <p class="spot-address">中央区北野町1<br/>（纜車從新神戶站附近）</p>
-        <p class="spot-hours">⏰ 10:00-17:00 · 纜車¥1,800</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=布引ハーブ園+神戸" target="_blank">📍 MAP</a>
-      </div>
-      <div class="spot-item reveal d1">
-        <div class="spot-num">05</div>
-        <div class="spot-icon">🏛</div>
-        <p class="spot-name">旧居留地</p>
-        <p class="spot-name-jp">OLD FOREIGN SETTLEMENT</p>
-        <p class="spot-address">中央区明石町<br/>大丸前 / 阪神元町駅</p>
-        <p class="spot-hours">⏰ 自由參觀 · 24hr</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=神戸旧居留地" target="_blank">📍 MAP</a>
-      </div>
-      <div class="spot-item reveal d2">
-        <div class="spot-num">06</div>
-        <div class="spot-icon">🌉</div>
-        <p class="spot-name">六甲山夜景</p>
-        <p class="spot-name-jp">ROKKO NIGHT VIEW</p>
-        <p class="spot-address">六甲山上<br/>六甲ガーデンテラス</p>
-        <p class="spot-hours">⏰ 日落至 22:00 · 夜景免費</p>
-        <a class="spot-map-btn" href="https://maps.google.com/maps?q=六甲ガーデンテラス" target="_blank">📍 MAP</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- FOOD -->
-<section id="food" style="background:rgba(26,20,16,0.6);">
-  <div class="food-inner">
-    <div class="food-header">
-      <div class="reveal">
-        <p class="section-label">Gastronomy · 必食</p>
-        <h2 class="section-title">神戶<br/>美食</h2>
-      </div>
-      <p class="food-desc reveal d2">神戶是西洋飲食文化最早傳入日本的地方，神戶牛、西式洋菓子、中華街⋯每一口都是這座城市獨特歷史的縮影。</p>
-    </div>
-    <div class="food-grid">
-      <div class="food-item reveal"><span class="food-emoji">🥩</span><p class="food-name">神戶牛</p><p class="food-desc-sm">世界頂級和牛 · 入口即化<br/>推薦：神戶牛ステーキ専門店</p></div>
-      <div class="food-item reveal d1"><span class="food-emoji">🐷</span><p class="food-name">豚まん</p><p class="food-desc-sm">南京町中華街名物<br/>老祥記・一番館</p></div>
-      <div class="food-item reveal d2"><span class="food-emoji">🧁</span><p class="food-name">神戸洋菓子</p><p class="food-desc-sm">百年烘焙文化 · 伴手禮首選<br/>モンロワール・ゴンチャロフ</p></div>
-      <div class="food-item reveal"><span class="food-emoji">🍺</span><p class="food-name">神戶地ビール</p><p class="food-desc-sm">港町精釀啤酒<br/>Harborland 附近</p></div>
-      <div class="food-item reveal d1"><span class="food-emoji">🥐</span><p class="food-name">神戸パン</p><p class="food-desc-sm">日本麵包發源地<br/>元町・三宮老牌麵包店</p></div>
-      <div class="food-item reveal d2"><span class="food-emoji">🍜</span><p class="food-name">神戶ラーメン</p><p class="food-desc-sm">中華そば系列<br/>三宮・元町地區</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- BAGGAGE -->
-<section id="baggage">
-  <div class="baggage-inner">
-    <div class="reveal">
-      <p class="section-label">Baggage · 行李規定</p>
-      <h2 class="section-title">長榮航空<br/>行李規定</h2>
-    </div>
-    <div class="baggage-grid">
-      <div class="baggage-card reveal d1">
-        <p class="baggage-title">隨身行李</p>
-        <p class="baggage-sub">CARRY-ON · 手提</p>
-        <ul class="baggage-list">
-          <li>隨身行李 1 件：長+寬+高 ≤ 115cm，重量 ≤ 7kg</li>
-          <li>個人隨身物品 1 件（手提包、電腦包等）</li>
-          <li>尺寸建議：56×36×23 cm 以內（可放頭頂行李箱）</li>
-          <li>液體、膠狀、噴霧類：每瓶 ≤ 100ml，所有物品裝入 1 公升透明夾鏈袋</li>
-          <li>行動電源、鋰電池：只限手提，不可托運</li>
-          <li>行動電源：單顆 ≤ 100Wh 不限；100~160Wh 每人最多 2 顆</li>
-          <li>筆電、相機、備用電池：手提放身邊</li>
-          <li>剪刀、指甲剪、剃刀：刀刃超過 6cm 需托運</li>
-        </ul>
-        <div class="baggage-warn">
-          <strong>⚠ 安全須知</strong>
-          安全檢查時需將液體袋、筆電、大型電子設備取出，放入置物籃。手錶、皮帶、金屬物品請提前放入包包。
-        </div>
-      </div>
-      <div class="baggage-card reveal d2">
-        <p class="baggage-title">托運行李</p>
-        <p class="baggage-sub">CHECKED BAGGAGE · 托運</p>
-        <ul class="baggage-list">
-          <li>Economy 經濟艙：免費額度 1 件 × 23kg</li>
-          <li>單件尺寸：長+寬+高 ≤ 203cm</li>
-          <li>超重費：超過 23kg 每 kg 加收費用，建議控制在 23kg 內</li>
-          <li>易碎物品建議加購行李保護</li>
-          <li>鋰電池、行動電源：禁止托運</li>
-          <li>打火機：每人限帶 1 個，只限隨身</li>
-          <li>刀具、剪刀（刃超過6cm）：需托運</li>
-          <li>酒精飲料：酒精濃度24%以下可托運，24~70%限5公升</li>
-        </ul>
-        <div class="baggage-warn">
-          <strong>⚠ 神戶機場離境流程</strong>
-          1F 辦理報到手續 → 托運行李 → 安檢（取出電子設備、液體袋）→ 出境審查（護照）→ 前往登機門。請在起飛前 60~90 分鐘到達機場。
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- TRAIN GUIDE -->
-<section id="train" style="background:rgba(26,20,16,0.4);">
-  <div class="train-inner">
-    <div class="train-header reveal">
-      <p class="section-label">Transport Guide · 交通攻略</p>
-      <h2 class="section-title">神戶電車<br/>初心者教學</h2>
-      <p class="train-intro">
-        神戶三宮站是整個城市的交通核心，JR、阪神、阪急、地鐵全部交會於此。<br/>
-        來回神戶機場搭 Port Liner 最方便，市區觀光用 City Loop 巴士或地鐵皆可。
-      </p>
+    <div class="hero day-divider">
+      <div class="day-tag">DAY 3</div>
+      <div class="hero-title">郊區漫遊與港灣巡禮</div>
+      <div class="hero-sub">6月7日（週日）· 神戶</div>
     </div>
 
-    <!-- ICOCA -->
-    <div class="icoca-box reveal">
-      <p class="icoca-title">先買 ICOCA 交通 IC 卡</p>
-      <p class="icoca-sub">STEP ZERO · 最重要的第一步</p>
-      <p class="icoca-content">
-        ICOCA 是關西地區最通用的 IC 交通卡，類似台灣的悠遊卡。抵達神戶機場後，在 Port Liner 的售票機即可購買。<br/>
-        購票費用：¥2,000（含¥500押金 + ¥1,500儲值）<br/>
-        可在 JR、地鐵、阪神、阪急、Port Liner、巴士全部使用。<br/>
-        也可以用 iPhone（Apple Pay）或 Android 手機感應，出發前在 App 內加入即可，非常方便！
-      </p>
-    </div>
-
-    <div class="train-lines">
-      <div class="train-line port-liner reveal">
-        <p class="train-line-name">Port Liner</p>
-        <p class="train-line-jp">ポートライナー · 港灣人工島線</p>
-        <p class="train-line-detail">
-          神戶機場 ↔ 三宮站，最重要的路線。<br/>
-          自動駕駛無人電車，非常準時。<br/>
-          5:30~24:00 運行，約2~7分一班。<br/>
-          注意：往三宮方向沒問題，但往神戶機場要確認終點站是「神戸空港」而非「北埠頭」。
-        </p>
-        <span class="train-line-price">¥340 · 約18分</span>
-      </div>
-      <div class="train-line jr reveal d1">
-        <p class="train-line-name">JR 神戶線</p>
-        <p class="train-line-jp">JR 神戸線 · 山陽本線</p>
-        <p class="train-line-detail">
-          三宮（JR神戶站方向）↔ 大阪 约20分。<br/>
-          新快速不停所有站，速度最快。<br/>
-          可以用 ICOCA 搭乘，也可以用 JR Pass。<br/>
-          往新神戶站要轉地鐵，不可搭JR直達。
-        </p>
-        <span class="train-line-price">三宮→大阪 ¥420 · 約20分</span>
-      </div>
-      <div class="train-line subway reveal">
-        <p class="train-line-name">神戶市地鐵</p>
-        <p class="train-line-jp">神戸市営地下鉄 · 山手線</p>
-        <p class="train-line-detail">
-          三宮 ↔ 新神戶（新幹線站），只有2分鐘。<br/>
-          海岸線可到旧居留地・大丸前站。<br/>
-          一日券 ¥830，搭4趟以上才划算。<br/>
-          出站時記得投入或感應卡片。
-        </p>
-        <span class="train-line-price">三宮→新神戶 ¥210 · 約2分</span>
-      </div>
-      <div class="train-line hanshin reveal d1">
-        <p class="train-line-name">阪神電車</p>
-        <p class="train-line-jp">阪神電気鉄道 · 本線</p>
-        <p class="train-line-detail">
-          三宮 ↔ 大阪梅田，與JR平行但更便宜。<br/>
-          元町站下車可到南京町中華街。<br/>
-          可用 ICOCA 搭乘。<br/>
-          特急最快，注意停靠站。
-        </p>
-        <span class="train-line-price">三宮→梅田 ¥320 · 約30分</span>
-      </div>
-      <div class="train-line city-loop reveal">
-        <p class="train-line-name">City Loop 觀光巴士</p>
-        <p class="train-line-jp">シティループ · 神戸観光バス</p>
-        <p class="train-line-detail">
-          繞行神戶主要觀光景點的綠色復古巴士。<br/>
-          北野異人館→港塔→臨海樂園→南京町等。<br/>
-          一日券 ¥700，單程 ¥260。<br/>
-          巴士站在三宮站前。
-        </p>
-        <span class="train-line-price">一日券 ¥700 · 單程 ¥260</span>
-      </div>
-      <div class="train-line hankyu reveal d1">
-        <p class="train-line-name">三宮→有馬 巴士</p>
-        <p class="train-line-jp">神姬バス · 三宮→有馬溫泉</p>
-        <p class="train-line-detail">
-          三宮 → 有馬溫泉直通巴士，不需轉乘最方便。<br/>
-          從三宮巴士總站（JR三宮站北口）出發。<br/>
-          約40分鐘一班，行程約40分鐘。<br/>
-          回程也有直通巴士，最晚班注意查時刻表。
-        </p>
-        <span class="train-line-price">¥830 · 約40分</span>
-      </div>
-    </div>
-
-    <div class="step-box reveal">
-      <p class="step-title">搭電車 STEP BY STEP · 如何搭車</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <div class="step-name">確認目的地與路線</div>
-            <div class="step-desc">用 Google Maps 輸入出發地和目的地，選「大眾運輸」，會自動顯示最佳路線、搭哪條線、幾分鐘一班。</div>
+    <div class="light-section">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot gray"></div>
+          <div class="tl-content">
+            <div class="tl-title">彈性起床與早餐</div>
+            <div class="tl-desc">全日自由活動，大家可各自前往想去的景點，迷路善用 Google Maps，出發點同為艾美麗飯店。</div>
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <div class="step-name">進站 — 感應 ICOCA</div>
-            <div class="step-desc">找到剪票口（改札口），將 ICOCA 卡放在感應區輕觸一下，聽到「叮」聲就可進站。手機綁定的話直接用手機感應。</div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">上午行程推薦（選一）</div>
+            <div class="option-row">
+              <div class="option-block">
+                <div class="option-label">OPTION A · 甜點控</div>
+                <div class="option-title">花式可麗露 Daniel 🍰</div>
+                <div class="option-desc">多種口味限量販售，建議早去（週一、二公休）。<br><span style="color:#c9a96e; font-size:11px;">🚃 阪急神戶線至「蘆屋川」站步行 5 分</span></div>
+              </div>
+              <div class="option-block">
+                <div class="option-label">OPTION B · 海景</div>
+                <div class="option-title">須磨海濱公園 🏖️</div>
+                <div class="option-desc">白沙灘，夏季開放游泳，免費入場。<br><span style="color:#c9a96e; font-size:11px;">🚃 JR 神戶線至「須磨」站步行 5 分</span></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <div class="step-name">月台候車</div>
-            <div class="step-desc">查看月台上的電子看板確認列車方向（終點站名）和時間。站在黃線後面候車，電車來前依序排隊，不要擋住下車乘客。</div>
+
+        <div class="tl-item">
+          <div class="tl-time">14:00</div>
+          <div class="tl-dot red"></div>
+          <div class="tl-content">
+            <div class="tl-title">下午行程推薦（選一）</div>
+            <div class="option-row">
+              <div class="option-block">
+                <div class="option-label">OPTION A · 絕美大橋</div>
+                <div class="option-title">舞子公園・明石海峽 🌉</div>
+                <div class="option-desc">公園免費，推薦花 ¥250 走海上步道，夕陽時段最美。<br><span style="color:#c9a96e; font-size:11px;">🚃 JR 神戶線至「舞子」站步行 5 分</span></div>
+              </div>
+              <div class="option-block">
+                <div class="option-label">OPTION B · 逛街補貨</div>
+                <div class="option-title">三宮・元町商圈血拼 🛍️</div>
+                <div class="option-desc">中心街、元町商店街、南京町中華街一次逛足。<br><span style="color:#c9a96e; font-size:11px;">🚶 飯店步行 5-7 分即到</span></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <div class="step-name">出站 — 再次感應</div>
-            <div class="step-desc">到站後找「出口（出口）」，再次感應 ICOCA 卡出站，系統自動扣除車資。若顯示紅燈「不足」，到加值機（チャージ）補值即可。</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-content">
-            <div class="step-name">ICOCA 加值方式</div>
-            <div class="step-desc">車站內都有藍色 JR 加值機，選「チャージ（儲值）」，插入現金，選金額確認即可。建議每次充 ¥2,000~3,000 備用。</div>
+
+        <div class="tl-item">
+          <div class="tl-time">19:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">傍晚匯合：神戶塔與美利堅公園</div>
+            <div class="tl-desc">匯合欣賞港邊夜景。美利堅公園 24H 免費開放；神戶塔營業至 23:00（門票 ¥1,000）。</div>
+            <div class="tl-transport"><span>🚌</span> 飯店步行 20 分，或搭乘 Port Loop 巴士至美利堅公園站</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <p class="footer-big">KOBE</p>
-  <p class="footer-sub">
-    <span class="footer-gold">6.5</span>—<span class="footer-gold">6.8</span>
-    · 2026 · 神戶の旅
-  </p>
-  <div class="footer-members">
-    <div class="footer-member-label">TRAVELLERS · 旅行成員</div>
-    <div class="footer-member-name">Xing-Ru Li & Party · 4 Adults</div>
-  </div>
-</footer>
+    <div class="note-block">
+      <div class="note-title">📋 港區營業時間備忘錄</div>
+      <div class="note-grid">
+        <div class="note-card">
+          <div class="note-card-title">神戶港 / 美利堅公園</div>
+          <div class="note-card-desc"><strong>24小時開放</strong><br>隨時可散步、看夜景，免費入場</div>
+        </div>
+        <div class="note-card">
+          <div class="note-card-title">Harborland / Umie</div>
+          <div class="note-card-desc">約 <strong>10:00–20:00</strong><br>依各店鋪略有差異</div>
+        </div>
+        <div class="note-card">
+          <div class="note-card-title">馬賽克廣場 Mosaic</div>
+          <div class="note-card-desc">商店 <strong>10:00–20:00</strong><br>餐廳 <strong>11:00–22:00</strong>（部分至23:00）</div>
+        </div>
+        <div class="note-card">
+          <div class="note-card-title">神戶塔 / 摩天輪</div>
+          <div class="note-card-desc">神戶塔 <strong>09:00–23:00</strong> (¥1,000)<br>摩天輪 <strong>10:00–22:00</strong> (最後搭乘 21:30)</div>
+        </div>
+      </div>
+    </div>
 
-<script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+    <div class="footer-stripe">
+      <span>神戶 2026 · JUN 5 – JUN 8</span>
+      <span class="gold">• • • • •</span>
+      <span>ITINERARY DAY 1 - 3</span>
+    </div>
+
+  </div> <script>
+    function downloadPDF() {
+      // 選擇要匯出為 PDF 的區域
+      const element = document.getElementById('itinerary-wrapper');
+      
+      // 設定 html2pdf 的選項 (A4直式列印格式)
+      const opt = {
+        margin:       [0, 0, 0, 0],
+        filename:     'Kobe_Itinerary_Day1_3.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // 執行轉換與下載
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
 </body>
 </html>
