@@ -445,6 +445,59 @@ body{
   padding-top:16px;
 }
 
+
+/* ── Fullscreen cover ── */
+#p0{
+  max-width:100% !important;
+  padding:0 !important;
+}
+#p0 .cover{
+  min-height:100vh;
+  border-radius:0;
+  margin-bottom:0;
+}
+@supports (height: 100dvh){
+  #p0 .cover{
+    min-height:100dvh;
+  }
+}
+
+/* ── PDF export as mobile full-page ── */
+body.pdf-export{
+  background:#fff !important;
+}
+body.pdf-export .nav,
+body.pdf-export .dl-bar{
+  display:none !important;
+}
+body.pdf-export .page{
+  display:none !important;
+  padding:0 !important;
+  margin:0 auto !important;
+  width:390px !important;
+  max-width:390px !important;
+  min-width:390px !important;
+}
+body.pdf-export .page.exporting{
+  display:block !important;
+}
+body.pdf-export .card,
+body.pdf-export .cover{
+  width:390px !important;
+  max-width:390px !important;
+  min-width:390px !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+body.pdf-export #p0 .cover{
+  min-height:844px !important;
+}
+body.pdf-export .card.dark,
+body.pdf-export .card{
+  background-clip:padding-box;
+}
+
 </style>
 </head>
 <body>
@@ -975,6 +1028,7 @@ body{
 </div>
 
 
+
 <script>
 // ── Page switching ──
 function showPage(id, btn) {
@@ -986,7 +1040,7 @@ function showPage(id, btn) {
   window.scrollTo(0,0);
 }
 
-// ── Download full PDF directly ──
+// ── Download full PDF directly (mobile-size full-page) ──
 async function downloadAllPages() {
   const { jsPDF } = window.jspdf;
   const btn = document.querySelector('.dl-btn');
@@ -999,46 +1053,49 @@ async function downloadAllPages() {
   const activePage = document.querySelector('.page.active');
   const activeBtn = document.querySelector('.nav-btn.active');
 
+  const PDF_W = 390;   // mobile width
+  const PDF_H = 844;   // mobile full-page height
+
   try {
-    const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    document.body.classList.add('pdf-export');
 
-    for (let i = 0; i < pages.length; i++) {
-      const page = pages[i];
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'px',
+      format: [PDF_W, PDF_H]
+    });
 
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      page.classList.add('active');
+    let firstPage = true;
 
-      await new Promise(r => setTimeout(r, 120));
+    for (const page of pages) {
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+        p.classList.remove('exporting');
+      });
+      page.classList.add('exporting');
 
-      const card = page.querySelector('.card, .cover');
-      if (!card) continue;
+      await new Promise(r => setTimeout(r, 180));
 
-      const canvas = await html2canvas(card, {
+      const target = page.querySelector('.card, .cover');
+      if (!target) continue;
+
+      const canvas = await html2canvas(target, {
         scale: 2,
         useCORS: true,
         logging: false,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
+        width: PDF_W,
+        windowWidth: PDF_W,
+        scrollX: 0,
+        scrollY: 0
       });
 
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const imgData = canvas.toDataURL('image/jpeg', 0.96);
 
-      const pageWidth = 210;
-      const pageHeight = 297;
-      const margin = 8;
-      const contentWidth = pageWidth - margin * 2;
-      const contentHeight = (canvas.height / canvas.width) * contentWidth;
+      if (!firstPage) pdf.addPage([PDF_W, PDF_H], 'portrait');
+      firstPage = false;
 
-      if (i > 0) pdf.addPage();
-
-      if (contentHeight <= (pageHeight - margin * 2)) {
-        pdf.addImage(imgData, 'JPEG', margin, margin, contentWidth, contentHeight);
-      } else {
-        // Fit tall pages within A4 while preserving aspect ratio
-        const fittedHeight = pageHeight - margin * 2;
-        const fittedWidth = (canvas.width / canvas.height) * fittedHeight;
-        const x = (pageWidth - fittedWidth) / 2;
-        pdf.addImage(imgData, 'JPEG', x, margin, fittedWidth, fittedHeight);
-      }
+      pdf.addImage(imgData, 'JPEG', 0, 0, PDF_W, PDF_H);
     }
 
     pdf.save('神戶2026_完整行程.pdf');
@@ -1046,7 +1103,11 @@ async function downloadAllPages() {
     alert('PDF 產生失敗，請再試一次');
     console.error(e);
   } finally {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.body.classList.remove('pdf-export');
+    document.querySelectorAll('.page').forEach(p => {
+      p.classList.remove('exporting');
+      p.classList.remove('active');
+    });
     if (activePage) activePage.classList.add('active');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     if (activeBtn) activeBtn.classList.add('active');
