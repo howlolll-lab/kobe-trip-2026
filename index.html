@@ -1056,6 +1056,7 @@ body.pdf-export .card{
 
 
 
+
 <script>
 // ── Page switching ──
 function showPage(id, btn) {
@@ -1067,7 +1068,7 @@ function showPage(id, btn) {
   window.scrollTo(0,0);
 }
 
-// ── Download one long PDF directly (mobile-width, no section cuts, with links) ──
+// ── Download mobile-style PDF, auto-split without clipping, keep map links ──
 async function downloadAllPages() {
   const { jsPDF } = window.jspdf;
   const btn = document.querySelector('.dl-btn');
@@ -1078,8 +1079,10 @@ async function downloadAllPages() {
 
   const activePage = document.querySelector('.page.active');
   const activeBtn = document.querySelector('.nav-btn.active');
+
+  const PDF_W = 390;   // mobile width
+  const PDF_H = 844;   // mobile page height
   const SCALE = 2;
-  const PDF_W = 390;
 
   let exportWrap = null;
 
@@ -1095,7 +1098,7 @@ async function downloadAllPages() {
 
     const pages = Array.from(document.querySelectorAll('.page'));
 
-    pages.forEach(page => {
+    pages.forEach((page) => {
       const clone = page.cloneNode(true);
       clone.classList.add('active');
       clone.style.display = 'block';
@@ -1105,20 +1108,21 @@ async function downloadAllPages() {
       clone.style.padding = '0';
       clone.style.margin = '0 auto';
 
-      const firstCard = clone.querySelector('.card, .cover');
-      if (firstCard) {
-        firstCard.style.width = PDF_W + 'px';
-        firstCard.style.maxWidth = PDF_W + 'px';
-        firstCard.style.minWidth = PDF_W + 'px';
-        firstCard.style.margin = '0';
-        firstCard.style.borderRadius = '0';
-        firstCard.style.boxShadow = 'none';
+      const target = clone.querySelector('.card, .cover');
+      if (target) {
+        target.style.width = PDF_W + 'px';
+        target.style.maxWidth = PDF_W + 'px';
+        target.style.minWidth = PDF_W + 'px';
+        target.style.margin = '0';
+        target.style.borderRadius = '0';
+        target.style.boxShadow = 'none';
       }
+
       exportWrap.appendChild(clone);
     });
 
     document.body.appendChild(exportWrap);
-    await new Promise(r => setTimeout(r, 220));
+    await new Promise(r => setTimeout(r, 250));
 
     const wrapRect = exportWrap.getBoundingClientRect();
     const linkElements = Array.from(exportWrap.querySelectorAll('a[href]')).map(a => {
@@ -1143,29 +1147,72 @@ async function downloadAllPages() {
       scrollY: 0
     });
 
-    const PDF_H = canvas.height / SCALE;
+    const pageCanvasHeight = PDF_H * SCALE;
+    const totalPages = Math.ceil(canvas.height / pageCanvasHeight);
+
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'px',
       format: [PDF_W, PDF_H]
     });
 
-    const imgData = canvas.toDataURL('image/jpeg', 0.96);
-    pdf.addImage(imgData, 'JPEG', 0, 0, PDF_W, PDF_H);
+    for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
+      const sy = pageIndex * pageCanvasHeight;
+      const sh = Math.min(pageCanvasHeight, canvas.height - sy);
 
-    // clickable links
-    linkElements.forEach(link => {
-      if (/^https?:/i.test(link.href)) {
-        pdf.link(link.left, link.top, link.width, Math.max(4, link.height), { url: link.href });
+      const sliceCanvas = document.createElement('canvas');
+      sliceCanvas.width = canvas.width;
+      sliceCanvas.height = sh;
+
+      const ctx = sliceCanvas.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, sliceCanvas.width, sliceCanvas.height);
+      ctx.drawImage(
+        canvas,
+        0, sy, canvas.width, sh,
+        0, 0, sliceCanvas.width, sliceCanvas.height
+      );
+
+      const renderedHeight = sh / SCALE;
+      const imgData = sliceCanvas.toDataURL('image/jpeg', 0.98);
+
+      if (pageIndex > 0) {
+        pdf.addPage([PDF_W, PDF_H], 'portrait');
       }
-    });
 
-    pdf.save('神戶2026_長頁行程.pdf');
+      pdf.addImage(imgData, 'JPEG', 0, 0, PDF_W, renderedHeight);
+
+      const sliceTop = sy / SCALE;
+      const sliceBottom = sliceTop + renderedHeight;
+
+      linkElements.forEach(link => {
+        const linkTop = link.top;
+        const linkBottom = link.top + link.height;
+
+        if (linkBottom <= sliceTop || linkTop >= sliceBottom) return;
+
+        const visibleTop = Math.max(linkTop, sliceTop);
+        const visibleBottom = Math.min(linkBottom, sliceBottom);
+
+        const x = link.left;
+        const y = visibleTop - sliceTop;
+        const w = link.width;
+        const h = Math.max(6, visibleBottom - visibleTop);
+
+        if (/^https?:/i.test(link.href)) {
+          pdf.link(x, y, w, h, { url: link.href });
+        }
+      });
+    }
+
+    pdf.save('神戶2026_完整行程.pdf');
   } catch (e) {
     alert('PDF 產生失敗，請再試一次');
     console.error(e);
   } finally {
-    if (exportWrap && exportWrap.parentNode) exportWrap.parentNode.removeChild(exportWrap);
+    if (exportWrap && exportWrap.parentNode) {
+      exportWrap.parentNode.removeChild(exportWrap);
+    }
 
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     if (activePage) activePage.classList.add('active');
