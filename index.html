@@ -1,260 +1,882 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KOBE 2026 Travel Guide</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神戶 2026 旅遊行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+/* ── Reset & Base ── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1C1A16;--ink2:#242018;--ink3:#2A2520;
+  --gold:#C4965A;--gold-lt:#F5ECD8;
+  --cream:#F5F0E8;--cream2:#EDE8DC;
+  --dim:#888;--dim2:#666;
+  --red:#C0392B;--red-lt:#FDECEA;--red-dk:#3D1A1A;--red-tx:#C47A7A;
+  --white:#FFFFFF;
+  --r:14px;
+}
+html{font-size:16px}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:#F0EDE6;
+  color:var(--ink);
+  min-height:100vh;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #1a1814; color: #e8e0d0; font-family: 'Noto Sans TC', sans-serif; -webkit-text-size-adjust: 100%; }
+/* ── Nav tabs ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);
+  display:flex;overflow-x:auto;
+  scrollbar-width:none;gap:0;
+  border-bottom:2px solid var(--gold);
+}
+.nav::-webkit-scrollbar{display:none}
+.nav-btn{
+  flex-shrink:0;
+  padding:12px 18px;
+  font-size:13px;font-weight:500;
+  color:rgba(245,240,232,0.5);
+  border:none;background:transparent;cursor:pointer;
+  letter-spacing:1px;white-space:nowrap;
+  transition:color .2s,border-bottom .2s;
+  border-bottom:2px solid transparent;
+  margin-bottom:-2px;
+}
+.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-btn:hover{color:var(--cream)}
 
-    /* 下載按鈕 */
-    .download-btn {
-      position: fixed; bottom: 20px; right: 20px; background: #c9a96e; color: #1a1814;
-      border: none; padding: 12px 24px; border-radius: 50px; font-weight: 600;
-      cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
+/* ── Pages ── */
+.page{display:none;padding:16px;max-width:600px;margin:0 auto}
+.page.active{display:block}
 
-    /* 容器 */
-    .container { width: 100%; max-width: 800px; margin: 0 auto; background: #1a1814; }
+/* ── Card (the printable unit) ── */
+.card{
+  background:var(--cream);
+  border-radius:var(--r);
+  overflow:hidden;
+  margin-bottom:16px;
+  position:relative;
+}
+.card.dark{background:var(--ink);color:var(--cream)}
 
-    /* 通用頁面設定 */
-    .page { width: 100%; position: relative; overflow: hidden; background: #1a1814; }
-    .page-break { page-break-after: always; }
+/* ── Card header ── */
+.card-head{
+  padding:20px 22px 14px;
+  border-bottom:1px solid rgba(0,0,0,0.07);
+}
+.card.dark .card-head{border-bottom-color:rgba(255,255,255,0.07)}
+.badge{
+  display:inline-block;
+  background:var(--ink);color:var(--gold);
+  font-size:11px;font-weight:700;letter-spacing:4px;
+  padding:5px 14px;border-radius:4px;
+  margin-bottom:10px;
+}
+.card.dark .badge{background:var(--ink3)}
+.card-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:28px;font-weight:700;
+  color:var(--ink);line-height:1.1;
+}
+.card.dark .card-title{color:var(--cream)}
+.card-sub{font-size:13px;color:var(--dim);margin-top:4px}
 
-    [span_0](start_span)/* P1: 封面還原[span_0](end_span) */
-    .p1-cover { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 15px solid #252219; }
-    .p1-kobe { font-size: 18px; letter-spacing: 12px; color: #8a7f6e; margin-bottom: 20px; }
-    .p1-main { font-family: 'Noto Serif TC', serif; font-size: 100px; line-height: 1.2; }
-    .p1-year { font-size: 38px; color: #c9a96e; letter-spacing: 6px; margin-top: 20px; }
-    .p1-date { border-top: 1px solid #c9a96e; border-bottom: 1px solid #c9a96e; padding: 8px 25px; margin-top: 40px; font-size: 14px; letter-spacing: 3px; }
+/* ── Timeline ── */
+.tl{padding:16px 22px;position:relative}
+.tl::before{
+  content:'';position:absolute;
+  left:78px;top:16px;bottom:16px;
+  width:2px;background:#DDD8CE;
+}
+.card.dark .tl::before{background:var(--ink3)}
+.tl-row{display:flex;align-items:flex-start;padding:9px 0;position:relative}
+.tl-time{
+  width:56px;text-align:right;
+  font-size:12px;color:var(--dim);
+  padding-top:4px;flex-shrink:0;
+  letter-spacing:0.3px;line-height:1.3;
+}
+.card.dark .tl-time{color:var(--dim2)}
+.tl-dw{
+  width:22px;display:flex;justify-content:center;
+  flex-shrink:0;padding-top:5px;
+  position:relative;z-index:1;
+}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:#CCC5B0}
+.tl-dot.gold{background:var(--gold)}
+.tl-dot.red{background:var(--red)}
+.tl-dot.gray{background:#CCC5B0}
+.card.dark .tl-dot{background:var(--ink3)}
+.card.dark .tl-dot.gold{background:var(--gold)}
+.card.dark .tl-dot.red{background:var(--red)}
+.tl-con{flex:1;padding-left:10px}
+.tl-main{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.card.dark .tl-main{color:var(--cream)}
+.tl-main.red{color:var(--red)}
+.tl-note{font-size:12px;color:var(--dim);margin-top:3px;line-height:1.6}
+.card.dark .tl-note{color:var(--dim2)}
+.tl-tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:2px 10px;border-radius:4px;margin-top:4px;
+}
+.tl-tag.gold{background:var(--ink);color:var(--gold)}
+.tl-tag.warn{background:var(--red-dk);color:var(--red-tx)}
+.tl-tag.info{background:var(--cream2);color:var(--ink)}
+.card.dark .tl-tag.info{background:var(--ink3);color:var(--gold)}
 
-    [span_1](start_span)/* P2: 航班行李還原[span_1](end_span) */
-    .p2-section { padding: 40px 25px; }
-    .p2-title { color: #c9a96e; font-size: 18px; margin-bottom: 20px; letter-spacing: 2px; }
-    .ticket-card { background: #252219; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #3a3628; }
-    .t-header { display: flex; justify-content: space-between; font-size: 11px; color: #8a7f6e; border-bottom: 1px dashed #3a3628; padding-bottom: 8px; margin-bottom: 15px; }
-    .t-main { display: flex; justify-content: space-between; align-items: center; text-align: center; }
-    .t-city { font-size: 32px; font-weight: 600; color: #f0ebe0; }
-    .t-city span { display: block; font-size: 10px; color: #8a7f6e; font-weight: 300; }
-    .t-arrow { flex: 1; position: relative; color: #c9a96e; font-size: 20px; }
-    .t-arrow::after { content: '✈'; }
-    .t-arrow::before { content: ''; position: absolute; left: 15%; right: 15%; top: 55%; height: 1px; background: #c9a96e; }
-    .t-footer { display: flex; justify-content: space-between; margin-top: 15px; font-size: 12px; }
-    .t-footer b { color: #c9a96e; font-size: 15px; }
+/* ── Option split ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px 16px}
+.opt{border-radius:10px;padding:12px 14px}
+.opt.a{background:var(--cream2);border:1.5px solid #CCC5B0}
+.opt.b{background:#F0EDE8;border:1.5px dashed #CCC5B0}
+.opt.c{background:#EEF2F0;border:1.5px dashed #AABFB4}
+.card.dark .opt.a{background:var(--ink2);border-color:var(--ink3)}
+.card.dark .opt.b{background:var(--ink2);border-color:var(--ink3)}
+.opt-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.opt-label.a{color:var(--gold)}
+.opt-label.b{color:var(--dim)}
+.opt-label.c{color:#4A8C70}
+.opt-item{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px}
+.opt-bullet{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.opt-bullet.a{background:var(--gold)}
+.opt-bullet.b{background:#BBB}
+.opt-bullet.c{background:#4A8C70}
+.opt-txt{font-size:12px;color:var(--ink);line-height:1.5}
+.card.dark .opt-txt{color:var(--cream)}
+.opt-sub{font-size:11px;color:var(--dim);display:block;margin-top:1px}
+.card.dark .opt-sub{color:var(--dim2)}
 
-    .baggage-box { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    .baggage-box td { border: 1px solid #3a3628; padding: 12px; font-size: 13px; }
-    .bag-label { color: #c9a96e; font-weight: 500; width: 80px; }
-    .warn-text { color: #c9604e; font-size: 12px; margin-top: 15px; background: rgba(201,96,78,0.1); padding: 10px; border-radius: 5px; }
+/* ── Info blocks ── */
+.info-block{padding:12px 22px}
+.info-row{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:10px 14px;border-radius:10px;margin-bottom:8px;
+}
+.info-row.dark-bg{background:var(--ink2)}
+.info-row.cream-bg{background:var(--cream2)}
+.info-row.red-bg{background:var(--red-dk)}
+.info-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.info-body{flex:1}
+.info-title{font-size:14px;font-weight:700;color:var(--cream);margin-bottom:3px}
+.info-row.cream-bg .info-title{color:var(--ink)}
+.info-detail{font-size:12px;color:var(--dim2);line-height:1.6}
+.info-row.cream-bg .info-detail{color:var(--dim)}
+.info-hl{color:var(--gold);font-weight:700}
+.info-row.cream-bg .info-hl{color:var(--ink);font-weight:700}
+.info-row.red-bg .info-detail{color:var(--red-tx)}
 
-    [span_2](start_span)[span_3](start_span)/* P3, P4, P5: 行程樣式[span_2](end_span)[span_3](end_span) */
-    .hero { background: #1a1814; padding: 45px 30px; border-bottom: 2px solid #c9a96e; }
-    .day-tag { display: inline-block; background: #c9a96e; color: #1a1814; padding: 4px 14px; font-size: 11px; font-weight: 600; margin-bottom: 15px; letter-spacing: 2px; }
-    .hero-h1 { font-family: 'Noto Serif TC', serif; font-size: 42px; color: #f0ebe0; margin-bottom: 8px; }
-    .light-section { background: #f0ebe0; color: #2c2a25; padding: 35px 30px; min-height: 500px; }
-    .tl-item { display: flex; margin-bottom: 25px; }
-    .tl-time { width: 55px; font-size: 13px; color: #8a7f6e; flex-shrink: 0; padding-top: 3px; }
-    .tl-dot { width: 9px; height: 9px; border-radius: 50%; background: #c9a96e; margin: 9px 15px 0; flex-shrink: 0; }
-    .tl-dot.red { background: #c9604e; }
-    .tl-content { flex: 1; }
-    .tl-t { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .tl-d { font-size: 13px; color: #5a5348; line-height: 1.6; }
+/* ── Divider ── */
+.divider{border:none;border-top:1px solid rgba(0,0,0,0.08);margin:4px 22px}
+.card.dark .divider{border-top-color:rgba(255,255,255,0.07)}
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--dim);
+  padding:10px 22px 4px;
+}
+.card.dark .section-label{color:var(--dim2)}
 
-    /* P4: 第二天插入行程 [引用自 kobe_day2_itinerary.html] */
-    .cafe-list { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-    .cafe-card { background: #fff; padding: 12px 15px; border-radius: 6px; font-size: 12px; border: 0.5px solid #d5cfc3; }
-    .cafe-name { font-weight: 600; color: #2c2a25; margin-bottom: 2px; }
+/* ── Boarding pass ── */
+.bp{background:var(--cream2);border-radius:10px;overflow:hidden;margin:0 22px 10px}
+.bp-body{display:flex;align-items:center;padding:16px 18px}
+.bp-city{text-align:center;min-width:80px}
+.bp-code{font-family:'Noto Serif TC',serif;font-size:30px;font-weight:700;color:var(--ink);letter-spacing:2px;line-height:1}
+.bp-city-name{font-size:10px;color:var(--dim);margin-top:3px}
+.bp-mid{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 10px}
+.bp-line{width:100%;height:1.5px;background:#CCC5B0;position:relative}
+.bp-line::after{content:'▶';position:absolute;right:-3px;top:-9px;font-size:10px;color:#CCC5B0}
+.bp-dur{font-size:10px;color:var(--dim);letter-spacing:0.5px}
+.bp-stub{width:80px;border-left:2px dashed #CCC5B0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:0 8px;flex-shrink:0}
+.bp-sl{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
+.bp-sv{font-size:13px;color:var(--ink);font-weight:700}
+.bp-strip{background:var(--ink2);display:flex;padding:8px 18px;gap:20px}
+.bp-field{display:flex;flex-direction:column;gap:2px}
+.bp-fl{font-size:9px;color:var(--dim2);letter-spacing:1px;text-transform:uppercase}
+.bp-fv{font-size:12px;color:var(--gold);font-weight:700}
+.bp-tear{border-top:1.5px dashed #CCC5B0;margin:0 18px}
+.bp-foot{display:flex;justify-content:space-between;align-items:center;padding:7px 18px}
+.bp-ft{font-size:10px;color:var(--dim)}
+.bp-bc{display:flex;gap:2px;align-items:flex-end;height:18px}
+.bp-bar{background:var(--dim);width:2px}
 
-    [span_4](start_span)[span_5](start_span)/* P6: 費用結算還原[span_4](end_span)[span_5](end_span) */
-    .p6-section { padding: 40px 25px; }
-    .bill-card { background: #252219; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 5px solid #c9a96e; }
-    .bill-name { font-size: 18px; color: #c9a96e; font-weight: 600; margin-bottom: 10px; border-bottom: 1px solid #3a3628; padding-bottom: 8px; }
-    .bill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; }
-    .bill-val { text-align: right; color: #f0ebe0; }
+/* ── Cafe cards ── */
+.cafe-list{padding:0 22px 16px;display:flex;flex-direction:column;gap:10px}
+.cafe-card{background:var(--cream2);border-radius:10px;padding:14px 16px;cursor:pointer;text-decoration:none;display:block;transition:background .15s}
+.cafe-card:hover{background:#E5DFD0}
+.card.dark .cafe-card{background:var(--ink2)}
+.card.dark .cafe-card:hover{background:var(--ink3)}
+.cafe-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.cafe-icon{font-size:20px;flex-shrink:0}
+.cafe-name{font-size:14px;font-weight:700;color:var(--ink)}
+.card.dark .cafe-name{color:var(--cream)}
+.cafe-eng{font-size:11px;color:var(--dim);margin-top:1px}
+.card.dark .cafe-eng{color:var(--dim2)}
+.cafe-body{font-size:12px;color:var(--dim);line-height:1.6}
+.card.dark .cafe-body{color:var(--dim2)}
+.cafe-body .hl{color:var(--gold);font-weight:700}
+.cafe-card .map-btn{
+  display:inline-block;margin-top:6px;
+  font-size:11px;font-weight:700;
+  background:var(--ink);color:var(--gold);
+  padding:3px 10px;border-radius:4px;
+  text-decoration:none;
+}
+.card.dark .cafe-card .map-btn{background:var(--gold);color:var(--ink)}
 
-    @media print {
-      .download-btn { display: none; }
-      .page { width: 210mm; height: 296mm; }
-    }
-  </style>
+/* ── Cost table ── */
+.cost-item{
+  display:flex;align-items:flex-start;
+  padding:12px 22px;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.cost-item:last-child{border-bottom:none}
+.ci-icon{font-size:18px;min-width:28px;margin-top:1px}
+.ci-body{flex:1}
+.ci-name{font-size:14px;font-weight:700;color:var(--cream)}
+.ci-sub{font-size:11px;color:var(--dim2);margin-top:2px}
+.ci-right{text-align:right;padding-left:10px;flex-shrink:0}
+.ci-amt{font-size:16px;color:var(--gold);font-weight:700}
+.ci-who{font-size:11px;color:var(--dim2);margin-top:2px}
+.person-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px 16px}
+.person-card{background:var(--ink2);border:1px solid var(--ink3);border-radius:10px;padding:14px 16px}
+.p-name{font-size:16px;font-weight:700;color:var(--gold);padding-bottom:10px;border-bottom:1px solid var(--ink3);margin-bottom:10px}
+.p-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px}
+.p-lbl{color:var(--dim2)}
+.p-val{font-weight:700;color:var(--cream)}
+.p-val.big{font-size:16px;color:var(--red-tx)}
+.p-val.gold{color:var(--gold)}
+.p-divider{border-top:1px solid var(--ink3);margin:6px 0}
+
+/* ── Cover (page 1) ── */
+.cover{
+  background:var(--ink);
+  border-radius:var(--r);
+  padding:0;overflow:hidden;
+  position:relative;min-height:420px;
+  display:flex;flex-direction:column;
+  margin-bottom:16px;
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(196,150,90,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(196,150,90,0.06) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.cover-top{height:3px;background:var(--gold);position:relative;z-index:1}
+.cover-body{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:48px 24px 36px;position:relative;z-index:1;
+}
+.cover-en{
+  font-size:12px;letter-spacing:6px;color:rgba(196,150,90,0.5);
+  text-transform:uppercase;margin-bottom:16px;
+}
+.cover-deco{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.cover-deco-line{width:48px;height:1px;background:rgba(196,150,90,0.35)}
+.cover-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.cover-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(64px,18vw,96px);
+  color:var(--cream);letter-spacing:6px;line-height:1;
+  margin-bottom:12px;
+}
+.cover-deco2{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.cover-deco2-line{width:48px;height:1px;background:rgba(196,150,90,0.35)}
+.cover-year{
+  font-size:clamp(22px,6vw,32px);color:var(--gold);
+  letter-spacing:8px;font-weight:300;margin-bottom:8px;
+}
+.cover-date{font-size:13px;color:rgba(245,240,232,0.4);letter-spacing:5px}
+.cover-footer{
+  border-top:1px solid rgba(196,150,90,0.2);
+  padding:14px 24px;display:flex;
+  justify-content:space-between;align-items:center;
+  position:relative;z-index:1;
+}
+.cover-footer-txt{font-size:11px;color:rgba(245,240,232,0.25);letter-spacing:2px;text-transform:uppercase}
+
+/* ── Download button ── */
+.dl-bar{
+  position:sticky;bottom:0;
+  background:var(--ink);
+  border-top:1px solid var(--ink3);
+  padding:10px 16px;
+  display:flex;gap:8px;align-items:center;
+  z-index:99;
+}
+.dl-btn{
+  flex:1;background:var(--gold);color:var(--ink);
+  border:none;border-radius:8px;
+  padding:11px 0;font-size:13px;font-weight:700;
+  cursor:pointer;letter-spacing:1px;
+  font-family:'Noto Sans TC',sans-serif;
+  transition:opacity .15s;
+}
+.dl-btn:hover{opacity:0.85}
+.dl-btn.secondary{
+  background:transparent;color:var(--gold);
+  border:1.5px solid var(--gold);flex:0 0 auto;
+  padding:11px 16px;
+}
+
+/* ── Bag grid ── */
+.bag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 22px 16px}
+.bag-item{background:var(--ink2);border-radius:10px;padding:12px 14px}
+.bag-cat{font-size:11px;color:var(--dim2);letter-spacing:1px;margin-bottom:6px}
+.bag-val{font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.bag-note{font-size:11px;color:var(--dim2);line-height:1.55}
+
+/* ── Responsive ── */
+@media(max-width:400px){
+  .split{grid-template-columns:1fr}
+  .person-grid{grid-template-columns:1fr}
+  .bag-grid{grid-template-columns:1fr}
+}
+
+/* ── Print/PDF ── */
+@media print{
+  .nav,.dl-bar{display:none}
+  .page{display:block!important;padding:0;max-width:100%}
+  .card{margin-bottom:0;break-after:page;border-radius:0}
+}
+</style>
 </head>
 <body>
 
-  <button class="download-btn" onclick="generatePDF()">下載完整 PDF (6頁)</button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <button class="nav-btn active" onclick="showPage('p0',this)">封面</button>
+  <button class="nav-btn" onclick="showPage('p1',this)">航班行李</button>
+  <button class="nav-btn" onclick="showPage('p2',this)">Day 1</button>
+  <button class="nav-btn" onclick="showPage('p3',this)">Day 2</button>
+  <button class="nav-btn" onclick="showPage('p4',this)">Day 3</button>
+  <button class="nav-btn" onclick="showPage('p5',this)">Day 4</button>
+  <button class="nav-btn" onclick="showPage('p6',this)">費用</button>
+  <button class="nav-btn" onclick="showPage('p7',this)">咖啡廳</button>
+</nav>
 
-  <div id="pdf-content" class="container">
-    
-    <div class="page page-break">
-      <div class="p1-cover">
-        <div class="p1-kobe">K O B E</div>
-        <div class="p1-main">神 戶</div>
-        <div class="p1-year">2026</div>
-        <div class="p1-date">JUN 5 — JUN 8</div>
+<!-- ══ PAGE 0: COVER ══ -->
+<div class="page active" id="p0">
+  <div class="cover" id="card-cover">
+    <div class="cover-grid"></div>
+    <div class="cover-top"></div>
+    <div class="cover-body">
+      <div class="cover-en">Travel Journal</div>
+      <div class="cover-deco">
+        <div class="cover-deco-line"></div>
+        <div class="cover-diamond"></div>
+        <div class="cover-deco-line"></div>
       </div>
+      <div class="cover-title">神戶</div>
+      <div class="cover-deco2">
+        <div class="cover-deco2-line"></div>
+        <div class="cover-diamond"></div>
+        <div class="cover-deco2-line"></div>
+      </div>
+      <div class="cover-year">2 0 2 6</div>
+      <div class="cover-date">JUN 5 – JUN 8</div>
     </div>
-
-    <div class="page page-break">
-      <div class="p2-section">
-        <div class="p2-title">航班資訊 (FLIGHT)</div>
-        
-        <div class="ticket-card">
-          <div class="t-header"><span>05 JUN 2026</span><span>EVA Air BR134</span></div>
-          <div class="t-main">
-            <div class="t-city">TPE<span>台北桃園</span></div>
-            <div class="t-arrow"></div>
-            <div class="t-city">UKB<span>神戶機場</span></div>
-          </div>
-          <div class="t-footer">
-            <div>起飛 <b>06:20</b></div>
-            <div>抵達 <b>10:00</b></div>
-            <div>時間 <b>2h 40m</b></div>
-          </div>
-        </div>
-
-        <div class="ticket-card">
-          <div class="t-header"><span>08 JUN 2026</span><span>EVA Air BR133</span></div>
-          <div class="t-main">
-            <div class="t-city">UKB<span>神戶機場</span></div>
-            <div class="t-arrow" style="transform: scaleX(-1);"></div>
-            <div class="t-city">TPE<span>台北桃園</span></div>
-          </div>
-          <div class="t-footer">
-            <div>起飛 <b>11:00</b></div>
-            <div>抵達 <b>12:55</b></div>
-            <div>時間 <b>2h 55m</b></div>
-          </div>
-        </div>
-
-        <div class="p2-title" style="margin-top:30px;">行李規定 (ECONOMY)</div>
-        <table class="baggage-box">
-          [span_6](start_span)<tr><td class="bag-label">手提</td><td>7kg 1件+小包 (3C、行動電源、護照必隨身)[span_6](end_span)</td></tr>
-          [span_7](start_span)<tr><td class="bag-label">託運</td><td>23kg 1件免費 (100ml以上液體、剪刀必託運)[span_7](end_span)</td></tr>
-        </table>
-        <div class="warn-text">
-          [span_8](start_span)⚠️ 行動電源禁止放託運！只能手提上機，飛機上不可使用。違規會被沒收！[span_8](end_span)
-        </div>
-      </div>
+    <div class="cover-footer">
+      <span class="cover-footer-txt">Ruu · 姊 · 妹 · 媽</span>
+      <span class="cover-footer-txt">兵庫縣 · 日本</span>
     </div>
-
-    <div class="page page-break">
-      <div class="hero">
-        <div class="day-tag">DAY 1</div>
-        <div class="hero-h1">抵達・固定行程</div>
-        <div style="font-size:14px; color:#8a7f6e;">6月5日(週五) 神戶</div>
-      </div>
-      <div class="light-section">
-        <div class="tl-item">
-          <div class="tl-time">10:00</div><div class="tl-dot"></div>
-          <div class="tl-content"><div class="tl-t">抵達神戶機場</div><div class="tl-d">入境 + 機場接送至飯店 (¥10,000 四人共乘)</div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">12:00</div><div class="tl-dot"></div>
-          <div class="tl-content"><div class="tl-t">麵包超人博物館</div><div class="tl-d">JR神戶站步行8分。1F商場免費區。</div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">19:00</div><div class="tl-dot red"></div>
-          <div class="tl-content">
-            <div class="tl-t">石田屋・神戶牛燒肉 <span style="background:#c9604e; color:#fff; font-size:10px; padding:2px 6px; border-radius:3px;">已預約</span></div>
-            <div class="tl-d">三宮站步行2分。請準時到達。</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="page page-break">
-      <div class="hero">
-        <div class="day-tag">DAY 2</div>
-        <div class="hero-h1">自由活動</div>
-        <div style="font-size:14px; color:#8a7f6e;">6月6日(週六) 三宮・元町・北野</div>
-      </div>
-      <div class="light-section">
-        <div class="tl-item">
-          <div class="tl-time">10:00</div><div class="tl-dot"></div>
-          <div class="tl-content"><div class="tl-t">生田神社</div><div class="tl-d">飯店步行約6分。神戶最古老神社。</div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">11:00</div><div class="tl-dot"></div>
-          <div class="tl-content"><div class="tl-t">北野異人館散步</div><div class="tl-d">風見雞館、萌黃之館。歐風建築巡禮。</div></div>
-        </div>
-        
-        <div style="margin-top:20px; font-weight:600; border-left:3px solid #c9a96e; padding-left:10px; font-size:14px;">☕ 推薦咖啡廳</div>
-        <div class="cafe-list">
-          <div class="cafe-card"><div class="cafe-name">西村咖啡 北野坂店</div>75年老字號，神戶式早餐首選。</div>
-          <div class="cafe-card"><div class="cafe-name">Cafe FREUNDLIEB</div>百年教堂改建，國家級文化財。</div>
-          <div class="cafe-card"><div class="cafe-name">星巴克 北野異人館</div>日本最美星巴克，百年洋房改建。</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="page page-break">
-      <div class="hero">
-        <div class="day-tag">DAY 3 & 4</div>
-        <div class="hero-h1">郊區・回程</div>
-      </div>
-      <div class="light-section">
-        <div class="tl-t">Day 3 推薦清單</div>
-        [span_9](start_span)<div class="tl-d">• 舞子公園・明石海峽大橋 (夕陽最美)[span_9](end_span)</div>
-        [span_10](start_span)<div class="tl-d">• 神戶塔 (09:00-23:00)[span_10](end_span)</div>
-        [span_11](start_span)<div class="tl-d">• 須磨海濱公園散步[span_11](end_span)</div>
-        <hr style="margin:25px 0; border:0; border-top:1px dashed #ccc5b5;">
-        [span_12](start_span)<div class="tl-t">Day 4 回程 (6/8)[span_12](end_span)</div>
-        <div class="tl-item" style="margin-top:10px;">
-          <div class="tl-time">08:00</div><div class="tl-dot"></div>
-          <div class="tl-content"><div class="tl-t">退房出發</div><div class="tl-d">搭 Port Liner 至機場 (約18分)。</div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">11:00</div><div class="tl-dot"></div>
-          [span_13](start_span)<div class="tl-content"><div class="tl-t">BR133 起飛</div><div class="tl-d">12:55 抵達桃園。[span_13](end_span)</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="page">
-      <div class="p6-section">
-        <div class="p2-title">費用分攤 (Settlement)</div>
-        
-        <div class="bill-card">
-          <div class="bill-name">姊</div>
-          <div class="bill-grid"><div>飯店費用</div><div class="bill-val">NT$ 4,487</div></div>
-        </div>
-
-        <div class="bill-card">
-          <div class="bill-name">Ruu</div>
-          <div class="bill-grid"><div>預定費</div><div class="bill-val">NT$ 89</div></div>
-          <div class="bill-grid"><div>機場現場費</div><div class="bill-val">¥ 2,500</div></div>
-        </div>
-
-        <div class="bill-card">
-          <div class="bill-name">媽 / 妹 / Ru (每位)</div>
-          <div class="bill-grid"><div>住宿分攤</div><div class="bill-val">NT$ 4,487</div></div>
-          <div class="bill-grid"><div>預定雜支</div><div class="bill-val">NT$ 89</div></div>
-          <div class="bill-grid"><div>機場接送</div><div class="bill-val">¥ 2,500</div></div>
-        </div>
-
-        <div style="text-align:center; margin-top:60px; color:#4a4438; font-size:11px; letter-spacing:4px;">
-          神戶 2026 · TRAVEL JOURNAL · END
-        </div>
-      </div>
-    </div>
-
   </div>
+</div>
 
-  <script>
-    function generatePDF() {
-      const element = document.getElementById('pdf-content');
-      const opt = {
-        margin: 0,
-        filename: 'Kobe_Guide_2026.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 2, useCORS: true, windowWidth: 800 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-      html2pdf().set(opt).from(element).save();
-    }
-  </script>
+<!-- ══ PAGE 1: FLIGHTS ══ -->
+<div class="page" id="p1">
+  <div class="card dark" id="card-flight">
+    <div class="card-head">
+      <div class="badge">航班資訊</div>
+      <div class="card-title">去程・回程</div>
+      <div class="card-sub">長榮航空 EVA Air</div>
+    </div>
+
+    <div style="padding:16px 22px 0">
+      <div class="bp">
+        <div class="bp-body">
+          <div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
+          <div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 40 MIN</div></div>
+          <div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
+          <div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR134</div><div class="bp-sl">ECON</div></div>
+        </div>
+        <div class="bp-strip">
+          <div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">05 JUN 2026</span></div>
+          <div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">06:20</span></div>
+          <div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">10:00</span></div>
+        </div>
+        <div class="bp-tear"></div>
+        <div class="bp-foot">
+          <span class="bp-ft">TPE → UKB · 長榮航空 BR134</span>
+          <div class="bp-bc">
+            <div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:80%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:50%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bp">
+        <div class="bp-body">
+          <div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
+          <div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 55 MIN</div></div>
+          <div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
+          <div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR133</div><div class="bp-sl">ECON</div></div>
+        </div>
+        <div class="bp-strip">
+          <div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">08 JUN 2026</span></div>
+          <div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">11:00</span></div>
+          <div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">12:55</span></div>
+        </div>
+        <div class="bp-tear"></div>
+        <div class="bp-foot">
+          <span class="bp-ft">UKB → TPE · 長榮航空 BR133</span>
+          <div class="bp-bc">
+            <div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:55%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:85%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">🧳 行李規定（長榮 Economy）</div>
+    <div class="bag-grid">
+      <div class="bag-item"><div class="bag-cat">✅ 手提可帶</div><div class="bag-val">7 kg · 1件+小包</div><div class="bag-note">衣物、3C、行動電源、貴重物品、護照、藥品</div></div>
+      <div class="bag-item"><div class="bag-cat">✅ 託運可放</div><div class="bag-val">23 kg · 1件免費</div><div class="bag-note">100ml以上保養品、大瓶液體、刮鬍刀、剪刀</div></div>
+      <div class="bag-item"><div class="bag-cat">🚫 手提不能帶</div><div class="bag-val">液體超過100ml</div><div class="bag-note">化妝水、乳液、飲料、噴霧罐→須放託運或丟棄</div></div>
+      <div class="bag-item"><div class="bag-cat">🚫 託運不能放</div><div class="bag-val">行動電源・打火機</div><div class="bag-note">鋰電池只能手提上機，打火機限1個放手提</div></div>
+    </div>
+    <div class="info-block">
+      <div class="info-row red-bg">
+        <div class="info-icon">⚡</div>
+        <div class="info-body">
+          <div class="info-detail" style="color:var(--red-tx);font-weight:500">行動電源禁止放託運！只能手提，飛機上不可使用，違規會被沒收！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 2: DAY 1 ══ -->
+<div class="page" id="p2">
+  <div class="card" id="card-day1">
+    <div class="card-head">
+      <div class="badge">DAY 1</div>
+      <div class="card-title">抵達・固定行程</div>
+      <div class="card-sub">6月5日（週五）神戶</div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛬 神戶機場抵達</div><div class="tl-note">入境＋機場接送至飯店（¥10,000 四人共乘）</div></div></div>
+      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李</div><div class="tl-note">艾美麗 Hotel Monte Hermana Kobe Amalie<br>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
+      <div class="tl-row"><div class="tl-time">11:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🍜 簡單吃午餐</div><div class="tl-note">麵包超人周邊或三宮隨意覓食，輕鬆吃就好</div></div></div>
+      <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍞 麵包超人博物館</div><div class="tl-note">地址：東川崎町1-6-2（JR神戶站步行8分）<br>一樓購物商場免費！10:00–19:00 · 抓3小時</div></div></div>
+      <div class="tl-row"><div class="tl-time">15:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動 / 回飯店入住</div><div class="tl-note">休息 or 附近逛</div></div></div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">17:00 選擇你的路線</div>
+    <div class="split">
+      <div class="opt a">
+        <div class="opt-label a">Option A · 有體力</div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:00<br>Concerto 協奏曲號<span class="opt-sub">夕陽郵輪・1小時航程<br>看海＋日落</span></div></div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">19:00 🥩 燒肉晚餐</div></div>
+      </div>
+      <div class="opt b">
+        <div class="opt-label b">Option B · 累了</div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">直接休息<br>or 附近逛街</div></div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">19:00 🥩 燒肉晚餐</div></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">🥩 石田屋・神戶牛燒肉</div><div class="tl-note">北長狭通1-20-9 2F（三宮站步行2分）· ¥7,000–12,000/人 · 中文菜單</div><div class="tl-tag warn">⚠ 已預約！準時到！</div></div></div>
+      <div class="tl-row"><div class="tl-time">晚餐後</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">看體力決定：散步港邊夜景 or 直接回飯店休息</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 3: DAY 2 ══ -->
+<div class="page" id="p3">
+  <div class="card" id="card-day2">
+    <div class="card-head">
+      <div class="badge">DAY 2</div>
+      <div class="card-title">文化散步日</div>
+      <div class="card-sub">6月6日（週六）· 從飯店出發</div>
+    </div>
+
+    <div class="info-block" style="padding-bottom:0">
+      <div class="info-row cream-bg" style="margin-bottom:0">
+        <div class="info-icon">🏨</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">出發點：艾美麗飯店</div>
+          <div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">09:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">起床＋附近早餐</div><div class="tl-note">飯店周邊覓食 or 便利商店</div></div></div>
+      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">⛩ 生田神社</div><div class="tl-note">飯店步行約6分 · 地址：下山手通1-2-1<br>開放 07:00–17:00 · 免費 · 求姻緣・結緣聖地<br>必試水占卜！在地名人都來參拜</div></div></div>
+      <div class="tl-row"><div class="tl-time">10:45</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏛 北野異人館區</div><div class="tl-note">從生田神社步行約10分 · 北野天滿神社＋異人館散步<br>風見雞館・萌黃館・免費的萊茵館（09:00–18:00）<br>中間可找餐廳吃午餐</div></div></div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">備案景點（若不想走戶外）</div>
+    <div class="split" style="padding-bottom:8px">
+      <div class="opt a">
+        <div class="opt-label a">室內選項 A</div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">兵庫縣立美術館<span class="opt-sub">從三宮搭地鐵約15分<br>臨海現代建築</span></div></div>
+      </div>
+      <div class="opt b">
+        <div class="opt-label b">室內選項 B</div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">竹中大工道具館<span class="opt-sub">新神戶站步行3分<br>日本傳統工藝</span></div></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">13:30–19:00 下午行程（選一）</div>
+    <div class="split" style="grid-template-columns:1fr 1fr 1fr;padding-bottom:8px">
+      <div class="opt a">
+        <div class="opt-label a">Option A</div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">三宮・元町逛街<span class="opt-sub">咖啡廳＋購物</span></div></div>
+      </div>
+      <div class="opt b">
+        <div class="opt-label b">Option B</div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">神戶港・Harborland<span class="opt-sub">馬賽克廣場</span></div></div>
+      </div>
+      <div class="opt c">
+        <div class="opt-label c">Option C</div>
+        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">回飯店補體力<span class="opt-sub">休息就是行程</span></div></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">🏪 港區備忘・營業時間</div>
+    <div class="info-block">
+      <div class="info-row cream-bg">
+        <div class="info-body">
+          <div class="info-detail" style="color:var(--dim)">
+            <span class="info-hl" style="color:var(--ink)">神戶港（戶外）</span> · 24小時開放・散步夜景隨時去<br>
+            <span class="info-hl" style="color:var(--ink)">Harborland</span> · 約 10:00–20:00（依店鋪）<br>
+            <span class="info-hl" style="color:var(--ink)">馬賽克廣場</span> · 商店 10:00–20:00 · 餐廳 11:00–22:00<br>
+            <span class="info-hl" style="color:var(--ink)">摩天輪（umie旁）</span> · 10:00–22:00（末班21:30）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
+      <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🐙 宵夜・明石燒</div><div class="tl-note">飯店附近 · 營業 18:00–02:00</div><div class="tl-tag info">蛸之壺本店：三宮町3-3-3（元町站1分）</div></div></div>
+      <div class="tl-row"><div class="tl-time">24:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🏪 唐吉訶德 24小時</div><div class="tl-note">三宮周邊 · 24小時營業 · 深夜購物</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 4: DAY 3 ══ -->
+<div class="page" id="p4">
+  <div class="card" id="card-day3">
+    <div class="card-head">
+      <div class="badge">DAY 3</div>
+      <div class="card-title">自由活動</div>
+      <div class="card-sub">6月7日（週日）· 從飯店出發</div>
+    </div>
+    <div class="info-block" style="padding-bottom:0">
+      <div class="info-row cream-bg" style="margin-bottom:0">
+        <div class="info-icon">🏨</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">出發點：艾美麗飯店</div>
+          <div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-label">推薦景點（各自去想去的地方！）</div>
+    <div class="info-block">
+      <div class="info-row cream-bg">
+        <div class="info-icon">🗼</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">神戶塔・美利堅公園</div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店步行20分 / 搭Port Loop巴士（北野坂站→美利堅公園站約15分）<br>神戶塔 09:00–23:00 · ¥1,000 · 美利堅公園24H免費</div>
+        </div>
+      </div>
+      <div class="info-row cream-bg">
+        <div class="info-icon">🌊</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">須磨海濱公園</div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店→步行6分→三宮站→JR神戶線約20分→「須磨」站→步行5分<br>白沙灘 · 夏季開放游泳 · 免費入場</div>
+        </div>
+      </div>
+      <div class="info-row cream-bg">
+        <div class="info-icon">🌅</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">舞子公園・明石海峽大橋</div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店→步行6分→三宮站→JR神戶線約25分→「舞子」站→步行5分<br>公園24H免費 · 海上步道¥250 · 夕陽時段最美！</div>
+        </div>
+      </div>
+      <div class="info-row cream-bg">
+        <div class="info-icon">🍰</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">花式可麗露 Daniel 本店</div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店→步行6分→三宮站→阪急神戶線→「芦屋川」站→步行5分（約30分）<br>芦屋市三条南町5-1 · 週一・二公休 · 限量販售建議早去！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 5: DAY 4 ══ -->
+<div class="page" id="p5">
+  <div class="card" id="card-day4">
+    <div class="card-head">
+      <div class="badge">DAY 4</div>
+      <div class="card-title">回程</div>
+      <div class="card-sub">6月8日（週一）</div>
+    </div>
+    <div class="info-block">
+      <div class="info-row dark-bg">
+        <div class="info-icon">⏰</div>
+        <div class="info-body">
+          <div class="info-title">出發時間提醒</div>
+          <div class="info-detail">航班 <span class="info-hl">11:00</span> 起飛 → 建議 <span class="info-hl">08:30前抵達神戶機場</span><br>飯店→步行6分→三宮站→搭Port Liner→神戶空港（約18分・¥380）<br><span class="info-hl">08:00 從飯店出發</span>剛好從容抵達</div>
+        </div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">07:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">⏰ 起床・整理行李</div><div class="tl-note">確認行李重量，行動電源記得放手提！</div></div></div>
+      <div class="tl-row"><div class="tl-time">08:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏨 飯店退房・出發</div><div class="tl-note">步行6分→三宮・花時計前站<br>搭Port Liner→神戶空港，約18分，¥380</div></div></div>
+      <div class="tl-row"><div class="tl-time">08:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達神戶機場</div><div class="tl-note">辦理行李託運→過安檢→找登機門等候</div></div></div>
+      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">✈ BR133 神戶出發！</div><div class="tl-tag gold">UKB → TPE · 長榮航空</div></div></div>
+      <div class="tl-row"><div class="tl-time">12:55</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🛬 抵達桃園機場</div><div class="tl-note">回家囉！神戶再見 🌸</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 6: COST ══ -->
+<div class="page" id="p6">
+  <div class="card dark" id="card-cost">
+    <div class="card-head">
+      <div class="badge">💰 費用分攤</div>
+      <div class="card-title">每人結算</div>
+    </div>
+    <div class="section-label">✅ 已付款項目</div>
+    <div class="cost-item"><div class="ci-icon">🏨</div><div class="ci-body"><div class="ci-name">飯店費用</div><div class="ci-sub">NT$17,948 ÷ 4人 · Ruu 先付全額</div></div><div class="ci-right"><div class="ci-amt">NT$4,487</div><div class="ci-who">→ 還給 Ruu</div></div></div>
+    <div class="cost-item"><div class="ci-icon">🍽️</div><div class="ci-body"><div class="ci-name">餐廳預定費</div><div class="ci-sub">NT$354 ÷ 4人 · 姊先付</div></div><div class="ci-right"><div class="ci-amt">NT$89</div><div class="ci-who">→ 還給 姊</div></div></div>
+    <div class="section-label">⏳ 現場付款</div>
+    <div class="cost-item" style="border-bottom:none"><div class="ci-icon">🚗</div><div class="ci-body"><div class="ci-name">機場接送</div><div class="ci-sub">¥10,000 ÷ 4人 · 抵達當天現場付</div></div><div class="ci-right"><div class="ci-amt">¥2,500</div><div class="ci-who">/ 人</div></div></div>
+    <div class="section-label">每人結算總覽</div>
+    <div class="person-grid">
+      <div class="person-card"><div class="p-name">姊</div><div class="p-row"><span class="p-lbl">還 Ruu（飯店）</span><span class="p-val big">NT$4,487</span></div><div class="p-row"><span class="p-lbl">還 姊（餐費）</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+      <div class="person-card"><div class="p-name">妹</div><div class="p-row"><span class="p-lbl">還 Ruu（飯店）</span><span class="p-val big">NT$4,487</span></div><div class="p-row"><span class="p-lbl">還 姊（餐費）</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+      <div class="person-card"><div class="p-name">媽</div><div class="p-row"><span class="p-lbl">還 Ruu（飯店）</span><span class="p-val big">NT$4,487</span></div><div class="p-row"><span class="p-lbl">還 姊（餐費）</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+      <div class="person-card"><div class="p-name">Ruu</div><div class="p-row"><span class="p-lbl">還 姊（餐廳費）</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 7: CAFES ══ -->
+<div class="page" id="p7">
+  <div class="card" id="card-cafe">
+    <div class="card-head">
+      <div class="badge">☕ 推薦咖啡廳</div>
+      <div class="card-title">神戶咖啡廳清單</div>
+      <div class="card-sub">點地址可開啟 Google Maps</div>
+    </div>
+    <div class="cafe-list">
+
+      <a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+中山手本館+Kobe" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">☕</div><div><div class="cafe-name">西村咖啡 中山手本館</div><div class="cafe-eng">Nishimura's Coffee 本館</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區山本通1-26-3<br>
+          <span class="hl">交通：</span>飯店步行約5分<br>
+          <span class="hl">營業：</span>08:30–23:00（全週）<br>
+          1948年創業・神戶最代表性咖啡老店・歐式裝潢・適合早餐
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+北野坂店+Kobe" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🏰</div><div><div class="cafe-name">西村咖啡 北野坂店</div><div class="cafe-eng">Nishimura's Coffee 北野坂店</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區山本通2-1-20<br>
+          <span class="hl">交通：</span>三宮站步行約10分・北野異人館途中<br>
+          <span class="hl">營業：</span>10:00–22:00（全週）<br>
+          英式洋館裝潢・古典樂・IG人氣打卡・過去曾是會員制
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=フロインドリーブ+Freundlieb+神戸生田町" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">⛪</div><div><div class="cafe-name">FREUNDLIEB 教堂咖啡廳</div><div class="cafe-eng">Café Freundlieb</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區生田町4-6-15（2F）<br>
+          <span class="hl">交通：</span>三宮站步行約10分<br>
+          <span class="hl">營業：</span>10:00–19:00（週三公休）<br>
+          國家認定文化財教堂改建・挑高禮拜堂座位・份量十足三明治
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=星巴克+北野物語館+神戸+Starbucks" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🟢</div><div><div class="cafe-name">星巴克 北野異人館店</div><div class="cafe-eng">Starbucks 北野物語館</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區北野町3-1-31 北野物語館<br>
+          <span class="hl">交通：</span>三宮站步行約15分・異人館區內<br>
+          <span class="hl">營業：</span>08:00–22:00（全週）<br>
+          1907年洋館建築・登錄有形文化財・每間房間布置不同・必打卡
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+神戸北野" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🌿</div><div><div class="cafe-name">Kitano Moore House Café</div><div class="cafe-eng">舊摩爾之家</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區北野町2-9-3<br>
+          <span class="hl">交通：</span>三宮站步行約15分・異人館街中心<br>
+          <span class="hl">營業：</span>11:00–17:00（週二公休）<br>
+          1898年建造豪宅・香草花園・招牌草莓千層派
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+元町" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🫙</div><div><div class="cafe-name">KOBE EVIAN COFFEE</div><div class="cafe-eng">元町老舖喫茶</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>元町商店街旁（中央區元町附近）<br>
+          <span class="hl">交通：</span>元町站步行約2分<br>
+          <span class="hl">營業：</span>平日・週六 08:30–18:30 · 週日 09:00–18:00（每月第1・3週三公休）<br>
+          1952年創業・虹吸咖啡・昭和復古氛圍・Tabelog百名店
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=MOTOMACHI喫茶+神戸元町" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🍮</div><div><div class="cafe-name">MOTOMACHI 喫茶</div><div class="cafe-eng">モトマチ喫茶</div></div></div>
+        <div class="cafe-body">
+          <span class="hl">地址：</span>中央區北長狭通3-9-7<br>
+          <span class="hl">交通：</span>元町站步行約5分<br>
+          <span class="hl">營業：</span>中午–21:30（週一公休）<br>
+          復古懷舊氛圍・招牌自家製焦糖卡士達布丁・低消一杯飲料
+          <div class="map-btn">📍 Google Maps</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD BAR -->
+<div class="dl-bar">
+  <button class="dl-btn" onclick="downloadCurrentPage()">⬇ 下載目前頁面 PDF</button>
+  <button class="dl-btn secondary" onclick="downloadAllPages()">全部</button>
+</div>
+
+<script>
+// ── Page switching ──
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  window.scrollTo(0,0);
+}
+
+// ── Get card in current page ──
+function getCurrentCard() {
+  const activePage = document.querySelector('.page.active');
+  return activePage ? activePage.querySelector('.card, .cover') : null;
+}
+
+// ── Download single page as PDF ──
+async function downloadCurrentPage() {
+  const { jsPDF } = window.jspdf;
+  const card = getCurrentCard();
+  if (!card) return;
+
+  const btn = document.querySelector('.dl-btn');
+  btn.textContent = '處理中...';
+  btn.disabled = true;
+
+  try {
+    const canvas = await html2canvas(card, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      backgroundColor: null,
+    });
+
+    const imgW = canvas.width;
+    const imgH = canvas.height;
+    // A4 = 210 x 297mm, but we use custom size matching the card
+    const pdf = new jsPDF({
+      orientation: imgH > imgW ? 'portrait' : 'landscape',
+      unit: 'px',
+      format: [imgW / 2, imgH / 2],
+    });
+
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, imgW / 2, imgH / 2);
+    const pageName = document.querySelector('.nav-btn.active').textContent.trim();
+    pdf.save(`神戶2026_${pageName}.pdf`);
+  } catch(e) {
+    alert('PDF 產生失敗，請再試一次');
+  }
+
+  btn.textContent = '⬇ 下載目前頁面 PDF';
+  btn.disabled = false;
+}
+
+// ── Download ALL pages ──
+async function downloadAllPages() {
+  const { jsPDF } = window.jspdf;
+  const btn = document.querySelectorAll('.dl-btn')[1];
+  btn.textContent = '產生中...';
+  btn.disabled = true;
+
+  const pageIds = ['p0','p1','p2','p3','p4','p5','p6','p7'];
+  const pageNames = ['封面','航班行李','Day1','Day2','Day3','Day4','費用','咖啡廳'];
+
+  // Show all pages temporarily to capture them
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  let first = true;
+
+  for (let i = 0; i < pageIds.length; i++) {
+    // Show this page
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    const pg = document.getElementById(pageIds[i]);
+    pg.style.display = 'block';
+
+    const card = pg.querySelector('.card, .cover');
+    if (!card) continue;
+
+    await new Promise(r => setTimeout(r, 100));
+
+    const canvas = await html2canvas(card, {
+      scale: 2, useCORS: true, logging: false, backgroundColor: '#F5F0E8'
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.92);
+    const pdfW = 210;
+    const pdfH = (canvas.height / canvas.width) * pdfW;
+
+    if (!first) pdf.addPage([pdfW, pdfH], pdfH > pdfW ? 'portrait' : 'landscape');
+    else { pdf.deletePage(1); pdf.addPage([pdfW, pdfH], pdfH > pdfW ? 'portrait' : 'landscape'); }
+    first = false;
+    pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH);
+  }
+
+  // Restore current page display
+  document.querySelectorAll('.page').forEach(p => p.style.display = '');
+  const active = document.querySelector('.page.active');
+  if (active) active.style.display = 'block';
+
+  pdf.save('神戶2026_完整行程.pdf');
+
+  btn.textContent = '全部';
+  btn.disabled = false;
+}
+</script>
 </body>
 </html>
