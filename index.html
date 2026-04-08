@@ -181,7 +181,7 @@ body{
 .card.dark .section-label{color:var(--dim2)}
 
 /* ── Boarding pass ── */
-.bp{background:var(--cream2);border-radius:10px;overflow:hidden;margin:0 22px 10px}
+.bp{background:var(--cream2);border-radius:10px;overflow:hidden;margin:0 22px 10px;width:calc(100% - 44px)}
 .bp-body{display:flex;align-items:center;padding:16px 18px}
 .bp-city{text-align:center;min-width:80px}
 .bp-code{font-family:'Noto Serif TC',serif;font-size:30px;font-weight:700;color:var(--ink);letter-spacing:2px;line-height:1}
@@ -531,6 +531,63 @@ body.pdf-export .card{
   }
 }
 
+
+/* ── Mobile fixes ── */
+@media (max-width:768px){
+  #p0{
+    height:100vh;
+    overflow:hidden;
+    padding:0 !important;
+  }
+  @supports (height:100dvh){
+    #p0{height:100dvh;}
+  }
+  #p0 .cover{
+    min-height:100vh !important;
+    margin:0 !important;
+  }
+  @supports (height:100dvh){
+    #p0 .cover{min-height:100dvh !important;}
+  }
+
+  .bp{
+    width:calc(100% - 28px) !important;
+    margin:0 14px 10px !important;
+  }
+  .bp-body{
+    padding:14px 14px !important;
+  }
+  .bp-city{
+    min-width:74px !important;
+  }
+  .bp-stub{
+    width:72px !important;
+  }
+
+  #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+}
+#card-day1 .opt .opt-item:last-child{margin-bottom:0;}
+#card-day1 .choice-info{
+  margin-top:8px;
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  background:var(--ink);
+  color:var(--gold);
+  padding:4px 10px;
+  border-radius:4px;
+  text-decoration:none;
+}
+#card-day1 .choice-info:hover{opacity:.9}
+
+
+#pdf-export-wrap #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"],
+body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
+  grid-template-columns:1fr !important;
+}
+
 </style>
 </head>
 <body>
@@ -655,6 +712,11 @@ body.pdf-export .card{
       <div class="card-sub">6月5日（週五）神戶</div>
     </div>
     <div class="tl">
+      
+      <div class="tl-row"><div class="tl-time">01:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🚗 埔里出發</div><div class="tl-note">媽、妹先從埔里出發</div></div></div>
+      <div class="tl-row"><div class="tl-time">02:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">📍 抵達台中接 Ruu</div><div class="tl-note">會合後北上桃園機場</div></div></div>
+      <div class="tl-row"><div class="tl-time">04:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達桃園機場</div><div class="tl-note">預留報到＋託運＋安檢時間</div></div></div>
+
       <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛬 <a class="place-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">神戶機場</a>抵達</div><div class="tl-note">入境＋機場接送至飯店（¥10,000 四人共乘）</div></div></div>
       <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李</div><div class="tl-note"><a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗 Hotel Monte Hermana Kobe Amalie</a><br>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
       <div class="tl-row"><div class="tl-time">11:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🍜 簡單吃午餐</div><div class="tl-note">麵包超人周邊或三宮隨意覓食，輕鬆吃就好</div></div></div>
@@ -667,13 +729,11 @@ body.pdf-export .card{
     <div class="split">
       <div class="opt a">
         <div class="opt-label a">Option A · 有體力</div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:00<br>Concerto 協奏曲號<span class="opt-sub">夕陽郵輪・1小時航程<br>看海＋日落</span></div></div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">19:00 🥩 燒肉晚餐</div></div>
+        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:00<br><a class="place-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">Concerto 協奏曲號</a><span class="opt-sub">夕陽郵輪・1小時航程<br>看海＋日落</span><a class="choice-info" href="https://thekobecruise.com/concerto/" target="_blank">查看資訊</a></div></div>
       </div>
       <div class="opt b">
         <div class="opt-label b">Option B · 累了</div>
         <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">直接休息<br>or 附近逛街</div></div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">19:00 🥩 燒肉晚餐</div></div>
       </div>
     </div>
 
@@ -732,7 +792,7 @@ body.pdf-export .card{
       </div>
       <div class="opt b">
         <div class="opt-label b">Option B</div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Kobe" target="_blank">神戶港</a>・<a class="place-link" href="https://maps.google.com/?q=Kobe+<a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a>" target="_blank"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a></a><span class="opt-sub"><a class="place-link" href="https://maps.google.com/?q=Kobe+<a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a>+Mosaic" target="_blank">馬賽克廣場</a></span></div></div>
+        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port" target="_blank">神戶港</a>・<a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a><span class="opt-sub"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></span></div></div>
       </div>
       <div class="opt c">
         <div class="opt-label c">Option C</div>
@@ -748,7 +808,7 @@ body.pdf-export .card{
           <div class="info-detail" style="color:var(--dim)">
             <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Kobe" target="_blank">神戶港（戶外）</a></span> · 24小時開放・散步夜景隨時去<br>
             <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a></span> · 約 10:00–20:00（依店鋪）<br>
-            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+<a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a>+Mosaic" target="_blank">馬賽克廣場</a></span> · 商店 10:00–20:00 · 餐廳 11:00–22:00<br>
+            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></span> · 商店 10:00–20:00 · 餐廳 11:00–22:00<br>
             <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">摩天輪（umie旁）</a></span> · 10:00–22:00（末班21:30）
           </div>
         </div>
@@ -758,6 +818,7 @@ body.pdf-export .card{
     <hr class="divider">
     <div class="tl">
       <div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
+      <div class="tl-row"><div class="tl-time">21:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">☕ <a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE</a></div><div class="tl-note">北野／三宮周邊可順路插入的咖啡廳備選</div></div></div>
       <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🐙 宵夜・明石燒</div><div class="tl-note">飯店附近 · 營業 18:00–02:00</div><div class="tl-tag info"><a class="place-link" href="https://maps.google.com/?q=蛸之壺+本店+Kobe" target="_blank">蛸之壺本店：三宮町3-3-3（元町站1分）</a></div></div></div>
       <div class="tl-row"><div class="tl-time">24:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🏪 <a class="place-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">唐吉訶德</a> 24小時</div><div class="tl-note">三宮周邊 · 24小時營業 · 深夜購物</div></div></div>
     </div>
@@ -808,7 +869,7 @@ body.pdf-export .card{
         <div class="info-icon">🍰</div>
         <div class="info-body">
           <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">花式可麗露 Daniel 本店</a></div>
-          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店→步行6分→三宮站→阪急神戶線→「芦屋川」站→步行5分（約30分）<br>芦屋市三条南町5-1 · 週一・二公休 · 限量販售建議早去！</div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店→步行6分→三宮站→阪急神戶線→「芦屋川」站→步行5分（約30分）<br>芦屋市三条南町5-1 · 週一・二公休 · 限量販售建議早去！<br><span class="info-hl" style="color:var(--ink)">順路可加：</span><a class="place-link" href="https://maps.google.com/?q=Ashiya+River+bank" target="_blank">芦屋川散步</a>、<a class="place-link" href="https://maps.google.com/?q=Bigot+Ashiya" target="_blank">BIGOT 麵包</a>、<a class="place-link" href="https://maps.google.com/?q=Ashiya+Cafe" target="_blank">周邊咖啡廳</a>，也可回三宮再吃正餐。</div>
         </div>
       </div>
     </div>
