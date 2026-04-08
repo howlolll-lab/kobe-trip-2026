@@ -523,6 +523,14 @@ body.pdf-export .card{
   margin-bottom:0;
 }
 
+
+/* ── Day 2 afternoon options mobile fix ── */
+@media (max-width:768px){
+  #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1057,6 +1065,7 @@ body.pdf-export .card{
 
 
 
+
 <script>
 // ── Page switching ──
 function showPage(id, btn) {
@@ -1068,7 +1077,90 @@ function showPage(id, btn) {
   window.scrollTo(0,0);
 }
 
-// ── Download mobile-style PDF, auto-split without clipping, keep map links ──
+async function buildExportWrap(includeCover) {
+  const MOBILE_W = 390;
+  const wrap = document.createElement('div');
+  wrap.style.position = 'absolute';
+  wrap.style.left = '-99999px';
+  wrap.style.top = '0';
+  wrap.style.width = MOBILE_W + 'px';
+  wrap.style.background = '#ffffff';
+  wrap.style.zIndex = '-1';
+
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const selected = includeCover ? pages : pages.filter(p => p.id !== 'p0');
+
+  selected.forEach((page, idx) => {
+    const clone = page.cloneNode(true);
+    clone.classList.add('active');
+    clone.style.display = 'block';
+    clone.style.width = MOBILE_W + 'px';
+    clone.style.maxWidth = MOBILE_W + 'px';
+    clone.style.minWidth = MOBILE_W + 'px';
+    clone.style.padding = '0';
+    clone.style.margin = '0 auto';
+    clone.style.background = '#ffffff';
+
+    const target = clone.querySelector('.card, .cover');
+    if (target) {
+      target.style.width = MOBILE_W + 'px';
+      target.style.maxWidth = MOBILE_W + 'px';
+      target.style.minWidth = MOBILE_W + 'px';
+      target.style.margin = '0';
+      target.style.borderRadius = '0';
+      target.style.boxShadow = 'none';
+    }
+
+    // cover stays one page
+    if (page.id === 'p0') {
+      const cover = clone.querySelector('.cover');
+      if (cover) {
+        cover.style.minHeight = '844px';
+      }
+    }
+
+    // remove artificial gaps for long export after cover
+    if (page.id !== 'p0') {
+      const first = clone.querySelector('.card, .cover');
+      if (first) first.style.marginBottom = '0';
+    }
+
+    wrap.appendChild(clone);
+  });
+
+  document.body.appendChild(wrap);
+  await new Promise(r => setTimeout(r, 260));
+  return wrap;
+}
+
+function collectLinks(container) {
+  const rect = container.getBoundingClientRect();
+  return Array.from(container.querySelectorAll('a[href]')).map(a => {
+    const r = a.getBoundingClientRect();
+    return {
+      href: a.href,
+      left: r.left - rect.left,
+      top: r.top - rect.top,
+      width: r.width,
+      height: r.height
+    };
+  }).filter(l => l.width > 0 && l.height > 0);
+}
+
+async function renderCanvas(target, width, scale=2) {
+  return await html2canvas(target, {
+    scale,
+    useCORS: true,
+    logging: false,
+    backgroundColor: '#FFFFFF',
+    width,
+    windowWidth: width,
+    scrollX: 0,
+    scrollY: 0
+  });
+}
+
+// ── Download PDF: cover = 1 page, rest = long continuous pages ──
 async function downloadAllPages() {
   const { jsPDF } = window.jspdf;
   const btn = document.querySelector('.dl-btn');
@@ -1080,75 +1172,22 @@ async function downloadAllPages() {
   const activePage = document.querySelector('.page.active');
   const activeBtn = document.querySelector('.nav-btn.active');
 
-  const PDF_W = 390;   // mobile width
-  const PDF_H = 844;   // mobile page height
+  const PDF_W = 390;
+  const PDF_H = 844;
   const SCALE = 2;
 
-  let exportWrap = null;
+  let coverWrap = null;
+  let bodyWrap = null;
 
   try {
-    exportWrap = document.createElement('div');
-    exportWrap.id = 'pdf-export-wrap';
-    exportWrap.style.position = 'absolute';
-    exportWrap.style.left = '-99999px';
-    exportWrap.style.top = '0';
-    exportWrap.style.width = PDF_W + 'px';
-    exportWrap.style.background = '#ffffff';
-    exportWrap.style.zIndex = '-1';
+    // ---------- Cover ----------
+    coverWrap = await buildExportWrap(true);
+    const coverPage = coverWrap.querySelector('#p0') || coverWrap.firstElementChild;
+    const coverTarget = coverPage ? coverPage.querySelector('.cover, .card') : null;
+    if (!coverTarget) throw new Error('Cover not found');
 
-    const pages = Array.from(document.querySelectorAll('.page'));
-
-    pages.forEach((page) => {
-      const clone = page.cloneNode(true);
-      clone.classList.add('active');
-      clone.style.display = 'block';
-      clone.style.width = PDF_W + 'px';
-      clone.style.maxWidth = PDF_W + 'px';
-      clone.style.minWidth = PDF_W + 'px';
-      clone.style.padding = '0';
-      clone.style.margin = '0 auto';
-
-      const target = clone.querySelector('.card, .cover');
-      if (target) {
-        target.style.width = PDF_W + 'px';
-        target.style.maxWidth = PDF_W + 'px';
-        target.style.minWidth = PDF_W + 'px';
-        target.style.margin = '0';
-        target.style.borderRadius = '0';
-        target.style.boxShadow = 'none';
-      }
-
-      exportWrap.appendChild(clone);
-    });
-
-    document.body.appendChild(exportWrap);
-    await new Promise(r => setTimeout(r, 250));
-
-    const wrapRect = exportWrap.getBoundingClientRect();
-    const linkElements = Array.from(exportWrap.querySelectorAll('a[href]')).map(a => {
-      const r = a.getBoundingClientRect();
-      return {
-        href: a.href,
-        left: r.left - wrapRect.left,
-        top: r.top - wrapRect.top,
-        width: r.width,
-        height: r.height
-      };
-    }).filter(l => l.width > 0 && l.height > 0);
-
-    const canvas = await html2canvas(exportWrap, {
-      scale: SCALE,
-      useCORS: true,
-      logging: false,
-      backgroundColor: '#FFFFFF',
-      width: PDF_W,
-      windowWidth: PDF_W,
-      scrollX: 0,
-      scrollY: 0
-    });
-
-    const pageCanvasHeight = PDF_H * SCALE;
-    const totalPages = Math.ceil(canvas.height / pageCanvasHeight);
+    const coverLinks = collectLinks(coverTarget);
+    const coverCanvas = await renderCanvas(coverTarget, PDF_W, SCALE);
 
     const pdf = new jsPDF({
       orientation: 'portrait',
@@ -1156,39 +1195,55 @@ async function downloadAllPages() {
       format: [PDF_W, PDF_H]
     });
 
+    const coverImg = coverCanvas.toDataURL('image/jpeg', 0.98);
+    pdf.addImage(coverImg, 'JPEG', 0, 0, PDF_W, PDF_H);
+
+    coverLinks.forEach(link => {
+      if (/^https?:/i.test(link.href)) {
+        pdf.link(link.left, link.top, link.width, Math.max(6, link.height), { url: link.href });
+      }
+    });
+
+    coverWrap.remove();
+    coverWrap = null;
+
+    // ---------- Long body (without cover) ----------
+    bodyWrap = await buildExportWrap(false);
+    const bodyLinks = collectLinks(bodyWrap);
+    const bodyCanvas = await renderCanvas(bodyWrap, PDF_W, SCALE);
+
+    const pageCanvasHeight = PDF_H * SCALE;
+    const totalPages = Math.ceil(bodyCanvas.height / pageCanvasHeight);
+
     for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
       const sy = pageIndex * pageCanvasHeight;
-      const sh = Math.min(pageCanvasHeight, canvas.height - sy);
+      const sh = Math.min(pageCanvasHeight, bodyCanvas.height - sy);
 
       const sliceCanvas = document.createElement('canvas');
-      sliceCanvas.width = canvas.width;
+      sliceCanvas.width = bodyCanvas.width;
       sliceCanvas.height = sh;
 
       const ctx = sliceCanvas.getContext('2d');
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, sliceCanvas.width, sliceCanvas.height);
       ctx.drawImage(
-        canvas,
-        0, sy, canvas.width, sh,
+        bodyCanvas,
+        0, sy, bodyCanvas.width, sh,
         0, 0, sliceCanvas.width, sliceCanvas.height
       );
 
       const renderedHeight = sh / SCALE;
       const imgData = sliceCanvas.toDataURL('image/jpeg', 0.98);
 
-      if (pageIndex > 0) {
-        pdf.addPage([PDF_W, PDF_H], 'portrait');
-      }
-
+      pdf.addPage([PDF_W, PDF_H], 'portrait');
       pdf.addImage(imgData, 'JPEG', 0, 0, PDF_W, renderedHeight);
 
       const sliceTop = sy / SCALE;
       const sliceBottom = sliceTop + renderedHeight;
 
-      linkElements.forEach(link => {
+      bodyLinks.forEach(link => {
         const linkTop = link.top;
         const linkBottom = link.top + link.height;
-
         if (linkBottom <= sliceTop || linkTop >= sliceBottom) return;
 
         const visibleTop = Math.max(linkTop, sliceTop);
@@ -1210,9 +1265,8 @@ async function downloadAllPages() {
     alert('PDF 產生失敗，請再試一次');
     console.error(e);
   } finally {
-    if (exportWrap && exportWrap.parentNode) {
-      exportWrap.parentNode.removeChild(exportWrap);
-    }
+    if (coverWrap && coverWrap.parentNode) coverWrap.parentNode.removeChild(coverWrap);
+    if (bodyWrap && bodyWrap.parentNode) bodyWrap.parentNode.removeChild(bodyWrap);
 
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     if (activePage) activePage.classList.add('active');
