@@ -653,6 +653,7 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
   <button class="nav-btn" onclick="showPage('p6',this)">費用</button>
   <button class="nav-btn" onclick="showPage('p7',this)">咖啡廳</button>
   <button class="nav-btn" onclick="showPage('p8',this)">補充清單</button>
+  <button class="nav-btn" onclick="showPage('p9',this)">總地圖</button>
 </nav>
 
 <!-- ══ PAGE 0: COVER ══ -->
@@ -768,7 +769,7 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
       <div class="tl-row"><div class="tl-time">04:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達桃園機場</div><div class="tl-note">預留報到＋託運＋安檢時間</div></div></div>
 
       <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛬 <a class="place-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">神戶機場</a>抵達</div><div class="tl-note">入境＋機場接送至飯店（¥10,000 四人共乘）</div></div></div>
-      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李</div><div class="tl-note"><a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗 Hotel Monte Hermana Kobe Amalie</a><br>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
+      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李（15:00 辦理入住）</div><div class="tl-note"><a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗 Hotel Monte Hermana Kobe Amalie</a><br>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
       <div class="tl-row"><div class="tl-time">11:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🍜 簡單吃午餐</div><div class="tl-note">麵包超人周邊或三宮隨意覓食，輕鬆吃就好</div></div></div>
       <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍞 <a class="place-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">麵包超人博物館</a></div><div class="tl-note">地址：東川崎町1-6-2（JR神戶站步行8分）<br>一樓購物商場免費！10:00–19:00 · 抓3小時</div></div></div>
       <div class="tl-row"><div class="tl-time">15:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動 / 回飯店入住</div><div class="tl-note">休息 or 附近逛</div></div></div>
@@ -906,6 +907,13 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
         <div class="info-body">
           <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">神戶塔</a>・<a class="place-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">美利堅公園</a></div>
           <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>飯店步行20分 / 搭Port Loop巴士（北野坂站→美利堅公園站約15分）<br>神戶塔 09:00–23:00 · ¥1,000 · 美利堅公園24H免費</div>
+        </div>
+      </div>
+      <div class="info-row cream-bg">
+        <div class="info-icon">🐠</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">AQUALIVE</a></div>
+          <div class="info-detail" style="color:var(--dim)"><span class="info-hl" style="color:var(--ink)">交通：</span>可與<a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">神戶塔</a>、<a class="place-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">美利堅公園</a>一起安排，港區順路最方便<br>適合排在傍晚到晚上，搭配夜景一起看</div>
         </div>
       </div>
       <div class="info-row cream-bg">
@@ -1189,6 +1197,80 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
           <div class="map-btn">📍 Google Maps</div>
         </div>
       </a>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══ PAGE 9: MASTER MAP ══ -->
+<div class="page" id="p9">
+  <div class="card" id="card-map">
+    <div class="card-head">
+      <div class="badge">MASTER MAP</div>
+      <div class="card-title">所有地標總地圖</div>
+      <div class="card-sub">Google My Maps 匯入說明＋總整理</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-row cream-bg">
+        <div class="info-icon">🗺️</div>
+        <div class="info-body">
+          <div class="info-title" style="color:var(--ink)">Google My Maps</div>
+          <div class="info-detail" style="color:var(--dim)">
+            <a class="place-link" href="https://www.google.com/mymaps" target="_blank">打開完整地圖</a><br>
+            已整理所有行程地標＋分類（可直接導航）<br><br>
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1Q6NbUsJxWD-yIrW_6EeJX0dDEOQb0Gg"
+              width="100%"
+              height="320"
+              style="border:0;border-radius:12px;margin-top:10px;">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">地標分類總覽</div>
+    <div class="cafe-list">
+      <a class="cafe-card" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🏨</div><div><div class="cafe-name">住宿・交通</div><div class="cafe-eng">Hotel / Airport / Stations</div></div></div>
+        <div class="cafe-body">飯店、神戶機場、三宮站、元町站</div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">🗓️</div><div><div class="cafe-name">Day 1–Day 4 已排行程</div><div class="cafe-eng">Main itinerary landmarks</div></div></div>
+        <div class="cafe-body">已將行程內主要景點、餐廳、港區、可麗露行程等整理進 CSV。</div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">☕</div><div><div class="cafe-name">咖啡廳清單</div><div class="cafe-eng">Cafe layer</div></div></div>
+        <div class="cafe-body">西村咖啡、FREUNDLIEB、星巴克北野異人館、VAGUE KOBE 等。</div>
+      </a>
+
+      <a class="cafe-card" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">
+        <div class="cafe-header"><div class="cafe-icon">⭐</div><div><div class="cafe-name">補充清單</div><div class="cafe-eng">Extra layer</div></div></div>
+        <div class="cafe-body">南京町、布引香草園、BE KOBE、Steakland、老祥記、觀音屋等。</div>
+      </a>
+    </div>
+
+    <hr class="divider">
+    <div class="section-label">Google My Maps 匯入方式</div>
+    <div class="info-block">
+      <div class="info-row cream-bg">
+        <div class="info-body">
+          <div class="info-detail" style="color:var(--dim)">
+            1. 打開 <a class="place-link" href="https://www.google.com/mymaps" target="_blank">Google My Maps</a><br>
+            2. 點「建立新地圖」<br>
+            3. 在第一個圖層按「匯入」<br>
+            4. 選我附給你的 CSV 檔<br>
+            5. 位置欄位選 <span class="info-hl" style="color:var(--ink)">Search Query</span><br>
+            6. 標題欄位選 <span class="info-hl" style="color:var(--ink)">Name</span><br>
+            7. 可依 <span class="info-hl" style="color:var(--ink)">Category</span> 手動分圖層或上色
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
