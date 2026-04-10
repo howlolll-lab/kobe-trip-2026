@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>神戶 2026 旅遊行程</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&amp;family=Noto+Serif+TC:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
@@ -638,963 +639,895 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
   }
 }
 
+
+@media (min-width:1024px){
+  .page{min-height:100vh;}
+}
+
+.map-summary{padding:0 22px 30px;display:flex;flex-direction:column;gap:14px;}
+.map-group{background:var(--cream2);border-radius:10px;padding:14px 16px;}
+.map-group-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.map-links{display:flex;flex-direction:column;gap:8px;}
+.map-link-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid rgba(0,0,0,0.06);}
+.map-link-row:first-child{border-top:none;padding-top:0;}
+.map-link-name{font-size:12px;color:var(--ink);line-height:1.5;}
+.map-icon-link{flex-shrink:0;width:24px;height:24px;border-radius:999px;background:var(--ink);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:700;}
+.map-icon-link:hover{opacity:.9;}
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <button class="nav-btn active" onclick="showPage('p0',this)">封面</button>
-  <button class="nav-btn" onclick="showPage('p1',this)">航班行李</button>
-  <button class="nav-btn" onclick="showPage('p2',this)">Day 1</button>
-  <button class="nav-btn" onclick="showPage('p3',this)">Day 2</button>
-  <button class="nav-btn" onclick="showPage('p4',this)">Day 3</button>
-  <button class="nav-btn" onclick="showPage('p5',this)">Day 4</button>
-  <button class="nav-btn" onclick="showPage('p6',this)">費用</button>
-  <button class="nav-btn" onclick="showPage('p7',this)">咖啡廳</button>
-  <button class="nav-btn" onclick="showPage('p8',this)">補充清單</button>
-  <button class="nav-btn" onclick="showPage('p9',this)">總地圖</button>
+<button class="nav-btn active" onclick="showPage('p0',this)">封面</button>
+<button class="nav-btn" onclick="showPage('p1',this)">航班行李</button>
+<button class="nav-btn" onclick="showPage('p2',this)">Day 1</button>
+<button class="nav-btn" onclick="showPage('p3',this)">Day 2</button>
+<button class="nav-btn" onclick="showPage('p4',this)">Day 3</button>
+<button class="nav-btn" onclick="showPage('p5',this)">Day 4</button>
+<button class="nav-btn" onclick="showPage('p6',this)">費用</button>
+<button class="nav-btn" onclick="showPage('p7',this)">咖啡廳</button>
+<button class="nav-btn" onclick="showPage('p8',this)">補充清單</button>
+<button class="nav-btn" onclick="showPage('p9',this)">總地圖</button>
 </nav>
-
 <!-- ══ PAGE 0: COVER ══ -->
 <div class="page active" id="p0">
-  <div class="cover" id="card-cover">
-    <div class="cover-grid"></div>
-    <div class="cover-top"></div>
-    <div class="cover-body">
-      <div class="cover-en">Travel Journal</div>
-      <div class="cover-deco">
-        <div class="cover-deco-line"></div>
-        <div class="cover-diamond"></div>
-        <div class="cover-deco-line"></div>
-      </div>
-      <div class="cover-title">神戶</div>
-      <div class="cover-deco2">
-        <div class="cover-deco2-line"></div>
-        <div class="cover-diamond"></div>
-        <div class="cover-deco2-line"></div>
-      </div>
-      <div class="cover-year">2 0 2 6</div>
-      <div class="cover-date">JUN 5 – JUN 8</div>
-    </div>
-    <div class="cover-footer">
-      <span class="cover-footer-txt">Ruu · 姊 · 妹 · 媽</span>
-      <span class="cover-footer-txt">兵庫縣 · 日本</span>
-    </div>
-  </div>
+<div class="cover" id="card-cover">
+<div class="cover-grid"></div>
+<div class="cover-top"></div>
+<div class="cover-body">
+<div class="cover-en">Travel Journal</div>
+<div class="cover-deco">
+<div class="cover-deco-line"></div>
+<div class="cover-diamond"></div>
+<div class="cover-deco-line"></div>
 </div>
-
+<div class="cover-title">神戶</div>
+<div class="cover-deco2">
+<div class="cover-deco2-line"></div>
+<div class="cover-diamond"></div>
+<div class="cover-deco2-line"></div>
+</div>
+<div class="cover-year">2 0 2 6</div>
+<div class="cover-date">JUN 5 – JUN 8</div>
+</div>
+<div class="cover-footer">
+<span class="cover-footer-txt">Ruu · 姊 · 妹 · 媽</span>
+<span class="cover-footer-txt">兵庫縣 · 日本</span>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 1: FLIGHTS ══ -->
 <div class="page" id="p1">
-  <div class="card dark" id="card-flight">
-    <div class="card-head">
-      <div class="badge">航班資訊</div>
-      <div class="card-title">去程・回程</div>
-      <div class="card-sub">長榮航空 EVA Air</div>
-    </div>
-
-    <div style="padding:16px 22px 0">
-      <div class="bp">
-        <div class="bp-body">
-          <div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
-          <div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 40 MIN</div></div>
-          <div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
-          <div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR134</div><div class="bp-sl">ECON</div></div>
-        </div>
-        <div class="bp-strip">
-          <div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">05 JUN 2026</span></div>
-          <div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">06:20</span></div>
-          <div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">10:00</span></div>
-        </div>
-        <div class="bp-tear"></div>
-        <div class="bp-foot">
-          <span class="bp-ft">TPE → UKB · 長榮航空 BR134</span>
-          <div class="bp-bc">
-            <div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:80%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:50%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div>
-          </div>
-        </div>
-      </div>
-      <div class="bp">
-        <div class="bp-body">
-          <div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
-          <div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 55 MIN</div></div>
-          <div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
-          <div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR133</div><div class="bp-sl">ECON</div></div>
-        </div>
-        <div class="bp-strip">
-          <div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">08 JUN 2026</span></div>
-          <div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">11:00</span></div>
-          <div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">12:55</span></div>
-        </div>
-        <div class="bp-tear"></div>
-        <div class="bp-foot">
-          <span class="bp-ft">UKB → TPE · 長榮航空 BR133</span>
-          <div class="bp-bc">
-            <div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:55%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:85%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-label">🧳 行李規定（長榮 Economy）</div>
-    <div class="bag-grid">
-      <div class="bag-item"><div class="bag-cat">✅ 手提可帶</div><div class="bag-val">7 kg · 1件+小包</div><div class="bag-note">衣物、3C、行動電源、貴重物品、護照、藥品</div></div>
-      <div class="bag-item"><div class="bag-cat">✅ 託運可放</div><div class="bag-val">23 kg · 1件免費</div><div class="bag-note">100ml以上保養品、大瓶液體、刮鬍刀、剪刀</div></div>
-      <div class="bag-item"><div class="bag-cat">🚫 手提不能帶</div><div class="bag-val">液體超過100ml</div><div class="bag-note">化妝水、乳液、飲料、噴霧罐→須放託運或丟棄</div></div>
-      <div class="bag-item"><div class="bag-cat">🚫 託運不能放</div><div class="bag-val">行動電源・打火機</div><div class="bag-note">鋰電池只能手提上機，打火機限1個放手提</div></div>
-    </div>
-    <div class="info-block">
-      <div class="info-row red-bg">
-        <div class="info-icon">⚡</div>
-        <div class="info-body">
-          <div class="info-detail" style="color:var(--red-tx);font-weight:500">行動電源禁止放託運！只能手提，飛機上不可使用，違規會被沒收！</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="card dark" id="card-flight">
+<div class="card-head">
+<div class="badge">航班資訊</div>
+<div class="card-title">去程・回程</div>
+<div class="card-sub">長榮航空 EVA Air</div>
 </div>
-
+<div style="padding:16px 22px 0">
+<div class="bp">
+<div class="bp-body">
+<div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
+<div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 40 MIN</div></div>
+<div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
+<div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR134</div><div class="bp-sl">ECON</div></div>
+</div>
+<div class="bp-strip">
+<div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">05 JUN 2026</span></div>
+<div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">06:20</span></div>
+<div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">10:00</span></div>
+</div>
+<div class="bp-tear"></div>
+<div class="bp-foot">
+<span class="bp-ft">TPE → UKB · 長榮航空 BR134</span>
+<div class="bp-bc">
+<div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:80%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:50%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div>
+</div>
+</div>
+</div>
+<div class="bp">
+<div class="bp-body">
+<div class="bp-city"><div class="bp-code">UKB</div><div class="bp-city-name">神戶機場</div></div>
+<div class="bp-mid"><div class="bp-line"></div><div class="bp-dur">2 HRS 55 MIN</div></div>
+<div class="bp-city"><div class="bp-code">TPE</div><div class="bp-city-name">台北桃園</div></div>
+<div class="bp-stub"><div class="bp-sl">FLIGHT</div><div class="bp-sv">BR133</div><div class="bp-sl">ECON</div></div>
+</div>
+<div class="bp-strip">
+<div class="bp-field"><span class="bp-fl">DATE</span><span class="bp-fv">08 JUN 2026</span></div>
+<div class="bp-field"><span class="bp-fl">DEPARTS</span><span class="bp-fv">11:00</span></div>
+<div class="bp-field"><span class="bp-fl">ARRIVES</span><span class="bp-fv">12:55</span></div>
+</div>
+<div class="bp-tear"></div>
+<div class="bp-foot">
+<span class="bp-ft">UKB → TPE · 長榮航空 BR133</span>
+<div class="bp-bc">
+<div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:75%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:55%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:85%"></div><div class="bp-bar" style="height:100%"></div><div class="bp-bar" style="height:60%"></div><div class="bp-bar" style="height:100%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-label">🧳 行李規定（長榮 Economy）</div>
+<div class="bag-grid">
+<div class="bag-item"><div class="bag-cat">✅ 手提可帶</div><div class="bag-val">7 kg · 1件+小包</div><div class="bag-note">衣物、3C、行動電源、貴重物品、護照、藥品</div></div>
+<div class="bag-item"><div class="bag-cat">✅ 託運可放</div><div class="bag-val">23 kg · 1件免費</div><div class="bag-note">100ml以上保養品、大瓶液體、刮鬍刀、剪刀</div></div>
+<div class="bag-item"><div class="bag-cat">🚫 手提不能帶</div><div class="bag-val">液體超過100ml</div><div class="bag-note">化妝水、乳液、飲料、噴霧罐→須放託運或丟棄</div></div>
+<div class="bag-item"><div class="bag-cat">🚫 託運不能放</div><div class="bag-val">行動電源・打火機</div><div class="bag-note">鋰電池只能手提上機，打火機限1個放手提</div></div>
+</div>
+<div class="info-block">
+<div class="info-row red-bg">
+<div class="info-icon">⚡</div>
+<div class="info-body">
+<div class="info-detail" style="color:var(--red-tx);font-weight:500">行動電源禁止放託運！只能手提，飛機上不可使用，違規會被沒收！</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 2: DAY 1 ══ -->
 <div class="page" id="p2">
-  <div class="card" id="card-day1">
-    <div class="card-head">
-      <div class="badge">DAY 1</div>
-      <div class="card-title">抵達・固定行程</div>
-      <div class="card-sub">6月5日（週五）神戶</div>
-    </div>
-    <div class="tl">
-      
-      <div class="tl-row"><div class="tl-time">01:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🚗 埔里出發</div><div class="tl-note">媽、妹先從埔里出發</div></div></div>
-      <div class="tl-row"><div class="tl-time">02:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">📍 抵達台中接 Ruu</div><div class="tl-note">會合後北上桃園機場</div></div></div>
-      <div class="tl-row"><div class="tl-time">04:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達桃園機場</div><div class="tl-note">預留報到＋託運＋安檢時間</div></div></div>
-
-      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛬 <a class="place-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">神戶機場</a>抵達</div><div class="tl-note">入境＋機場接送至飯店（¥10,000 四人共乘）</div></div></div>
-      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李（15:00 辦理入住）</div><div class="tl-note"><a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗 Hotel Monte Hermana Kobe Amalie</a><br>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
-      <div class="tl-row"><div class="tl-time">11:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">⛩ <a class="place-link" href="https://maps.google.com/?q=Ikuta+Shrine+Kobe" target="_blank">生田神社</a></div><div class="tl-note">飯店步行約6分 · 下山手通1-2-1 · 07:00–17:00 免費<br>求姻緣結緣聖地 · 必試水占卜！</div></div></div>
-      <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con">
-        <div class="tl-main red">🍽 <a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE 午餐</a></div>
-        <div class="tl-note">生田神社步行約5分 · 中央區中山手通3-16-19<br><span style="color:var(--red);font-weight:700">⚠ 午餐 12:00–14:30 L.O. 請準時！</span><br>歐陸創意料理・天然酵母麵包・炭火料理</div>
-        <div class="tl-tag warn" style="cursor:pointer;user-select:none" onclick="document.getElementById('vague-menu-d1').style.display=document.getElementById('vague-menu-d1').style.display==='none'?'block':'none'">📋 點我看中文菜單 ▾</div>
-        <div id="vague-menu-d1" style="display:none;margin-top:10px;background:var(--cream2);border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.8;color:var(--ink)">
-          <div style="font-weight:700;font-size:13px;margin-bottom:8px">🍽 午餐菜單 Lunch 12:00–14:30</div>
-          <div style="font-weight:700;color:var(--gold);margin:6px 0 2px">小食 Small Plates</div>
-          橄欖＋杏仁 / オリーブとアーモンド ¥600<br>
-          天然酵母麵包＋奶油 / Vague サワードウパン、バター ¥500<br>
-          紅菜頭鷹嘴豆泥＋吐司 / ビーツフムス、トースト ¥950<br>
-          醃番茄＋西班牙白蒜醬 / トマトマリネ、アジョブランコ ¥1,600<br>
-          炭烤小章魚＋新洋蔥＋紅菜頭油醋汁 / 炭火焼イイダコと新玉葱、ビーツヴィネグレット ¥1,800<br>
-          活締鱸魚＋金柑＋油菜花 / スズキ、金柑、菜花 ¥1,600<br>
-          春蔬北歐開放三明治 / 春野菜スモーブロー ¥1,400<br>
-          鄉村肉派＋布里歐許吐司＋無花果泡菜 / パテドカンパーニュ、ブリオッシュトースト ¥1,800<br>
+<div class="card" id="card-day1">
+<div class="card-head">
+<div class="badge">DAY 1</div>
+<div class="card-title">抵達・固定行程</div>
+<div class="card-sub">6月5日（週五）神戶</div>
+</div>
+<div class="tl">
+<div class="tl-row"><div class="tl-time">01:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🚗 埔里出發</div><div class="tl-note">媽、妹先從埔里出發</div></div></div>
+<div class="tl-row"><div class="tl-time">02:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">📍 抵達台中接 Ruu</div><div class="tl-note">會合後北上桃園機場</div></div></div>
+<div class="tl-row"><div class="tl-time">04:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達桃園機場</div><div class="tl-note">預留報到＋託運＋安檢時間</div></div></div>
+<div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛬 <a class="place-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">神戶機場</a>抵達</div><div class="tl-note">入境＋機場接送至飯店（¥10,000 四人共乘）</div></div></div>
+<div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">飯店寄放行李（15:00 辦理入住）</div><div class="tl-note"><a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗 Hotel Monte Hermana Kobe Amalie</a><br/>中央區中山手通2-2-28 · Check-in 15:00</div></div></div>
+<div class="tl-row"><div class="tl-time">11:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">⛩ <a class="place-link" href="https://maps.google.com/?q=Ikuta+Shrine+Kobe" target="_blank">生田神社</a></div><div class="tl-note">飯店步行約6分 · 下山手通1-2-1 · 07:00–17:00 免費<br/>求姻緣結緣聖地 · 必試水占卜！</div></div></div>
+<div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con">
+<div class="tl-main red">🍽 <a class="place-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">VAGUE KOBE 午餐</a></div>
+<div class="tl-note">生田神社步行約5分 · 中央區中山手通3-16-19<br/><span style="color:var(--red);font-weight:700">⚠ 午餐 12:00–14:30 L.O. 請準時！</span><br/>歐陸創意料理・天然酵母麵包・炭火料理</div>
+<div class="tl-tag warn" onclick="document.getElementById('vague-menu-d1').style.display=document.getElementById('vague-menu-d1').style.display==='none'?'block':'none'" style="cursor:pointer;user-select:none">📋 點我看中文菜單 ▾</div>
+<div id="vague-menu-d1" style="display:none;margin-top:10px;background:var(--cream2);border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.8;color:var(--ink)">
+<div style="font-weight:700;font-size:13px;margin-bottom:8px">🍽 午餐菜單 Lunch 12:00–14:30</div>
+<div style="font-weight:700;color:var(--gold);margin:6px 0 2px">小食 Small Plates</div>
+          橄欖＋杏仁 / オリーブとアーモンド ¥600<br/>
+          天然酵母麵包＋奶油 / Vague サワードウパン、バター ¥500<br/>
+          紅菜頭鷹嘴豆泥＋吐司 / ビーツフムス、トースト ¥950<br/>
+          醃番茄＋西班牙白蒜醬 / トマトマリネ、アジョブランコ ¥1,600<br/>
+          炭烤小章魚＋新洋蔥＋紅菜頭油醋汁 / 炭火焼イイダコと新玉葱、ビーツヴィネグレット ¥1,800<br/>
+          活締鱸魚＋金柑＋油菜花 / スズキ、金柑、菜花 ¥1,600<br/>
+          春蔬北歐開放三明治 / 春野菜スモーブロー ¥1,400<br/>
+          鄉村肉派＋布里歐許吐司＋無花果泡菜 / パテドカンパーニュ、ブリオッシュトースト ¥1,800<br/>
           丹波竹炭熟成白黴乳酪＋杏＋法式吐司 / 丹波チーズスノーホワイト竹炭熟成、杏、フレンチトースト ¥1,500
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">主食 Mains</div>
-          瀨戶內海醬汁麵線＋炭烤螢火魷＋蒔蘿 / 海のヌードルヴァーグ、瀬戸内海ソース、炭火焼ホタルイカ、ディル ¥3,200<br>
-          香料鹿肉肉醬麵線 / 山のヌードルヴァーグ、スパイス鹿肉ラグ ¥3,200<br>
-          明石舌平目炭烤全魚＋瓦杜萬奶油 / 明石産舌平目の炭火姿焼き、ヴァドバンバター、キャベツ ¥3,800<br>
-          炭烤鑲肉豬肩＋芋頭昆布泥＋肉汁 / 炭火焼肉詰め豚肩、里芋&昆布ピューレ、ジュ ¥4,000
+          瀨戶內海醬汁麵線＋炭烤螢火魷＋蒔蘿 / 海のヌードルヴァーグ、瀬戸内海ソース、炭火焼ホタルイカ、ディル ¥3,200<br/>
+          香料鹿肉肉醬麵線 / 山のヌードルヴァーグ、スパイス鹿肉ラグ ¥3,200<br/>
+          明石舌平目炭烤全魚＋瓦杜萬奶油 / 明石産舌平目の炭火姿焼き、ヴァドバンバター、キャベツ ¥3,800<br/>
+          炭烤鑲肉豬肩＋芋頭昆布泥＋肉汁 / 炭火焼肉詰め豚肩、里芋&amp;昆布ピューレ、ジュ ¥4,000
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">甜點 Dessert</div>
-          杏仁達克瓦茲＋迷迭香雪糕＋草莓 / アーモンドダクワーズ、ローズマリーセミフレッド、苺 ¥1,400<br>
-          焦糖布丁＋法式酸奶油＋廷姆爾胡椒 / クレームキャラメル、クレームフレーシュ、ティムールペッパー ¥1,400<br>
-          瑞可塔乳酪可麗餅＋紅酒雪葩 / リコッタチーズ、くるみと甘平オレンジのクレープ、赤ワインシャーベット ¥1,600<br>
+          杏仁達克瓦茲＋迷迭香雪糕＋草莓 / アーモンドダクワーズ、ローズマリーセミフレッド、苺 ¥1,400<br/>
+          焦糖布丁＋法式酸奶油＋廷姆爾胡椒 / クレームキャラメル、クレームフレーシュ、ティムールペッパー ¥1,400<br/>
+          瑞可塔乳酪可麗餅＋紅酒雪葩 / リコッタチーズ、くるみと甘平オレンジのクレープ、赤ワインシャーベット ¥1,600<br/>
           蘭姆酒巴巴＋金柑杜松子冰淇淋 / ババ・オ・ラム、金柑とジュニパーアイスクリーム ¥1,600
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">主廚分享套餐（2人以上）/ シェフズシェアリングコース ¥6,500 / 人</div>
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">飲料</div>
-          美式 / アメリカーノ ¥700 · 拿鐵 / カフェラテ ¥800 · 燕麥拿鐵 / オーツラテ ¥850 · 和紅茶 ¥800<br>
+<div style="font-weight:700;color:var(--gold);margin:8px 0 2px">飲料</div>
+          美式 / アメリカーノ ¥700 · 拿鐵 / カフェラテ ¥800 · 燕麥拿鐵 / オーツラテ ¥850 · 和紅茶 ¥800<br/>
           新鮮香草青柚茶 / フレッシュハーブ＆月読青柚ティー ¥1,000 · 葡萄酒 / ワイン Glass ¥1,000起
         </div>
-      </div></div>
-      <div class="tl-row"><div class="tl-time">14:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍞 <a class="place-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">麵包超人博物館</a></div><div class="tl-note">東川崎町1-6-2（JR神戶站步行8分）<br>一樓購物商場免費！10:00–19:00 · 抓2小時</div></div></div>
-      <div class="tl-row"><div class="tl-time">16:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">回飯店入住 / 自由活動</div><div class="tl-note">Check-in 15:00 · 休息或附近逛</div></div></div>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">17:00 選擇你的路線</div>
-    <div class="split">
-      <div class="opt a">
-        <div class="opt-label a">Option A · 有體力</div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:00<br><a class="place-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">Concerto 協奏曲號</a><span class="opt-sub">夕陽郵輪・1小時航程<br>看海＋日落</span><a class="choice-info" href="https://thekobecruise.com/concerto/" target="_blank">查看資訊</a></div></div>
-      </div>
-      <div class="opt b">
-        <div class="opt-label b">Option B · 累了</div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">直接休息<br>or 附近逛街</div></div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="tl">
-      <div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">🥩 <a class="place-link" href="https://yakinikuishidaya-hanare.owst.jp/map" target="_blank">石田屋・神戶牛燒肉</a></div><div class="tl-note">北長狭通1-20-9 2F（三宮站步行2分）· ¥7,000–12,000/人</div><div class="tl-tag warn">⚠ 已預約！準時到！</div>
-        <div class="tl-tag warn" style="cursor:pointer;user-select:none;margin-top:4px" onclick="var m=document.getElementById('ishidaya-menu');m.style.display=m.style.display==='none'?'block':'none'">📋 點我看中文菜單 ▾</div>
-        <div id="ishidaya-menu" style="display:none;margin-top:10px;background:var(--cream2);border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.9;color:var(--ink)">
-          <div style="font-weight:700;font-size:13px;margin-bottom:8px">🥩 石田屋・神戶牛燒肉 菜單</div>
-
-          <div style="font-weight:700;color:var(--gold);margin:6px 0 2px">前菜 前菜</div>
-          牛舌生魚片 / 牛タン刺し<br>
-          牛肝生魚片 / レバー刺し<br>
-          神戶牛韃靼生牛肉 / 神戸牛タルタルステーキ<br>
-          涼拌菠菜 / ほうれん草ナムル<br>
-          泡菜 / キムチ<br>
+</div></div>
+<div class="tl-row"><div class="tl-time">14:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍞 <a class="place-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">麵包超人博物館</a></div><div class="tl-note">東川崎町1-6-2（JR神戶站步行8分）<br/>一樓購物商場免費！10:00–19:00 · 抓2小時</div></div></div>
+<div class="tl-row"><div class="tl-time">16:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">回飯店入住 / 自由活動</div><div class="tl-note">Check-in 15:00 · 休息或附近逛</div></div></div>
+</div>
+<hr class="divider"/>
+<div class="section-label">17:00 選擇你的路線</div>
+<div class="split">
+<div class="opt a">
+<div class="opt-label a">Option A · 有體力</div>
+<div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–18:00<br/><a class="place-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">Concerto 協奏曲號</a><span class="opt-sub">夕陽郵輪・1小時航程<br/>看海＋日落</span><a class="choice-info" href="https://thekobecruise.com/concerto/" target="_blank">查看資訊</a></div></div>
+</div>
+<div class="opt b">
+<div class="opt-label b">Option B · 累了</div>
+<div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">直接休息<br/>or 附近逛街</div></div>
+</div>
+</div>
+<hr class="divider"/>
+<div class="tl">
+<div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">🥩 <a class="place-link" href="https://yakinikuishidaya-hanare.owst.jp/map" target="_blank">石田屋・神戶牛燒肉</a></div><div class="tl-note">北長狭通1-20-9 2F（三宮站步行2分）· ¥7,000–12,000/人</div><div class="tl-tag warn">⚠ 已預約！準時到！</div>
+<div class="tl-tag warn" onclick="var m=document.getElementById('ishidaya-menu');m.style.display=m.style.display==='none'?'block':'none'" style="cursor:pointer;user-select:none;margin-top:4px">📋 點我看中文菜單 ▾</div>
+<div id="ishidaya-menu" style="display:none;margin-top:10px;background:var(--cream2);border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.9;color:var(--ink)">
+<div style="font-weight:700;font-size:13px;margin-bottom:8px">🥩 石田屋・神戶牛燒肉 菜單</div>
+<div style="font-weight:700;color:var(--gold);margin:6px 0 2px">前菜 前菜</div>
+          牛舌生魚片 / 牛タン刺し<br/>
+          牛肝生魚片 / レバー刺し<br/>
+          神戶牛韃靼生牛肉 / 神戸牛タルタルステーキ<br/>
+          涼拌菠菜 / ほうれん草ナムル<br/>
+          泡菜 / キムチ<br/>
           小黃瓜漬 / きゅうり漬け
 
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">神戶牛 燒肉 神戸牛</div>
-          神戶牛里脊（菲力）/ 神戸牛ヒレ<br>
-          神戶牛肋眼 / 神戸牛リブロース<br>
-          神戶牛上等五花 / 神戸牛上カルビ<br>
-          神戶牛牛舌 / 神戸牛タン<br>
-          神戶牛特選稀少部位 / 神戸牛希少部位<br>
-          <span style="color:var(--dim);font-size:11px">※ 稀少部位依當日進貨而定</span>
-
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">一般燒肉 和牛</div>
-          黑毛和牛上等五花 / 黒毛和牛上カルビ<br>
-          黑毛和牛橫膈膜 / 黒毛和牛ハラミ<br>
-          牛腸 / ホルモン<br>
+          神戶牛里脊（菲力）/ 神戸牛ヒレ<br/>
+          神戶牛肋眼 / 神戸牛リブロース<br/>
+          神戶牛上等五花 / 神戸牛上カルビ<br/>
+          神戶牛牛舌 / 神戸牛タン<br/>
+          神戶牛特選稀少部位 / 神戸牛希少部位<br/>
+<span style="color:var(--dim);font-size:11px">※ 稀少部位依當日進貨而定</span>
+<div style="font-weight:700;color:var(--gold);margin:8px 0 2px">一般燒肉 和牛</div>
+          黑毛和牛上等五花 / 黒毛和牛上カルビ<br/>
+          黑毛和牛橫膈膜 / 黒毛和牛ハラミ<br/>
+          牛腸 / ホルモン<br/>
           豬五花 / 豚バラ
 
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">蔬菜・配菜</div>
-          包燒蔬菜拼盤 / 焼き野菜盛り合わせ<br>
-          石鍋拌飯 / 石焼ビビンバ<br>
-          冷麵 / 冷麺<br>
+          包燒蔬菜拼盤 / 焼き野菜盛り合わせ<br/>
+          石鍋拌飯 / 石焼ビビンバ<br/>
+          冷麵 / 冷麺<br/>
           白飯 / ライス
 
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">甜點</div>
-          抹茶冰淇淋 / 抹茶アイス<br>
+          抹茶冰淇淋 / 抹茶アイス<br/>
           香草冰淇淋 / バニラアイス
 
           <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">飲料</div>
-          生啤酒 / 生ビール · 燒酎 / 焼酎<br>
-          無酒精飲料 / ソフトドリンク<br>
-          <span style="color:var(--red);font-size:11px">※ 含稅・服務費另計。菜單內容依時節調整</span>
-        </div>
-      </div></div>
-      <div class="tl-row"><div class="tl-time">晚餐後</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">看體力決定：散步港邊夜景 or 直接回飯店休息</div></div></div>
-    </div>
-  </div>
+          生啤酒 / 生ビール · 燒酎 / 焼酎<br/>
+          無酒精飲料 / ソフトドリンク<br/>
+<span style="color:var(--red);font-size:11px">※ 含稅・服務費另計。菜單內容依時節調整</span>
 </div>
-
+</div></div>
+<div class="tl-row"><div class="tl-time">晚餐後</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">看體力決定：散步港邊夜景 or 直接回飯店休息</div></div></div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 3: DAY 2 ══ -->
 <div class="page" id="p3">
-  <div class="card" id="card-day2">
-    <div class="card-head">
-      <div class="badge">DAY 2</div>
-      <div class="card-title">文化散步日</div>
-      <div class="card-sub">6月6日（週六）· 從飯店出發</div>
-    </div>
-
-    <div class="info-block" style="padding-bottom:0">
-      <div class="info-row cream-bg" style="margin-bottom:0">
-        <div class="info-icon">🏨</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)">出發點：<a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗飯店</a></div>
-          <div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tl">
-      <div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">⛪ <a class="place-link" href="https://maps.google.com/?q=フロインドリーブ+Freundlieb+神戸生田町" target="_blank">FREUNDLIEB 教堂咖啡廳 早午餐</a></div><div class="tl-note">飯店步行約8分 · 生田町4-6-15（2F）· 10:00–19:00 週三休<br>國家認定文化財舊教堂改建 · 挑高禮拜堂空間 · 份量十足三明治＋咖啡<br><span style="color:var(--gold);font-weight:700">⚠ 週六人多建議一開門就去<a class="place-link" href="https://freundlieb.thebase.in/" target="_blank">，提醒Ruu要買餅乾!!!</a></span></div></div></div>
-      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏛 <a class="place-link" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">北野異人館區</a></div><div class="tl-note">FREUNDLIEB 步行約5分 · <a class="place-link" href="https://maps.google.com/?q=Kitano+Tenmangu+Kobe" target="_blank">北野天滿神社</a>＋異人館散步<br>風見雞館・萌黃館・萊茵館（免費・09:00–18:00）</div></div></div>
-      <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 北野異人館附近午餐</div><div class="tl-note">異人館周邊餐廳選擇多 · 邊散步邊找喜歡的店</div></div></div>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">備案景點（若不想走戶外）</div>
-    <div class="split" style="padding-bottom:8px">
-      <div class="opt a">
-        <div class="opt-label a">室內選項 A</div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Hyogo+Prefectural+Museum+of+Art" target="_blank">兵庫縣立美術館</a><span class="opt-sub">北野→三宮→阪神電車→岩屋站步行8分 · 臨海現代建築</span></div></div>
-      </div>
-      <div class="opt b">
-        <div class="opt-label b">室內選項 B</div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Takenaka+Carpentry+Tools+Museum" target="_blank">竹中大工道具館</a><span class="opt-sub">北野步行往新神戶站約15–20分 · 日本傳統工藝</span></div></div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">14:30–19:00 下午行程（選一）</div>
-    <div class="split" style="grid-template-columns:1fr 1fr 1fr;padding-bottom:8px">
-      <div class="opt a">
-        <div class="opt-label a">Option A · 最推薦</div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">14:30–17:00<br><a class="place-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">三宮</a>／<a class="place-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">元町</a>逛街<span class="opt-sub">購物＋隨意散步・藥妝</span></div></div>
-        <div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–19:00<br>繼續逛街<span class="opt-sub">小店／咖啡廳休息</span></div></div>
-      </div>
-      <div class="opt b">
-        <div class="opt-label b">Option B · 港區</div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">14:30–17:00<br><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a> → <a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a><span class="opt-sub">拍照看海・摩天輪</span></div></div>
-        <div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">17:00–19:00<br>港區散步夜景<span class="opt-sub">看日落＋夜景最佳時段</span></div></div>
-      </div>
-      <div class="opt c">
-        <div class="opt-label c">Option C · 懶人版</div>
-        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">14:30–17:00<br>回飯店補體力<span class="opt-sub">休息就是行程</span></div></div>
-        <div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">17:00–19:00<br>附近隨便晃<span class="opt-sub">視體力決定</span></div></div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">🏪 港區備忘・營業時間</div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-body">
-          <div class="info-detail" style="color:var(--dim)">
-            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Kobe" target="_blank">神戶港（戶外）</a></span> · 24小時開放・散步夜景隨時去<br>
-            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a></span> · 約 10:00–20:00（依店鋪）<br>
-            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></span> · 商店 10:00–20:00 · 餐廳 11:00–22:00<br>
-            <span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">摩天輪（umie旁）</a></span> · 10:00–22:00（末班21:30）
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="tl">
-      <div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
-      <div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">可散步、看港區夜景或回市區隨意晃</div></div></div>
-      <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🐙 宵夜・明石燒</div><div class="tl-note">飯店附近 · 營業 18:00–02:00</div><div class="tl-tag info"><a class="place-link" href="https://maps.google.com/?q=蛸之壺+本店+Kobe" target="_blank">蛸之壺本店：三宮町3-3-3（元町站1分）</a></div></div></div>
-      <div class="tl-row"><div class="tl-time">24:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🏪 <a class="place-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">唐吉訶德</a> 24小時</div><div class="tl-note">三宮周邊 · 24小時營業 · 深夜購物</div></div></div>
-    </div>
-  </div>
+<div class="card" id="card-day2">
+<div class="card-head">
+<div class="badge">DAY 2</div>
+<div class="card-title">文化散步日</div>
+<div class="card-sub">6月6日（週六）· 從飯店出發</div>
 </div>
-
-
+<div class="info-block" style="padding-bottom:0">
+<div class="info-row cream-bg" style="margin-bottom:0">
+<div class="info-icon">🏨</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)">出發點：<a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗飯店</a></div>
+<div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
+</div>
+</div>
+</div>
+<div class="tl">
+<div class="tl-row"><div class="tl-time">10:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">⛪ <a class="place-link" href="https://maps.google.com/?q=フロインドリーブ+Freundlieb+神戸生田町" target="_blank">FREUNDLIEB 教堂咖啡廳 早午餐</a></div><div class="tl-note">飯店步行約8分 · 生田町4-6-15（2F）· 10:00–19:00 週三休<br/>國家認定文化財舊教堂改建 · 挑高禮拜堂空間 · 份量十足三明治＋咖啡<br/><span style="color:var(--gold);font-weight:700">⚠ 週六人多建議一開門就去<a class="place-link" href="https://freundlieb.thebase.in/" target="_blank">，提醒Ruu要買餅乾!!!</a></span></div></div></div>
+<div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏛 <a class="place-link" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">北野異人館區</a></div><div class="tl-note">FREUNDLIEB 步行約5分 · <a class="place-link" href="https://maps.google.com/?q=Kitano+Tenmangu+Kobe" target="_blank">北野天滿神社</a>＋異人館散步<br/>風見雞館・萌黃館・萊茵館（免費・09:00–18:00）</div></div></div>
+<div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 北野異人館附近午餐</div><div class="tl-note">異人館周邊餐廳選擇多 · 邊散步邊找喜歡的店</div></div></div>
+</div>
+<hr class="divider"/>
+<div class="section-label">備案景點（若不想走戶外）</div>
+<div class="split" style="padding-bottom:8px">
+<div class="opt a">
+<div class="opt-label a">室內選項 A</div>
+<div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Hyogo+Prefectural+Museum+of+Art" target="_blank">兵庫縣立美術館</a><span class="opt-sub">北野→三宮→阪神電車→岩屋站步行8分 · 臨海現代建築</span></div></div>
+</div>
+<div class="opt b">
+<div class="opt-label b">室內選項 B</div>
+<div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt"><a class="place-link" href="https://maps.google.com/?q=Takenaka+Carpentry+Tools+Museum" target="_blank">竹中大工道具館</a><span class="opt-sub">北野步行往新神戶站約15–20分 · 日本傳統工藝</span></div></div>
+</div>
+</div>
+<hr class="divider"/>
+<div class="section-label">14:30–19:00 下午行程（選一）</div>
+<div class="split" style="grid-template-columns:1fr 1fr 1fr;padding-bottom:8px">
+<div class="opt a">
+<div class="opt-label a">Option A · 最推薦</div>
+<div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">14:30–17:00<br/><a class="place-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">三宮</a>／<a class="place-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">元町</a>逛街<span class="opt-sub">購物＋隨意散步・藥妝</span></div></div>
+<div class="opt-item"><div class="opt-bullet a"></div><div class="opt-txt">17:00–19:00<br/>繼續逛街<span class="opt-sub">小店／咖啡廳休息</span></div></div>
+</div>
+<div class="opt b">
+<div class="opt-label b">Option B · 港區</div>
+<div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">14:30–17:00<br/><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a> → <a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a><span class="opt-sub">拍照看海・摩天輪</span></div></div>
+<div class="opt-item"><div class="opt-bullet b"></div><div class="opt-txt">17:00–19:00<br/>港區散步夜景<span class="opt-sub">看日落＋夜景最佳時段</span></div></div>
+</div>
+<div class="opt c">
+<div class="opt-label c">Option C · 懶人版</div>
+<div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">14:30–17:00<br/>回飯店補體力<span class="opt-sub">休息就是行程</span></div></div>
+<div class="opt-item"><div class="opt-bullet c"></div><div class="opt-txt">17:00–19:00<br/>附近隨便晃<span class="opt-sub">視體力決定</span></div></div>
+</div>
+</div>
+<hr class="divider"/>
+<div class="section-label">🏪 港區備忘・營業時間</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-body">
+<div class="info-detail" style="color:var(--dim)">
+<span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Kobe" target="_blank">神戶港（戶外）</a></span> · 24小時開放・散步夜景隨時去<br/>
+<span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">Harborland</a></span> · 約 10:00–20:00（依店鋪）<br/>
+<span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></span> · 商店 10:00–20:00 · 餐廳 11:00–22:00<br/>
+<span class="info-hl" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">摩天輪（umie旁）</a></span> · 10:00–22:00（末班21:30）
+          </div>
+</div>
+</div>
+</div>
+<hr class="divider"/>
+<div class="tl">
+<div class="tl-row"><div class="tl-time">19:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🍽 晚餐（彈性安排）</div><div class="tl-note">可簡單吃 or 前一天沒吃到的想吃料理</div></div></div>
+<div class="tl-row"><div class="tl-time">20:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">自由活動</div><div class="tl-note">可散步、看港區夜景或回市區隨意晃</div></div></div>
+<div class="tl-row"><div class="tl-time">22:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🐙 宵夜・明石燒</div><div class="tl-note">飯店附近 · 營業 18:00–02:00</div><div class="tl-tag info"><a class="place-link" href="https://maps.google.com/?q=蛸之壺+本店+Kobe" target="_blank">蛸之壺本店：三宮町3-3-3（元町站1分）</a></div></div></div>
+<div class="tl-row"><div class="tl-time">24:00</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🏪 <a class="place-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">唐吉訶德</a> 24小時</div><div class="tl-note">三宮周邊 · 24小時營業 · 深夜購物</div></div></div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 4: DAY 3 ══ -->
 <div class="page" id="p4">
-  <div class="card" id="card-day3">
-    <div class="card-head">
-      <div class="badge">DAY 3</div>
-      <div class="card-title">自由活動</div>
-      <div class="card-sub">6月7日（週日）· 從飯店出發</div>
-    </div>
-    <div class="info-block" style="padding-bottom:0">
-      <div class="info-row cream-bg" style="margin-bottom:0">
-        <div class="info-icon">🏨</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)">出發點：<a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗飯店</a></div>
-          <div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
-        </div>
-      </div>
-    </div>
-    <div class="section-label">各自去想去的地方！選一條路線</div>
-
-    <!-- Route A header -->
-    <div class="info-block">
-      <div class="info-row" style="background:var(--ink2);border-radius:10px;">
-        <div class="info-icon">🗼</div>
-        <div class="info-body">
-          <div class="info-title">路線 A ｜ 港區半日</div>
-          <div class="info-detail" style="color:var(--dim2)">飯店步行20分 / 或搭 Port Loop 巴士（北野坂→美利堅公園約15分）</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🗼</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">神戶塔</a></div>
-          <div class="info-detail" style="color:var(--dim)">09:00–23:00 · 展望台¥1,000 · 3F 旋轉咖啡廳邊喝飲料邊看港景（約20分轉一圈）<br>低樓層商店免費逛 · 建議傍晚來搭配夕陽夜景最美</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">📸</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">美利堅公園・BE KOBE</a></div>
-          <div class="info-detail" style="color:var(--dim)">神戶塔步行即達 · 24H免費 · 拍 BE KOBE 字母地標必排隊<br>同步可看 <a class="place-link" href="https://maps.google.com/?q=Kobe+Maritime+Museum" target="_blank">神戶海洋博物館</a>（09:30–18:00 · ¥900）</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🐠</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">AQUALIVE 神戶水族館</a></div>
-          <div class="info-detail" style="color:var(--dim)">美利堅公園步行5分 · 適合與夜景行程合排傍晚入場</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">☕</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Starbucks+Meriken+Park+Kobe" target="_blank">星巴克 美利堅公園店</a></div>
-          <div class="info-detail" style="color:var(--dim)">正對神戶塔海景 · 拍IG必去</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍽️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=PORT+TERRACE+Kobe+Port+Tower" target="_blank">PORT TERRACE（神戶塔3F）</a></div>
-          <div class="info-detail" style="color:var(--dim)">半露天餐廳 · 輕食＋飲品 · 需購票入場</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🧱</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Renga+Soko" target="_blank">神戶煉瓦倉庫</a></div>
-          <div class="info-detail" style="color:var(--dim)">Harborland旁 · 1890年磚倉改建 · 咖啡＋文具店</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🎡</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></div>
-          <div class="info-detail" style="color:var(--dim)">美利堅公園步行5分 · 商店10:00–20:00 · 餐廳11:00–22:00</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🥖</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Le+Pan+Kobe+Kitano+Harborland" target="_blank">ル・パン総本店（La Suite Le Pan Bldg）</a></div>
-          <div class="info-detail" style="color:var(--dim)">Harborland港區 · 五星飯店直營麵包＋甜點 · 足湯カフェ同棟 · 買完可在旁邊泡免費足湯</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍮</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Cafe+Morozoff+Kobe+Harborland+umie" target="_blank">カフェ モロゾフ umie店</a></div>
-          <div class="info-detail" style="color:var(--dim)">umie MOSAIC內 · 神戶老牌甜點店直營咖啡廳 · 招牌卡士達布丁＋鬆餅</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍦</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=ICE+CREAM+UNITED+Kobe+Harborland" target="_blank">ICE CREAM UNITED</a></div>
-          <div class="info-detail" style="color:var(--dim)">麵包超人博物館旁 · 前維塞爾神戶球員 Podolski 開的德國No.1冰淇淋 · 話題性十足</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Route B header -->
-    <div class="info-block">
-      <div class="info-row" style="background:var(--ink2);border-radius:10px;">
-        <div class="info-icon">🌊</div>
-        <div class="info-body">
-          <div class="info-title">路線 B ｜ 須磨海灘</div>
-          <div class="info-detail" style="color:var(--dim2)">飯店→三宮站→JR神戶線約20分→「須磨」站→步行5分</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🏖️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Suma+Seaside+Park+Kobe" target="_blank">須磨海濱公園</a></div>
-          <div class="info-detail" style="color:var(--dim)">白沙灘 · 6月夏季開放游泳 · 免費入場</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🐟</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Suma+Sea+World+Kobe" target="_blank">須磨シーワールド</a></div>
-          <div class="info-detail" style="color:var(--dim)">海濱公園內水族館 · ¥2,800 · 可選擇性加排</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍽️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=NORTHSHORE+Suma+Kobe" target="_blank">NORTHSHORE Suma</a></div>
-          <div class="info-detail" style="color:var(--dim)">正面海景 · 自家製麵包吃到飽套餐 · 寬敞舒適</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">☕</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=sweets+cafe+Riche+Suma+Kobe" target="_blank">sweets cafe Riche</a></div>
-          <div class="info-detail" style="color:var(--dim)">須磨站步行2分 · 海景老屋咖啡 · 鯵魚午餐＋甜點</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🏕️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=YURT+CAFE+BBQ+PARK+Suma+Kobe" target="_blank">YURT CAFE & BBQ PARK</a></div>
-          <div class="info-detail" style="color:var(--dim)">西海岸帳篷風格 · 海景BBQ · 須磨海浜公園内</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍰</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Patisserie+Tooth+Tooth+Seaside+Cafe+Kobe" target="_blank">Tooth Tooth シーサイドカフェ</a></div>
-          <div class="info-detail" style="color:var(--dim)">須磨浦公園站步行3分 · 神戶名甜點店直營 · 法式吐司出名 · 11:00–18:00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Route C header -->
-    <div class="info-block">
-      <div class="info-row" style="background:var(--ink2);border-radius:10px;">
-        <div class="info-icon">🌉</div>
-        <div class="info-body">
-          <div class="info-title">路線 C ｜ 舞子・明石海峽大橋</div>
-          <div class="info-detail" style="color:var(--dim2)">飯店→三宮站→JR神戶線約25分→「舞子」站→步行5分</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🌅</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Maiko+Park+Kobe" target="_blank">舞子公園</a></div>
-          <div class="info-detail" style="color:var(--dim)">公園24H免費 · 海上步道¥250 · 夕陽時段最美</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🌉</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Akashi+Kaikyo+Bridge" target="_blank">明石海峽大橋</a></div>
-          <div class="info-detail" style="color:var(--dim)">橋底玻璃地板步道 · 踩著看海 · 膽小者臉綠警告 🫨</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🏯</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Sun+Yat-sen+Memorial+Hall+Maiko+Kobe" target="_blank">孫中山紀念館</a></div>
-          <div class="info-detail" style="color:var(--dim)">舞子站步行5分 · 稀有和洋折衷建築 · ¥500 · 10:00–17:00（週一休）</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🦞</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=AWAWA+Cafe+Maiko+Kobe" target="_blank">AWAWA Cafe</a></div>
-          <div class="info-detail" style="color:var(--dim)">明石海峽大橋正面景 · 海鮮料理＋海鮮義大利麵 · IG超熱門</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🛍️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=MITSUI+OUTLET+PARK+Marine+Pia+Kobe" target="_blank">三井 Outlet Marine Pia 神戶</a></div>
-          <div class="info-detail" style="color:var(--dim)">JR垂水站免費接駁 · 約150品牌 · 明石大橋背景購物 · 10:00–20:00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Route D header -->
-    <div class="info-block">
-      <div class="info-row" style="background:var(--ink2);border-radius:10px;">
-        <div class="info-icon">🍰</div>
-        <div class="info-body">
-          <div class="info-title">路線 D ｜ 芦屋可麗露</div>
-          <div class="info-detail" style="color:var(--dim2)">飯店→三宮站→阪急神戶線→「芦屋川」站→步行5分（約30分）</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🍮</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">花式可麗露 Daniel 本店</a></div>
-          <div class="info-detail" style="color:var(--dim)">芦屋市三条南町5-1 · 週一・二公休 · 限量，建議早上就去！</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🌿</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Ashiya+River+Kobe" target="_blank">芦屋川河岸散步</a></div>
-          <div class="info-detail" style="color:var(--dim)">Daniel 買完後沿川邊慢走 · 高級住宅區街景安靜美麗</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🥖</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=BIGOT+Ashiya+Kobe" target="_blank">BIGOT 法式麵包</a></div>
-          <div class="info-detail" style="color:var(--dim)">芦屋川站附近 · 法國正統技術在地名店 · 買來邊走邊吃</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">☕</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=cafe+BradipO+Ashiya+Kobe" target="_blank">café BradipO</a></div>
-          <div class="info-detail" style="color:var(--dim)">芦屋川站北口即到 · 樹懶雕像為記 · 大人風格精品咖啡廳 · 自家手工甜點＋法國紅茶 · 中2樓有器皿販售</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">📖</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Teamo+Cafe+Ashiya+Kobe" target="_blank">テアモ（隱藏書房咖啡）</a></div>
-          <div class="info-detail" style="color:var(--dim)">芦屋川站步行即達 · 土耳其料理店2樓 · 天花板挑高＋滿牆書 · 手磨咖啡 · 極度隱藏感穴場</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🛍️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Accesoir+Ashiya+Kobe" target="_blank">Accesoir（歐洲選物）</a></div>
-          <div class="info-detail" style="color:var(--dim)">芦屋川站步行8分 · 歐洲精選包包・絲巾・飾品 · 11:00–19:00（週三休）</div>
-        </div>
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🏪</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Laporte+Ashiya+Shopping" target="_blank">ラポルテ芦屋（商業設施）</a></div>
-          <div class="info-detail" style="color:var(--dim)">JR芦屋站旁 · 芦屋在地中高端購物商場 · 逛街選物好選擇</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div class="card" id="card-day3">
+<div class="card-head">
+<div class="badge">DAY 3</div>
+<div class="card-title">自由活動</div>
+<div class="card-sub">6月7日（週日）· 從飯店出發</div>
 </div>
-
+<div class="info-block" style="padding-bottom:0">
+<div class="info-row cream-bg" style="margin-bottom:0">
+<div class="info-icon">🏨</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)">出發點：<a class="place-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">艾美麗飯店</a></div>
+<div class="info-detail" style="color:var(--dim)">中央區中山手通2-2-28 · 三宮站步行約6分</div>
+</div>
+</div>
+</div>
+<div class="section-label">各自去想去的地方！選一條路線</div>
+<!-- Route A header -->
+<div class="info-block">
+<div class="info-row" style="background:var(--ink2);border-radius:10px;">
+<div class="info-icon">🗼</div>
+<div class="info-body">
+<div class="info-title">路線 A ｜ 港區半日</div>
+<div class="info-detail" style="color:var(--dim2)">飯店步行20分 / 或搭 Port Loop 巴士（北野坂→美利堅公園約15分）</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🗼</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">神戶塔</a></div>
+<div class="info-detail" style="color:var(--dim)">09:00–23:00 · 展望台¥1,000 · 3F 旋轉咖啡廳邊喝飲料邊看港景（約20分轉一圈）<br/>低樓層商店免費逛 · 建議傍晚來搭配夕陽夜景最美</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">📸</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">美利堅公園・BE KOBE</a></div>
+<div class="info-detail" style="color:var(--dim)">神戶塔步行即達 · 24H免費 · 拍 BE KOBE 字母地標必排隊<br/>同步可看 <a class="place-link" href="https://maps.google.com/?q=Kobe+Maritime+Museum" target="_blank">神戶海洋博物館</a>（09:30–18:00 · ¥900）</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🐠</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">AQUALIVE 神戶水族館</a></div>
+<div class="info-detail" style="color:var(--dim)">美利堅公園步行5分 · 適合與夜景行程合排傍晚入場</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">☕</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Starbucks+Meriken+Park+Kobe" target="_blank">星巴克 美利堅公園店</a></div>
+<div class="info-detail" style="color:var(--dim)">正對神戶塔海景 · 拍IG必去</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍽️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=PORT+TERRACE+Kobe+Port+Tower" target="_blank">PORT TERRACE（神戶塔3F）</a></div>
+<div class="info-detail" style="color:var(--dim)">半露天餐廳 · 輕食＋飲品 · 需購票入場</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🧱</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Kobe+Renga+Soko" target="_blank">神戶煉瓦倉庫</a></div>
+<div class="info-detail" style="color:var(--dim)">Harborland旁 · 1890年磚倉改建 · 咖啡＋文具店</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🎡</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">馬賽克廣場</a></div>
+<div class="info-detail" style="color:var(--dim)">美利堅公園步行5分 · 商店10:00–20:00 · 餐廳11:00–22:00</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🥖</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Le+Pan+Kobe+Kitano+Harborland" target="_blank">ル・パン総本店（La Suite Le Pan Bldg）</a></div>
+<div class="info-detail" style="color:var(--dim)">Harborland港區 · 五星飯店直營麵包＋甜點 · 足湯カフェ同棟 · 買完可在旁邊泡免費足湯</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍮</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Cafe+Morozoff+Kobe+Harborland+umie" target="_blank">カフェ モロゾフ umie店</a></div>
+<div class="info-detail" style="color:var(--dim)">umie MOSAIC內 · 神戶老牌甜點店直營咖啡廳 · 招牌卡士達布丁＋鬆餅</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍦</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=ICE+CREAM+UNITED+Kobe+Harborland" target="_blank">ICE CREAM UNITED</a></div>
+<div class="info-detail" style="color:var(--dim)">麵包超人博物館旁 · 前維塞爾神戶球員 Podolski 開的德國No.1冰淇淋 · 話題性十足</div>
+</div>
+</div>
+</div>
+<!-- Route B header -->
+<div class="info-block">
+<div class="info-row" style="background:var(--ink2);border-radius:10px;">
+<div class="info-icon">🌊</div>
+<div class="info-body">
+<div class="info-title">路線 B ｜ 須磨海灘</div>
+<div class="info-detail" style="color:var(--dim2)">飯店→三宮站→JR神戶線約20分→「須磨」站→步行5分</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🏖️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Suma+Seaside+Park+Kobe" target="_blank">須磨海濱公園</a></div>
+<div class="info-detail" style="color:var(--dim)">白沙灘 · 6月夏季開放游泳 · 免費入場</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🐟</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Suma+Sea+World+Kobe" target="_blank">須磨シーワールド</a></div>
+<div class="info-detail" style="color:var(--dim)">海濱公園內水族館 · ¥2,800 · 可選擇性加排</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍽️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=NORTHSHORE+Suma+Kobe" target="_blank">NORTHSHORE Suma</a></div>
+<div class="info-detail" style="color:var(--dim)">正面海景 · 自家製麵包吃到飽套餐 · 寬敞舒適</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">☕</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=sweets+cafe+Riche+Suma+Kobe" target="_blank">sweets cafe Riche</a></div>
+<div class="info-detail" style="color:var(--dim)">須磨站步行2分 · 海景老屋咖啡 · 鯵魚午餐＋甜點</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🏕️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=YURT+CAFE+BBQ+PARK+Suma+Kobe" target="_blank">YURT CAFE &amp; BBQ PARK</a></div>
+<div class="info-detail" style="color:var(--dim)">西海岸帳篷風格 · 海景BBQ · 須磨海浜公園内</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍰</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Patisserie+Tooth+Tooth+Seaside+Cafe+Kobe" target="_blank">Tooth Tooth シーサイドカフェ</a></div>
+<div class="info-detail" style="color:var(--dim)">須磨浦公園站步行3分 · 神戶名甜點店直營 · 法式吐司出名 · 11:00–18:00</div>
+</div>
+</div>
+</div>
+<!-- Route C header -->
+<div class="info-block">
+<div class="info-row" style="background:var(--ink2);border-radius:10px;">
+<div class="info-icon">🌉</div>
+<div class="info-body">
+<div class="info-title">路線 C ｜ 舞子・明石海峽大橋</div>
+<div class="info-detail" style="color:var(--dim2)">飯店→三宮站→JR神戶線約25分→「舞子」站→步行5分</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🌅</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Maiko+Park+Kobe" target="_blank">舞子公園</a></div>
+<div class="info-detail" style="color:var(--dim)">公園24H免費 · 海上步道¥250 · 夕陽時段最美</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🌉</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Akashi+Kaikyo+Bridge" target="_blank">明石海峽大橋</a></div>
+<div class="info-detail" style="color:var(--dim)">橋底玻璃地板步道 · 踩著看海 · 膽小者臉綠警告 🫨</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🏯</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Sun+Yat-sen+Memorial+Hall+Maiko+Kobe" target="_blank">孫中山紀念館</a></div>
+<div class="info-detail" style="color:var(--dim)">舞子站步行5分 · 稀有和洋折衷建築 · ¥500 · 10:00–17:00（週一休）</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🦞</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=AWAWA+Cafe+Maiko+Kobe" target="_blank">AWAWA Cafe</a></div>
+<div class="info-detail" style="color:var(--dim)">明石海峽大橋正面景 · 海鮮料理＋海鮮義大利麵 · IG超熱門</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🛍️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=MITSUI+OUTLET+PARK+Marine+Pia+Kobe" target="_blank">三井 Outlet Marine Pia 神戶</a></div>
+<div class="info-detail" style="color:var(--dim)">JR垂水站免費接駁 · 約150品牌 · 明石大橋背景購物 · 10:00–20:00</div>
+</div>
+</div>
+</div>
+<!-- Route D header -->
+<div class="info-block">
+<div class="info-row" style="background:var(--ink2);border-radius:10px;">
+<div class="info-icon">🍰</div>
+<div class="info-body">
+<div class="info-title">路線 D ｜ 芦屋可麗露</div>
+<div class="info-detail" style="color:var(--dim2)">飯店→三宮站→阪急神戶線→「芦屋川」站→步行5分（約30分）</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🍮</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">花式可麗露 Daniel 本店</a></div>
+<div class="info-detail" style="color:var(--dim)">芦屋市三条南町5-1 · 週一・二公休 · 限量，建議早上就去！</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🌿</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Ashiya+River+Kobe" target="_blank">芦屋川河岸散步</a></div>
+<div class="info-detail" style="color:var(--dim)">Daniel 買完後沿川邊慢走 · 高級住宅區街景安靜美麗</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🥖</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=BIGOT+Ashiya+Kobe" target="_blank">BIGOT 法式麵包</a></div>
+<div class="info-detail" style="color:var(--dim)">芦屋川站附近 · 法國正統技術在地名店 · 買來邊走邊吃</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">☕</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=cafe+BradipO+Ashiya+Kobe" target="_blank">café BradipO</a></div>
+<div class="info-detail" style="color:var(--dim)">芦屋川站北口即到 · 樹懶雕像為記 · 大人風格精品咖啡廳 · 自家手工甜點＋法國紅茶 · 中2樓有器皿販售</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">📖</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Teamo+Cafe+Ashiya+Kobe" target="_blank">テアモ（隱藏書房咖啡）</a></div>
+<div class="info-detail" style="color:var(--dim)">芦屋川站步行即達 · 土耳其料理店2樓 · 天花板挑高＋滿牆書 · 手磨咖啡 · 極度隱藏感穴場</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🛍️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Accesoir+Ashiya+Kobe" target="_blank">Accesoir（歐洲選物）</a></div>
+<div class="info-detail" style="color:var(--dim)">芦屋川站步行8分 · 歐洲精選包包・絲巾・飾品 · 11:00–19:00（週三休）</div>
+</div>
+</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🏪</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)"><a class="place-link" href="https://maps.google.com/?q=Laporte+Ashiya+Shopping" target="_blank">ラポルテ芦屋（商業設施）</a></div>
+<div class="info-detail" style="color:var(--dim)">JR芦屋站旁 · 芦屋在地中高端購物商場 · 逛街選物好選擇</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 5: DAY 4 ══ -->
 <div class="page" id="p5">
-  <div class="card" id="card-day4">
-    <div class="card-head">
-      <div class="badge">DAY 4</div>
-      <div class="card-title">回程</div>
-      <div class="card-sub">6月8日（週一）</div>
-    </div>
-    <div class="info-block">
-      <div class="info-row dark-bg">
-        <div class="info-icon">⏰</div>
-        <div class="info-body">
-          <div class="info-title">出發時間提醒</div>
-          <div class="info-detail">航班 <span class="info-hl">11:00</span> 起飛 → 建議 <span class="info-hl">08:30前抵達神戶機場</span><br>飯店→步行6分→三宮站→搭Port Liner→神戶空港（約18分・¥380）<br><span class="info-hl">08:00 從飯店出發</span>剛好從容抵達</div>
-        </div>
-      </div>
-    </div>
-    <div class="tl">
-      <div class="tl-row"><div class="tl-time">07:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">⏰ 起床・整理行李</div><div class="tl-note">確認行李重量，行動電源記得放手提！</div></div></div>
-      <div class="tl-row"><div class="tl-time">08:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏨 飯店退房・出發</div><div class="tl-note">步行6分→三宮・花時計前站<br>搭Port Liner→神戶空港，約18分，¥380</div></div></div>
-      <div class="tl-row"><div class="tl-time">08:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達神戶機場</div><div class="tl-note">辦理行李託運→過安檢→找登機門等候</div></div></div>
-      <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">✈ BR133 神戶出發！</div><div class="tl-tag gold">UKB → TPE · 長榮航空</div></div></div>
-      <div class="tl-row"><div class="tl-time">12:55</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🛬 抵達桃園機場</div><div class="tl-note">回家囉！神戶再見 🌸</div></div></div>
-    </div>
-  </div>
+<div class="card" id="card-day4">
+<div class="card-head">
+<div class="badge">DAY 4</div>
+<div class="card-title">回程</div>
+<div class="card-sub">6月8日（週一）</div>
 </div>
-
+<div class="info-block">
+<div class="info-row dark-bg">
+<div class="info-icon">⏰</div>
+<div class="info-body">
+<div class="info-title">出發時間提醒</div>
+<div class="info-detail">航班 <span class="info-hl">11:00</span> 起飛 → 建議 <span class="info-hl">08:30前抵達神戶機場</span><br/>飯店→步行6分→三宮站→搭Port Liner→神戶空港（約18分・¥380）<br/><span class="info-hl">08:00 從飯店出發</span>剛好從容抵達</div>
+</div>
+</div>
+</div>
+<div class="tl">
+<div class="tl-row"><div class="tl-time">07:30</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">⏰ 起床・整理行李</div><div class="tl-note">確認行李重量，行動電源記得放手提！</div></div></div>
+<div class="tl-row"><div class="tl-time">08:00</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🏨 飯店退房・出發</div><div class="tl-note">步行6分→三宮・花時計前站<br/>搭Port Liner→神戶空港，約18分，¥380</div></div></div>
+<div class="tl-row"><div class="tl-time">08:30</div><div class="tl-dw"><div class="tl-dot gold"></div></div><div class="tl-con"><div class="tl-main">🛫 抵達神戶機場</div><div class="tl-note">辦理行李託運→過安檢→找登機門等候</div></div></div>
+<div class="tl-row"><div class="tl-time">11:00</div><div class="tl-dw"><div class="tl-dot red"></div></div><div class="tl-con"><div class="tl-main red">✈ BR133 神戶出發！</div><div class="tl-tag gold">UKB → TPE · 長榮航空</div></div></div>
+<div class="tl-row"><div class="tl-time">12:55</div><div class="tl-dw"><div class="tl-dot gray"></div></div><div class="tl-con"><div class="tl-main">🛬 抵達桃園機場</div><div class="tl-note">回家囉！神戶再見 🌸</div></div></div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 6: COST ══ -->
 <div class="page" id="p6">
-  <div class="card dark" id="card-cost">
-    <div class="card-head">
-      <div class="badge">💰 費用分攤</div>
-      <div class="card-title">每人結算</div>
-    </div>
-    <div class="section-label">✅ 已付款項目</div>
-    <div class="cost-item"><div class="ci-icon">🏨</div><div class="ci-body"><div class="ci-name">飯店費用</div><div class="ci-sub">NT$17,948+手續費270 ÷ 4人 · Ruu 先付全額</div></div><div class="ci-right"><div class="ci-amt">NT$4,555</div><div class="ci-who">→ 還給 Ruu</div></div></div>
-    <div class="cost-item"><div class="ci-icon">🍽️</div><div class="ci-body"><div class="ci-name">餐廳預定費</div><div class="ci-sub">NT$354 ÷ 4人 · 姊先付</div></div><div class="ci-right"><div class="ci-amt">NT$89</div><div class="ci-who">→ 還給 姊</div></div></div>
-    <div class="section-label">⏳ 現場付款</div>
-    <div class="cost-item" style="border-bottom:none"><div class="ci-icon">🚗</div><div class="ci-body"><div class="ci-name">機場接送</div><div class="ci-sub">¥10,000 ÷ 4人 · 抵達當天現場付</div></div><div class="ci-right"><div class="ci-amt">¥2,500</div><div class="ci-who">/ 人</div></div></div>
-    <div class="section-label">每人結算總覽</div>
-    <div class="person-grid">
-      <div class="person-card"><div class="p-name">姊</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
-      <div class="person-card"><div class="p-name">妹</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
-      <div class="person-card"><div class="p-name">媽</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
-      <div class="person-card"><div class="p-name">Ruu</div><div class="p-row"><span class="p-lbl">還 姊(餐廳費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
-    </div>
-  </div>
+<div class="card dark" id="card-cost">
+<div class="card-head">
+<div class="badge">💰 費用分攤</div>
+<div class="card-title">每人結算</div>
 </div>
-
+<div class="section-label">✅ 已付款項目</div>
+<div class="cost-item"><div class="ci-icon">🏨</div><div class="ci-body"><div class="ci-name">飯店費用</div><div class="ci-sub">NT$17,948+手續費270 ÷ 4人 · Ruu 先付全額</div></div><div class="ci-right"><div class="ci-amt">NT$4,555</div><div class="ci-who">→ 還給 Ruu</div></div></div>
+<div class="cost-item"><div class="ci-icon">🍽️</div><div class="ci-body"><div class="ci-name">餐廳預定費</div><div class="ci-sub">NT$354 ÷ 4人 · 姊先付</div></div><div class="ci-right"><div class="ci-amt">NT$89</div><div class="ci-who">→ 還給 姊</div></div></div>
+<div class="section-label">⏳ 現場付款</div>
+<div class="cost-item" style="border-bottom:none"><div class="ci-icon">🚗</div><div class="ci-body"><div class="ci-name">機場接送</div><div class="ci-sub">¥10,000 ÷ 4人 · 抵達當天現場付</div></div><div class="ci-right"><div class="ci-amt">¥2,500</div><div class="ci-who">/ 人</div></div></div>
+<div class="section-label">每人結算總覽</div>
+<div class="person-grid">
+<div class="person-card"><div class="p-name">姊</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+<div class="person-card"><div class="p-name">妹</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+<div class="person-card"><div class="p-name">媽</div><div class="p-row"><span class="p-lbl">還 Ruu(飯店)</span><span class="p-val">NT$4,555</span></div><div class="p-row"><span class="p-lbl">還 姊(餐費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+<div class="person-card"><div class="p-name">Ruu</div><div class="p-row"><span class="p-lbl">還 姊(餐廳費)</span><span class="p-val">NT$89</span></div><div class="p-divider"></div><div class="p-row"><span class="p-lbl">機場現場</span><span class="p-val gold">¥2,500</span></div></div>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 7: CAFES ══ -->
 <div class="page" id="p7">
-  <div class="card" id="card-cafe">
-    <div class="card-head">
-      <div class="badge">☕ 推薦咖啡廳</div>
-      <div class="card-title">神戶咖啡廳清單</div>
-      <div class="card-sub">點地址可開啟 Google Maps</div>
-    </div>
-    <div class="cafe-list">
-
-      <a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+中山手本館+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">☕</div><div><div class="cafe-name">西村咖啡 中山手本館</div><div class="cafe-eng">Nishimura's Coffee 本館</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區山本通1-26-3<br>
-          <span class="hl">交通：</span>飯店步行約5分<br>
-          <span class="hl">營業：</span>08:30–23:00（全週）<br>
+<div class="card" id="card-cafe">
+<div class="card-head">
+<div class="badge">☕ 推薦咖啡廳</div>
+<div class="card-title">神戶咖啡廳清單</div>
+<div class="card-sub">點地址可開啟 Google Maps</div>
+</div>
+<div class="cafe-list">
+<a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+中山手本館+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">☕</div><div><div class="cafe-name">西村咖啡 中山手本館</div><div class="cafe-eng">Nishimura's Coffee 本館</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>中央區山本通1-26-3<br/>
+<span class="hl">交通：</span>飯店步行約5分<br/>
+<span class="hl">營業：</span>08:30–23:00（全週）<br/>
           1948年創業・神戶最代表性咖啡老店・歐式裝潢・適合早餐
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+北野坂店+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🏰</div><div><div class="cafe-name">西村咖啡 北野坂店</div><div class="cafe-eng">Nishimura's Coffee 北野坂店</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區山本通2-1-20<br>
-          <span class="hl">交通：</span>三宮站步行約10分・北野異人館途中<br>
-          <span class="hl">營業：</span>10:00–22:00（全週）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=神戸にしむら珈琲店+北野坂店+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🏰</div><div><div class="cafe-name">西村咖啡 北野坂店</div><div class="cafe-eng">Nishimura's Coffee 北野坂店</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>中央區山本通2-1-20<br/>
+<span class="hl">交通：</span>三宮站步行約10分・北野異人館途中<br/>
+<span class="hl">營業：</span>10:00–22:00（全週）<br/>
           英式洋館裝潢・古典樂・IG人氣打卡・過去曾是會員制
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=フロインドリーブ+Freundlieb+神戸生田町" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">⛪</div><div><div class="cafe-name">FREUNDLIEB 教堂咖啡廳</div><div class="cafe-eng">Café Freundlieb</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區生田町4-6-15（2F）<br>
-          <span class="hl">交通：</span>三宮站步行約10分<br>
-          <span class="hl">營業：</span>10:00–19:00（週三公休）<br>
-          國家認定文化財教堂改建・挑高禮拜堂座位・份量十足三明治
-          <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=星巴克+北野物語館+神戸+Starbucks" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🟢</div><div><div class="cafe-name">星巴克 北野異人館店</div><div class="cafe-eng">Starbucks 北野物語館</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區北野町3-1-31 北野物語館<br>
-          <span class="hl">交通：</span>三宮站步行約15分・異人館區內<br>
-          <span class="hl">營業：</span>08:00–22:00（全週）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=星巴克+北野物語館+神戸+Starbucks" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🟢</div><div><div class="cafe-name">星巴克 北野異人館店</div><div class="cafe-eng">Starbucks 北野物語館</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>中央區北野町3-1-31 北野物語館<br/>
+<span class="hl">交通：</span>三宮站步行約15分・異人館區內<br/>
+<span class="hl">營業：</span>08:00–22:00（全週）<br/>
           1907年洋館建築・登錄有形文化財・每間房間布置不同・必打卡
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+神戸北野" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🌿</div><div><div class="cafe-name">Kitano Moore House Café</div><div class="cafe-eng">舊摩爾之家</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區北野町2-9-3<br>
-          <span class="hl">交通：</span>三宮站步行約15分・異人館街中心<br>
-          <span class="hl">營業：</span>11:00–17:00（週二公休）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+神戸北野" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🌿</div><div><div class="cafe-name">Kitano Moore House Café</div><div class="cafe-eng">舊摩爾之家</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>中央區北野町2-9-3<br/>
+<span class="hl">交通：</span>三宮站步行約15分・異人館街中心<br/>
+<span class="hl">營業：</span>11:00–17:00（週二公休）<br/>
           1898年建造豪宅・香草花園・招牌草莓千層派
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+元町" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🫙</div><div><div class="cafe-name">KOBE EVIAN COFFEE</div><div class="cafe-eng">元町老舖喫茶</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>元町商店街旁（中央區元町附近）<br>
-          <span class="hl">交通：</span>元町站步行約2分<br>
-          <span class="hl">營業：</span>平日・週六 08:30–18:30 · 週日 09:00–18:00（每月第1・3週三公休）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+元町" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🫙</div><div><div class="cafe-name">KOBE EVIAN COFFEE</div><div class="cafe-eng">元町老舖喫茶</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>元町商店街旁（中央區元町附近）<br/>
+<span class="hl">交通：</span>元町站步行約2分<br/>
+<span class="hl">營業：</span>平日・週六 08:30–18:30 · 週日 09:00–18:00（每月第1・3週三公休）<br/>
           1952年創業・虹吸咖啡・昭和復古氛圍・Tabelog百名店
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=MOTOMACHI喫茶+神戸元町" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🍮</div><div><div class="cafe-name">MOTOMACHI 喫茶</div><div class="cafe-eng">モトマチ喫茶</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">地址：</span>中央區北長狭通3-9-7<br>
-          <span class="hl">交通：</span>元町站步行約5分<br>
-          <span class="hl">營業：</span>中午–21:30（週一公休）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=MOTOMACHI喫茶+神戸元町" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🍮</div><div><div class="cafe-name">MOTOMACHI 喫茶</div><div class="cafe-eng">モトマチ喫茶</div></div></div>
+<div class="cafe-body">
+<span class="hl">地址：</span>中央區北長狭通3-9-7<br/>
+<span class="hl">交通：</span>元町站步行約5分<br/>
+<span class="hl">營業：</span>中午–21:30（週一公休）<br/>
           復古懷舊氛圍・招牌自家製焦糖卡士達布丁・低消一杯飲料
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
 </div>
-
-
+</a>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 8: EXTRA LIST ══ -->
 <div class="page" id="p8">
-  <div class="card" id="card-extra">
-    <div class="card-head">
-      <div class="badge">EXTRA</div>
-      <div class="card-title">還沒排進去但很值得</div>
-      <div class="card-sub">都算好抵達・可當現場備案</div>
-    </div>
-
-    <div class="section-label">順路可去的景點</div>
-    <div class="cafe-list">
-      <a class="cafe-card" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🥟</div><div><div class="cafe-name">南京町</div><div class="cafe-eng">Kobe Chinatown</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>元町站步行約5分<br>
-          <span class="hl">適合：</span>想吃小吃、邊走邊買、時間零碎時最方便<br>
+<div class="card" id="card-extra">
+<div class="card-head">
+<div class="badge">EXTRA</div>
+<div class="card-title">還沒排進去但很值得</div>
+<div class="card-sub">都算好抵達・可當現場備案</div>
+</div>
+<div class="section-label">順路可去的景點</div>
+<div class="cafe-list">
+<a class="cafe-card" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🥟</div><div><div class="cafe-name">南京町</div><div class="cafe-eng">Kobe Chinatown</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>元町站步行約5分<br/>
+<span class="hl">適合：</span>想吃小吃、邊走邊買、時間零碎時最方便<br/>
           熱鬧、好逛，和元町可直接一起排
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Kobe+Nunobiki+Herb+Gardens+%26+Ropeway" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🌿</div><div><div class="cafe-name">布引香草園＋纜車</div><div class="cafe-eng">Kobe Nunobiki Herb Gardens & Ropeway</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>新神戶站步行約5分到纜車站<br>
-          <span class="hl">適合：</span>想看山景、花園、拍照，不想跑太遠<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=Kobe+Nunobiki+Herb+Gardens+%26+Ropeway" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🌿</div><div><div class="cafe-name">布引香草園＋纜車</div><div class="cafe-eng">Kobe Nunobiki Herb Gardens &amp; Ropeway</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>新神戶站步行約5分到纜車站<br/>
+<span class="hl">適合：</span>想看山景、花園、拍照，不想跑太遠<br/>
           從市區就能快速切換到很放鬆的景色
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Sorakuen+Garden+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🏡</div><div><div class="cafe-name">相樂園</div><div class="cafe-eng">Sorakuen Garden</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>元町 / 縣廳前一帶，市區可達<br>
-          <span class="hl">適合：</span>想看日式庭園、走輕鬆安靜路線<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=Sorakuen+Garden+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🏡</div><div><div class="cafe-name">相樂園</div><div class="cafe-eng">Sorakuen Garden</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>元町 / 縣廳前一帶，市區可達<br/>
+<span class="hl">適合：</span>想看日式庭園、走輕鬆安靜路線<br/>
           比較不吵，適合補一個慢節奏景點
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=BE+KOBE+Meriken+Park" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">📷</div><div><div class="cafe-name">BE KOBE 雕字</div><div class="cafe-eng">Meriken Park Photo Spot</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>美利堅公園內<br>
-          <span class="hl">適合：</span>如果去港邊但還沒拍地標照<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=BE+KOBE+Meriken+Park" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">📷</div><div><div class="cafe-name">BE KOBE 雕字</div><div class="cafe-eng">Meriken Park Photo Spot</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>美利堅公園內<br/>
+<span class="hl">適合：</span>如果去港邊但還沒拍地標照<br/>
           很順路，停留時間短也可以完成
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">神戶必吃・好安排的店</div>
-    <div class="cafe-list">
-      <a class="cafe-card" href="https://maps.google.com/?q=Steakland+Kobe-kan" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🥩</div><div><div class="cafe-name">Steakland 神戶館</div><div class="cafe-eng">Steakland Kobe-kan</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>三宮站步行約1–3分<br>
-          <span class="hl">營業：</span>11:00–14:00 / 17:00–22:00<br>
+</div>
+</a>
+</div>
+<hr class="divider"/>
+<div class="section-label">神戶必吃・好安排的店</div>
+<div class="cafe-list">
+<a class="cafe-card" href="https://maps.google.com/?q=Steakland+Kobe-kan" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🥩</div><div><div class="cafe-name">Steakland 神戶館</div><div class="cafe-eng">Steakland Kobe-kan</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>三宮站步行約1–3分<br/>
+<span class="hl">營業：</span>11:00–14:00 / 17:00–22:00<br/>
           想補一餐經典神戶牛，交通最省事的一類
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=老祥記+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🥟</div><div><div class="cafe-name">老祥記</div><div class="cafe-eng">Roushouki</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>元町站步行約5分・南京町內<br>
-          <span class="hl">營業：</span>10:00–18:30（售完提早關）<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=老祥記+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🥟</div><div><div class="cafe-name">老祥記</div><div class="cafe-eng">Roushouki</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>元町站步行約5分・南京町內<br/>
+<span class="hl">營業：</span>10:00–18:30（售完提早關）<br/>
           神戶很有代表性的豬肉包名店，適合排成小吃站
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Kannonya+Motomachi+Honten" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🧀</div><div><div class="cafe-name">觀音屋 元町本店</div><div class="cafe-eng">KANNONYA Motomachi Honten</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>元町站步行約2分<br>
-          <span class="hl">招牌：</span>丹麥起司蛋糕<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=Kannonya+Motomachi+Honten" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🧀</div><div><div class="cafe-name">觀音屋 元町本店</div><div class="cafe-eng">KANNONYA Motomachi Honten</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>元町站步行約2分<br/>
+<span class="hl">招牌：</span>丹麥起司蛋糕<br/>
           適合下午茶或逛街中間插入一個甜點點
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=ISUZU+BAKERY+Honten+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🥐</div><div><div class="cafe-name">ISUZU BAKERY 本店</div><div class="cafe-eng">Isuzu Bakery Honten</div></div></div>
-        <div class="cafe-body">
-          <span class="hl">位置：</span>三宮站步行約8分<br>
-          <span class="hl">營業：</span>08:00–20:00<br>
+</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=ISUZU+BAKERY+Honten+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🥐</div><div><div class="cafe-name">ISUZU BAKERY 本店</div><div class="cafe-eng">Isuzu Bakery Honten</div></div></div>
+<div class="cafe-body">
+<span class="hl">位置：</span>三宮站步行約8分<br/>
+<span class="hl">營業：</span>08:00–20:00<br/>
           很適合補早餐、帶回飯店，神戶在地老牌麵包店
           <div class="map-btn">📍 Google Maps</div>
-        </div>
-      </a>
-    </div>
-  </div>
 </div>
-
-
-
+</a>
+</div>
+</div>
+</div>
 <!-- ══ PAGE 9: MASTER MAP ══ -->
 <div class="page" id="p9">
-  <div class="card" id="card-map">
-    <div class="card-head">
-      <div class="badge">MASTER MAP</div>
-      <div class="card-title">所有地標總地圖</div>
-      <div class="card-sub">Google My Maps 匯入說明＋總整理</div>
-    </div>
+<div class="card" id="card-map">
+<div class="card-head">
+<div class="badge">MASTER MAP</div>
+<div class="card-title">所有地標總地圖</div>
+<div class="card-sub">Google My Maps 匯入說明＋總整理</div>
+</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-icon">🗺️</div>
+<div class="info-body">
+<div class="info-title" style="color:var(--ink)">Google My Maps</div>
+<div class="info-detail" style="color:var(--dim)">
+            已整理所有行程地標＋分類（可直接導航）<br/>
+<div style="margin-top:12px;border-radius:12px;overflow:hidden;">
+<iframe frameborder="0" height="400" src="https://www.google.com/maps/d/embed?mid=1NkuOo7RkXHpAaz7mfdqRwhXdwJrUzl4&amp;ehbc=2E312F" style="border:0;display:block;" width="100%"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="divider"/>
+<div class="section-label">有變動的行程天數</div>
+<div class="cafe-list">
+<a class="cafe-card" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🗓️</div><div><div class="cafe-name">Day 1｜更新版地標</div><div class="cafe-eng">Airport / Ikuta Shrine / VAGUE / Anpanman / Ishidaya</div></div></div>
+<div class="cafe-body">目前有變動的重點在 Day 1：新增生田神社、VAGUE KOBE 午餐，並調整麵包超人博物館時間。建議單獨匯入一個「Day 1 更新版」圖層。</div>
+</a>
+<a class="cafe-card" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">
+<div class="cafe-header"><div class="cafe-icon">🗓️</div><div><div class="cafe-name">Day 2｜更新版地標</div><div class="cafe-eng">Freundlieb / Kitano / Harborland / late-night spots</div></div></div>
+<div class="cafe-body">目前有變動的重點在 Day 2：早午餐改成 FREUNDLIEB、北野異人館順序調整，下午行程改成三宮／元町或 Harborland 分流。建議單獨匯入一個「Day 2 更新版」圖層。</div>
+</a>
+</div>
+<hr class="divider"/>
+<div class="section-label">地標分類總覽</div><div class="map-summary"><div class="map-group"><div class="map-group-title">🏨 住宿・交通</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">艾美麗 Hotel Monte Hermana Kobe Amalie</div><a aria-label="艾美麗 Hotel Monte Hermana Kobe Amalie 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶機場</div><a aria-label="神戶機場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三宮站</div><a aria-label="三宮站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">元町站</div><a aria-label="元町站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 1 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">生田神社</div><a aria-label="生田神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ikuta+Shrine+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">VAGUE KOBE</div><a aria-label="VAGUE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">麵包超人博物館</div><a aria-label="麵包超人博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Concerto 協奏曲號</div><a aria-label="Concerto 協奏曲號 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">石田屋・神戶牛燒肉</div><a aria-label="石田屋・神戶牛燒肉 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%9F%B3%E7%94%B0%E5%B1%8B+%E7%A5%9E%E6%88%B8%E7%89%9B%E7%87%92%E8%82%89+%E4%B8%89%E5%AE%AE" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 2 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">FREUNDLIEB 教堂咖啡廳</div><a aria-label="FREUNDLIEB 教堂咖啡廳 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E3%83%95%E3%83%AD%E3%82%A4%E3%83%B3%E3%83%89%E3%83%AA%E3%83%BC%E3%83%96+Freundlieb+%E7%A5%9E%E6%88%B8%E7%94%9F%E7%94%B0%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野異人館區</div><a aria-label="北野異人館區 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野天滿神社</div><a aria-label="北野天滿神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Tenmangu+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">兵庫縣立美術館</div><a aria-label="兵庫縣立美術館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hyogo+Prefectural+Museum+of+Art" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">竹中大工道具館</div><a aria-label="竹中大工道具館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Takenaka+Carpentry+Tools+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Harborland</div><a aria-label="Harborland 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">摩天輪（umie旁）</div><a aria-label="摩天輪（umie旁） 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">蛸之壺本店</div><a aria-label="蛸之壺本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%9B%B8%E4%B9%8B%E5%A3%BA+%E6%9C%AC%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">唐吉訶德 三宮</div><a aria-label="唐吉訶德 三宮 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗺️ Day 3 路線 A｜港區</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">神戶塔</div><a aria-label="神戶塔 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">美利堅公園・BE KOBE</div><a aria-label="美利堅公園・BE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶海洋博物館</div><a aria-label="神戶海洋博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Maritime+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AQUALIVE 神戶水族館</div><a aria-label="AQUALIVE 神戶水族館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 美利堅公園店</div><a aria-label="星巴克 美利堅公園店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Starbucks+Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">PORT TERRACE</div><a aria-label="PORT TERRACE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=PORT+TERRACE+Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶煉瓦倉庫</div><a aria-label="神戶煉瓦倉庫 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Renga+Soko" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ル・パン総本店</div><a aria-label="ル・パン総本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Le+Pan+Kobe+Kitano+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">カフェ モロゾフ umie店</div><a aria-label="カフェ モロゾフ umie店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Cafe+Morozoff+Kobe+Harborland+umie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ICE CREAM UNITED</div><a aria-label="ICE CREAM UNITED 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ICE+CREAM+UNITED+Kobe+Harborland" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌊 Day 3 路線 B｜須磨</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">須磨海濱公園</div><a aria-label="須磨海濱公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Seaside+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">須磨シーワールド</div><a aria-label="須磨シーワールド 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Sea+World+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">NORTHSHORE Suma</div><a aria-label="NORTHSHORE Suma 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=NORTHSHORE+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">sweets cafe Riche</div><a aria-label="sweets cafe Riche 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=sweets+cafe+Riche+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">YURT CAFE &amp; BBQ PARK</div><a aria-label="YURT CAFE &amp; BBQ PARK 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=YURT+CAFE+BBQ+PARK+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Tooth Tooth シーサイドカフェ</div><a aria-label="Tooth Tooth シーサイドカフェ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Patisserie+Tooth+Tooth+Seaside+Cafe+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌉 Day 3 路線 C｜舞子</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">舞子公園</div><a aria-label="舞子公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Maiko+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">明石海峽大橋</div><a aria-label="明石海峽大橋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Akashi+Kaikyo+Bridge" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">孫中山紀念館</div><a aria-label="孫中山紀念館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sun+Yat-sen+Memorial+Hall+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AWAWA Cafe</div><a aria-label="AWAWA Cafe 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AWAWA+Cafe+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三井 Outlet Marine Pia 神戶</div><a aria-label="三井 Outlet Marine Pia 神戶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MITSUI+OUTLET+PARK+Marine+Pia+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🍰 Day 3 路線 D｜芦屋</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">Daniel 本店</div><a aria-label="Daniel 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">芦屋川河岸散步</div><a aria-label="芦屋川河岸散步 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ashiya+River+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BIGOT 法式麵包</div><a aria-label="BIGOT 法式麵包 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BIGOT+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">café BradipO</div><a aria-label="café BradipO 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=cafe+BradipO+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">テアモ</div><a aria-label="テアモ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Teamo+Cafe+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Accesoir</div><a aria-label="Accesoir 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Accesoir+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ラポルテ芦屋</div><a aria-label="ラポルテ芦屋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Laporte+Ashiya+Shopping" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">☕ 咖啡廳</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">西村咖啡 中山手本館</div><a aria-label="西村咖啡 中山手本館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E4%B8%AD%E5%B1%B1%E6%89%8B%E6%9C%AC%E9%A4%A8+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">西村咖啡 北野坂店</div><a aria-label="西村咖啡 北野坂店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E5%8C%97%E9%87%8E%E5%9D%82%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 北野異人館店</div><a aria-label="星巴克 北野異人館店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E6%98%9F%E5%B7%B4%E5%85%8B+%E5%8C%97%E9%87%8E%E7%89%A9%E8%AA%9E%E9%A4%A8+%E7%A5%9E%E6%88%B8+Starbucks" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Kitano Moore House Café</div><a aria-label="Kitano Moore House Café 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+%E7%A5%9E%E6%88%B8%E5%8C%97%E9%87%8E" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">KOBE EVIAN COFFEE</div><a aria-label="KOBE EVIAN COFFEE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+%E5%85%83%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">MOTOMACHI 喫茶</div><a aria-label="MOTOMACHI 喫茶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MOTOMACHI%E5%96%AB%E8%8C%B6+%E7%A5%9E%E6%88%B8%E5%85%83%E7%94%BA" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">⭐ 補充清單</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">南京町</div><a aria-label="南京町 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">布引香草園＋纜車</div><a aria-label="布引香草園＋纜車 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Nunobiki+Herb+Gardens+%26+Ropeway" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">相樂園</div><a aria-label="相樂園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sorakuen+Garden+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BE KOBE 雕字</div><a aria-label="BE KOBE 雕字 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BE+KOBE+Meriken+Park" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Steakland 神戶館</div><a aria-label="Steakland 神戶館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Steakland+Kobe-kan" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">老祥記</div><a aria-label="老祥記 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%80%81%E7%A5%A5%E8%A8%98+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">觀音屋 元町本店</div><a aria-label="觀音屋 元町本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kannonya+Motomachi+Honten" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ISUZU BAKERY 本店</div><a aria-label="ISUZU BAKERY 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ISUZU+BAKERY+Honten+Kobe" target="_blank">↗</a></div></div></div></div>
 
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-icon">🗺️</div>
-        <div class="info-body">
-          <div class="info-title" style="color:var(--ink)">Google My Maps</div>
-          <div class="info-detail" style="color:var(--dim)">
-            已整理所有行程地標＋分類（可直接導航）<br>
-            <div style="margin-top:12px;border-radius:12px;overflow:hidden;">
-              <iframe src="https://www.google.com/maps/d/embed?mid=1NkuOo7RkXHpAaz7mfdqRwhXdwJrUzl4&ehbc=2E312F" width="100%" height="400" frameborder="0" style="border:0;display:block;"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">地標分類總覽</div>
-    <div class="cafe-list">
-      <a class="cafe-card" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🏨</div><div><div class="cafe-name">住宿・交通</div><div class="cafe-eng">Hotel / Airport / Stations</div></div></div>
-        <div class="cafe-body">飯店、神戶機場、三宮站、元町站</div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">🗓️</div><div><div class="cafe-name">Day 1–Day 4 已排行程</div><div class="cafe-eng">Main itinerary landmarks</div></div></div>
-        <div class="cafe-body">已將行程內主要景點、餐廳、港區、可麗露行程等整理進 CSV。</div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">☕</div><div><div class="cafe-name">咖啡廳清單</div><div class="cafe-eng">Cafe layer</div></div></div>
-        <div class="cafe-body">西村咖啡、FREUNDLIEB、星巴克北野異人館、VAGUE KOBE 等。</div>
-      </a>
-
-      <a class="cafe-card" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">
-        <div class="cafe-header"><div class="cafe-icon">⭐</div><div><div class="cafe-name">補充清單</div><div class="cafe-eng">Extra layer</div></div></div>
-        <div class="cafe-body">南京町、布引香草園、BE KOBE、Steakland、老祥記、觀音屋等。</div>
-      </a>
-    </div>
-
-    <hr class="divider">
-    <div class="section-label">Google My Maps 匯入方式</div>
-    <div class="info-block">
-      <div class="info-row cream-bg">
-        <div class="info-body">
-          <div class="info-detail" style="color:var(--dim)">
-            1. 打開 <a class="place-link" href="https://www.google.com/mymaps" target="_blank">Google My Maps</a><br>
-            2. 點「建立新地圖」<br>
-            3. 在第一個圖層按「匯入」<br>
-            4. 選我附給你的 CSV 檔<br>
-            5. 位置欄位選 <span class="info-hl" style="color:var(--ink)">Search Query</span><br>
-            6. 標題欄位選 <span class="info-hl" style="color:var(--ink)">Name</span><br>
+<hr class="divider"/>
+<div class="section-label">Google My Maps 匯入方式</div>
+<div class="info-block">
+<div class="info-row cream-bg">
+<div class="info-body">
+<div class="info-detail" style="color:var(--dim)">
+            1. 打開 <a class="place-link" href="https://www.google.com/mymaps" target="_blank">Google My Maps</a><br/>
+            2. 點「建立新地圖」<br/>
+            3. 在第一個圖層按「匯入」<br/>
+            4. 選我附給你的 CSV 檔<br/>
+            5. 位置欄位選 <span class="info-hl" style="color:var(--ink)">Search Query</span><br/>
+            6. 標題欄位選 <span class="info-hl" style="color:var(--ink)">Name</span><br/>
             7. 可依 <span class="info-hl" style="color:var(--ink)">Category</span> 手動分圖層或上色
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-
+</div>
+</div>
+</div>
+</div>
 <!-- DOWNLOAD BAR -->
 <div class="dl-bar">
-  <button class="dl-btn" onclick="downloadAllPages()">PDF</button>
+<button class="dl-btn" onclick="downloadAllPages()">PDF</button>
 </div>
-
-
-
-
-
-
-
-
 <script>
 // ── Page switching ──
 function showPage(id, btn) {
@@ -1776,6 +1709,5 @@ async function downloadAllPages() {
   }
 }
 </script>
-
 </body>
 </html>
