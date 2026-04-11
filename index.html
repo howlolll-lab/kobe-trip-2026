@@ -1678,7 +1678,26 @@ async function downloadAllPages() {
     await new Promise(r => setTimeout(r, 260));
 
     const bodyLinks = collectLinks(bodyWrap);
-    const bodyCanvas = await renderNodeToCanvas(bodyWrap, MOBILE_W, SCALE);
+    // 強制取得正確高度
+    const bodyTotalH = Math.max(
+      bodyWrap.scrollHeight,
+      bodyWrap.offsetHeight,
+      Array.from(bodyWrap.children).reduce((h, c) => h + c.offsetHeight, 0)
+    ) || 15000;
+    const bodyCanvas = await html2canvas(bodyWrap, {
+      scale: SCALE,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#FFFFFF',
+      width: MOBILE_W,
+      height: bodyTotalH,
+      windowWidth: MOBILE_W,
+      windowHeight: bodyTotalH,
+      scrollX: 0,
+      scrollY: 0
+    });
+
+
 
     // Create a single PDF page tall enough for the whole body
     const BODY_H = bodyCanvas.height / SCALE;
