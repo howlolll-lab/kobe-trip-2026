@@ -1555,7 +1555,22 @@ async function renderNodeToCanvas(node, width, scale=2) {
     scrollX: 0,
     scrollY: 0
   });
+async function renderNodeToCanvas(node, width, scale=2) {
+  const height = node.scrollHeight || node.offsetHeight || 10000;
+  return await html2canvas(node, {
+    scale,
+    useCORS: true,
+    logging: false,
+    backgroundColor: '#FFFFFF',
+    width,
+    height,
+    windowWidth: width,
+    windowHeight: height,
+    scrollX: 0,
+    scrollY: 0
+  });
 }
+
 
 function collectLinks(container) {
   const rect = container.getBoundingClientRect();
