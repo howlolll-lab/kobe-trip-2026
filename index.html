@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="zh-TW">
+<!DOCTYPE html><html lang="zh-TW">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -42,616 +40,570 @@ body{
   background:#F0EDE6;
   color:var(--ink);
   min-height:100vh;
-}
-
-/* ── Nav tabs ── */
+}/* ── Nav tabs ── */
 .nav{
-  position:sticky;top:0;z-index:100;
-  background:var(--ink);
-  display:flex;overflow-x:auto;
-  scrollbar-width:none;gap:0;
-  border-bottom:2px solid var(--gold);
+position:sticky;top:0;z-index:100;
+background:var(–ink);
+display:flex;overflow-x:auto;
+scrollbar-width:none;gap:0;
+border-bottom:2px solid var(–gold);
 }
 .nav::-webkit-scrollbar{display:none}
 .nav-btn{
-  flex-shrink:0;
-  padding:12px 18px;
-  font-size:13px;font-weight:500;
-  color:rgba(245,240,232,0.5);
-  border:none;background:transparent;cursor:pointer;
-  letter-spacing:1px;white-space:nowrap;
-  transition:color .2s,border-bottom .2s;
-  border-bottom:2px solid transparent;
-  margin-bottom:-2px;
+flex-shrink:0;
+padding:12px 18px;
+font-size:13px;font-weight:500;
+color:rgba(245,240,232,0.5);
+border:none;background:transparent;cursor:pointer;
+letter-spacing:1px;white-space:nowrap;
+transition:color .2s,border-bottom .2s;
+border-bottom:2px solid transparent;
+margin-bottom:-2px;
 }
-.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
-.nav-btn:hover{color:var(--cream)}
-
+.nav-btn.active{color:var(–gold);border-bottom-color:var(–gold)}
+.nav-btn:hover{color:var(–cream)}
 /* ── Pages ── */
 .page{display:none;padding:20px;width:100%;max-width:1200px;margin:0 auto}
 .page.active{display:block}
-
 /* ── Card (the printable unit) ── */
 .card{
-  background:var(--cream);
-  border-radius:var(--r);
-  overflow:hidden;
-  margin-bottom:16px;
-  position:relative;
+background:var(–cream);
+border-radius:var(–r);
+overflow:hidden;
+margin-bottom:16px;
+position:relative;
 }
-.card.dark{background:var(--ink);color:var(--cream)}
-
+.card.dark{background:var(–ink);color:var(–cream)}
 /* ── Card header ── */
 .card-head{
-  padding:20px 22px 14px;
-  border-bottom:1px solid rgba(0,0,0,0.07);
+padding:20px 22px 14px;
+border-bottom:1px solid rgba(0,0,0,0.07);
 }
 .card.dark .card-head{border-bottom-color:rgba(255,255,255,0.07)}
 .badge{
-  display:inline-block;
-  background:var(--ink);color:var(--gold);
-  font-size:11px;font-weight:700;letter-spacing:4px;
-  padding:5px 14px;border-radius:4px;
-  margin-bottom:10px;
+display:inline-block;
+background:var(–ink);color:var(–gold);
+font-size:11px;font-weight:700;letter-spacing:4px;
+padding:5px 14px;border-radius:4px;
+margin-bottom:10px;
 }
-.card.dark .badge{background:var(--ink3)}
+.card.dark .badge{background:var(–ink3)}
 .card-title{
-  font-family:'Noto Serif TC',serif;
-  font-size:28px;font-weight:700;
-  color:var(--ink);line-height:1.1;
+font-family:‘Noto Serif TC’,serif;
+font-size:28px;font-weight:700;
+color:var(–ink);line-height:1.1;
 }
-.card.dark .card-title{color:var(--cream)}
-.card-sub{font-size:13px;color:var(--dim);margin-top:4px;margin-bottom:10px}
-
+.card.dark .card-title{color:var(–cream)}
+.card-sub{font-size:13px;color:var(–dim);margin-top:4px;margin-bottom:10px}
 /* ── Timeline ── */
 .tl{padding:16px 22px;position:relative}
 .tl::before{
-  content:'';position:absolute;
-  left:78px;top:16px;bottom:16px;
-  width:2px;background:#DDD8CE;
+content:’’;position:absolute;
+left:78px;top:16px;bottom:16px;
+width:2px;background:#DDD8CE;
 }
-.card.dark .tl::before{background:var(--ink3)}
+.card.dark .tl::before{background:var(–ink3)}
 .tl-row{display:flex;align-items:flex-start;padding:9px 0;position:relative}
 .tl-time{
-  width:56px;text-align:right;
-  font-size:12px;color:var(--dim);
-  padding-top:4px;flex-shrink:0;
-  letter-spacing:0.3px;line-height:1.3;
+width:56px;text-align:right;
+font-size:12px;color:var(–dim);
+padding-top:4px;flex-shrink:0;
+letter-spacing:0.3px;line-height:1.3;
 }
-.card.dark .tl-time{color:var(--dim2)}
+.card.dark .tl-time{color:var(–dim2)}
 .tl-dw{
-  width:22px;display:flex;justify-content:center;
-  flex-shrink:0;padding-top:5px;
-  position:relative;z-index:1;
+width:22px;display:flex;justify-content:center;
+flex-shrink:0;padding-top:5px;
+position:relative;z-index:1;
 }
 .tl-dot{width:11px;height:11px;border-radius:50%;background:#CCC5B0}
-.tl-dot.gold{background:var(--gold)}
-.tl-dot.red{background:var(--red)}
+.tl-dot.gold{background:var(–gold)}
+.tl-dot.red{background:var(–red)}
 .tl-dot.gray{background:#CCC5B0}
-.card.dark .tl-dot{background:var(--ink3)}
-.card.dark .tl-dot.gold{background:var(--gold)}
-.card.dark .tl-dot.red{background:var(--red)}
+.card.dark .tl-dot{background:var(–ink3)}
+.card.dark .tl-dot.gold{background:var(–gold)}
+.card.dark .tl-dot.red{background:var(–red)}
 .tl-con{flex:1;padding-left:10px}
-.tl-main{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
-.card.dark .tl-main{color:var(--cream)}
-.tl-main.red{color:var(--red)}
-.tl-note{font-size:12px;color:var(--dim);margin-top:3px;line-height:1.6}
-.card.dark .tl-note{color:var(--dim2)}
+.tl-main{font-size:15px;font-weight:700;color:var(–ink);line-height:1.3}
+.card.dark .tl-main{color:var(–cream)}
+.tl-main.red{color:var(–red)}
+.tl-note{font-size:12px;color:var(–dim);margin-top:3px;line-height:1.6}
+.card.dark .tl-note{color:var(–dim2)}
 .tl-tag{
-  display:inline-block;font-size:11px;font-weight:700;
-  padding:2px 10px;border-radius:4px;margin-top:4px;
+display:inline-block;font-size:11px;font-weight:700;
+padding:2px 10px;border-radius:4px;margin-top:4px;
 }
-.tl-tag.gold{background:var(--ink);color:var(--gold)}
-.tl-tag.warn{background:var(--red-dk);color:var(--red-tx)}
-.tl-tag.info{background:var(--cream2);color:var(--ink)}
-.card.dark .tl-tag.info{background:var(--ink3);color:var(--gold)}
-
+.tl-tag.gold{background:var(–ink);color:var(–gold)}
+.tl-tag.warn{background:var(–red-dk);color:var(–red-tx)}
+.tl-tag.info{background:var(–cream2);color:var(–ink)}
+.card.dark .tl-tag.info{background:var(–ink3);color:var(–gold)}
 /* ── Option split ── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px 16px}
 .opt{border-radius:10px;padding:12px 14px}
-.opt.a{background:var(--cream2);border:1.5px solid #CCC5B0}
+.opt.a{background:var(–cream2);border:1.5px solid #CCC5B0}
 .opt.b{background:#F0EDE8;border:1.5px dashed #CCC5B0}
 .opt.c{background:#EEF2F0;border:1.5px dashed #AABFB4}
-.card.dark .opt.a{background:var(--ink2);border-color:var(--ink3)}
-.card.dark .opt.b{background:var(--ink2);border-color:var(--ink3)}
+.card.dark .opt.a{background:var(–ink2);border-color:var(–ink3)}
+.card.dark .opt.b{background:var(–ink2);border-color:var(–ink3)}
 .opt-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.opt-label.a{color:var(--gold)}
-.opt-label.b{color:var(--dim)}
+.opt-label.a{color:var(–gold)}
+.opt-label.b{color:var(–dim)}
 .opt-label.c{color:#4A8C70}
 .opt-item{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px}
 .opt-bullet{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
-.opt-bullet.a{background:var(--gold)}
+.opt-bullet.a{background:var(–gold)}
 .opt-bullet.b{background:#BBB}
 .opt-bullet.c{background:#4A8C70}
-.opt-txt{font-size:12px;color:var(--ink);line-height:1.5}
-.card.dark .opt-txt{color:var(--cream)}
-.opt-sub{font-size:11px;color:var(--dim);display:block;margin-top:1px}
-.card.dark .opt-sub{color:var(--dim2)}
-
+.opt-txt{font-size:12px;color:var(–ink);line-height:1.5}
+.card.dark .opt-txt{color:var(–cream)}
+.opt-sub{font-size:11px;color:var(–dim);display:block;margin-top:1px}
+.card.dark .opt-sub{color:var(–dim2)}
 /* ── Info blocks ── */
 .info-block{padding:12px 22px}
 .info-row{
-  display:flex;gap:12px;align-items:flex-start;
-  padding:10px 14px;border-radius:10px;margin-bottom:8px;
+display:flex;gap:12px;align-items:flex-start;
+padding:10px 14px;border-radius:10px;margin-bottom:8px;
 }
-.info-row.dark-bg{background:var(--ink2)}
-.info-row.cream-bg{background:var(--cream2)}
-.info-row.red-bg{background:var(--red-dk)}
+.info-row.dark-bg{background:var(–ink2)}
+.info-row.cream-bg{background:var(–cream2)}
+.info-row.red-bg{background:var(–red-dk)}
 .info-icon{font-size:18px;flex-shrink:0;margin-top:1px}
 .info-body{flex:1}
-.info-title{font-size:14px;font-weight:700;color:var(--cream);margin-bottom:3px}
-.info-row.cream-bg .info-title{color:var(--ink)}
-.info-detail{font-size:12px;color:var(--dim2);line-height:1.6}
-.info-row.cream-bg .info-detail{color:var(--dim)}
-.info-hl{color:var(--gold);font-weight:700}
-.info-row.cream-bg .info-hl{color:var(--ink);font-weight:700}
-.info-row.red-bg .info-detail{color:var(--red-tx)}
-
+.info-title{font-size:14px;font-weight:700;color:var(–cream);margin-bottom:3px}
+.info-row.cream-bg .info-title{color:var(–ink)}
+.info-detail{font-size:12px;color:var(–dim2);line-height:1.6}
+.info-row.cream-bg .info-detail{color:var(–dim)}
+.info-hl{color:var(–gold);font-weight:700}
+.info-row.cream-bg .info-hl{color:var(–ink);font-weight:700}
+.info-row.red-bg .info-detail{color:var(–red-tx)}
 /* ── Divider ── */
 .divider{border:none;border-top:1px solid rgba(0,0,0,0.08);margin:12px 22px 16px}
 .card.dark .divider{border-top-color:rgba(255,255,255,0.07)}
 .section-label{
-  font-size:10px;font-weight:700;letter-spacing:3px;
-  text-transform:uppercase;color:var(--dim);
-  padding:10px 22px 4px;
+font-size:10px;font-weight:700;letter-spacing:3px;
+text-transform:uppercase;color:var(–dim);
+padding:10px 22px 4px;
 }
-.card.dark .section-label{color:var(--dim2)}
-
+.card.dark .section-label{color:var(–dim2)}
 /* ── Boarding pass ── */
-.bp{background:var(--cream2);border-radius:10px;overflow:hidden;margin:0 12px 10px;width:calc(100% - 24px)}
+.bp{background:var(–cream2);border-radius:10px;overflow:hidden;margin:0 12px 10px;width:calc(100% - 24px)}
 .bp-body{display:flex;align-items:center;padding:16px 18px}
 .bp-city{text-align:center;min-width:80px}
-.bp-code{font-family:'Noto Serif TC',serif;font-size:30px;font-weight:700;color:var(--ink);letter-spacing:2px;line-height:1}
-.bp-city-name{font-size:10px;color:var(--dim);margin-top:3px}
+.bp-code{font-family:‘Noto Serif TC’,serif;font-size:30px;font-weight:700;color:var(–ink);letter-spacing:2px;line-height:1}
+.bp-city-name{font-size:10px;color:var(–dim);margin-top:3px}
 .bp-mid{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 10px}
 .bp-line{width:100%;height:1.5px;background:#CCC5B0;position:relative}
-.bp-line::after{content:'▶';position:absolute;right:-3px;top:-9px;font-size:10px;color:#CCC5B0}
-.bp-dur{font-size:10px;color:var(--dim);letter-spacing:0.5px}
+.bp-line::after{content:‘▶’;position:absolute;right:-3px;top:-9px;font-size:10px;color:#CCC5B0}
+.bp-dur{font-size:10px;color:var(–dim);letter-spacing:0.5px}
 .bp-stub{width:80px;border-left:2px dashed #CCC5B0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:0 8px;flex-shrink:0}
-.bp-sl{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
-.bp-sv{font-size:13px;color:var(--ink);font-weight:700}
-.bp-strip{background:var(--ink2);display:flex;padding:8px 18px;gap:20px}
+.bp-sl{font-size:9px;color:var(–dim);letter-spacing:1px;text-transform:uppercase}
+.bp-sv{font-size:13px;color:var(–ink);font-weight:700}
+.bp-strip{background:var(–ink2);display:flex;padding:8px 18px;gap:20px}
 .bp-field{display:flex;flex-direction:column;gap:2px}
-.bp-fl{font-size:9px;color:var(--dim2);letter-spacing:1px;text-transform:uppercase}
-.bp-fv{font-size:12px;color:var(--gold);font-weight:700}
+.bp-fl{font-size:9px;color:var(–dim2);letter-spacing:1px;text-transform:uppercase}
+.bp-fv{font-size:12px;color:var(–gold);font-weight:700}
 .bp-tear{border-top:1.5px dashed #CCC5B0;margin:0 18px}
 .bp-foot{display:flex;justify-content:space-between;align-items:center;padding:7px 18px}
-.bp-ft{font-size:10px;color:var(--dim)}
+.bp-ft{font-size:10px;color:var(–dim)}
 .bp-bc{display:flex;gap:2px;align-items:flex-end;height:18px}
-.bp-bar{background:var(--dim);width:2px}
-
+.bp-bar{background:var(–dim);width:2px}
 /* ── Cafe cards ── */
 .cafe-list{padding:0 22px 30px;display:flex;flex-direction:column;gap:10px}
-.cafe-card{background:var(--cream2);border-radius:10px;padding:14px 16px;cursor:pointer;text-decoration:none;display:block;transition:background .15s}
+.cafe-card{background:var(–cream2);border-radius:10px;padding:14px 16px;cursor:pointer;text-decoration:none;display:block;transition:background .15s}
 .cafe-card:hover{background:#E5DFD0}
-.card.dark .cafe-card{background:var(--ink2)}
-.card.dark .cafe-card:hover{background:var(--ink3)}
+.card.dark .cafe-card{background:var(–ink2)}
+.card.dark .cafe-card:hover{background:var(–ink3)}
 .cafe-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
 .cafe-icon{font-size:20px;flex-shrink:0}
-.cafe-name{font-size:14px;font-weight:700;color:var(--ink)}
-.card.dark .cafe-name{color:var(--cream)}
-.cafe-eng{font-size:11px;color:var(--dim);margin-top:1px}
-.card.dark .cafe-eng{color:var(--dim2)}
-.cafe-body{font-size:12px;color:var(--dim);line-height:1.6}
-.card.dark .cafe-body{color:var(--dim2)}
-.cafe-body .hl{color:var(--gold);font-weight:700}
+.cafe-name{font-size:14px;font-weight:700;color:var(–ink)}
+.card.dark .cafe-name{color:var(–cream)}
+.cafe-eng{font-size:11px;color:var(–dim);margin-top:1px}
+.card.dark .cafe-eng{color:var(–dim2)}
+.cafe-body{font-size:12px;color:var(–dim);line-height:1.6}
+.card.dark .cafe-body{color:var(–dim2)}
+.cafe-body .hl{color:var(–gold);font-weight:700}
 .cafe-card .map-btn{
-  display:inline-block;margin-top:6px;
-  font-size:11px;font-weight:700;
-  background:var(--ink);color:var(--gold);
-  padding:3px 10px;border-radius:4px;
-  text-decoration:none;
+display:inline-block;margin-top:6px;
+font-size:11px;font-weight:700;
+background:var(–ink);color:var(–gold);
+padding:3px 10px;border-radius:4px;
+text-decoration:none;
 }
-.card.dark .cafe-card .map-btn{background:var(--gold);color:var(--ink)}
-
-
+.card.dark .cafe-card .map-btn{background:var(–gold);color:var(–ink)}
 .place-link{
-  color:inherit;text-decoration:none;
-  border-bottom:1px dotted rgba(196,150,90,0.7);
-  padding-bottom:1px;
-  cursor:pointer;
+color:inherit;text-decoration:none;
+border-bottom:1px dotted rgba(196,150,90,0.7);
+padding-bottom:1px;
+cursor:pointer;
 }
-.place-link:hover{color:var(--gold)}
-.card.dark .place-link{color:var(--cream);border-bottom-color:rgba(196,150,90,0.6)}
-.card.dark .place-link:hover{color:var(--gold)}
-
+.place-link:hover{color:var(–gold)}
+.card.dark .place-link{color:var(–cream);border-bottom-color:rgba(196,150,90,0.6)}
+.card.dark .place-link:hover{color:var(–gold)}
 /* ── Cost table ── */
 .cost-item{
-  display:flex;align-items:flex-start;
-  padding:12px 22px;border-bottom:1px solid rgba(255,255,255,0.06);
+display:flex;align-items:flex-start;
+padding:12px 22px;border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .cost-item:last-child{border-bottom:none}
 .ci-icon{font-size:18px;min-width:28px;margin-top:1px}
 .ci-body{flex:1}
-.ci-name{font-size:14px;font-weight:700;color:var(--cream)}
-.ci-sub{font-size:11px;color:var(--dim2);margin-top:2px}
+.ci-name{font-size:14px;font-weight:700;color:var(–cream)}
+.ci-sub{font-size:11px;color:var(–dim2);margin-top:2px}
 .ci-right{text-align:right;padding-left:10px;flex-shrink:0}
-.ci-amt{font-size:16px;color:var(--gold);font-weight:700}
-.ci-who{font-size:11px;color:var(--dim2);margin-top:2px}
+.ci-amt{font-size:16px;color:var(–gold);font-weight:700}
+.ci-who{font-size:11px;color:var(–dim2);margin-top:2px}
 .person-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 22px 16px}
-.person-card{background:var(--ink2);border:1px solid var(--ink3);border-radius:10px;padding:14px 16px}
-.p-name{font-size:16px;font-weight:700;color:var(--gold);padding-bottom:10px;border-bottom:1px solid var(--ink3);margin-bottom:10px}
+.person-card{background:var(–ink2);border:1px solid var(–ink3);border-radius:10px;padding:14px 16px}
+.p-name{font-size:16px;font-weight:700;color:var(–gold);padding-bottom:10px;border-bottom:1px solid var(–ink3);margin-bottom:10px}
 .p-row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px}
-.p-lbl{color:var(--dim2)}
-.p-val{font-weight:700;color:var(--cream)}
-.p-val.big{font-size:16px;color:var(--red-tx)}
-.p-val.gold{color:var(--gold)}
-.p-divider{border-top:1px solid var(--ink3);margin:6px 0}
-
+.p-lbl{color:var(–dim2)}
+.p-val{font-weight:700;color:var(–cream)}
+.p-val.big{font-size:16px;color:var(–red-tx)}
+.p-val.gold{color:var(–gold)}
+.p-divider{border-top:1px solid var(–ink3);margin:6px 0}
 /* ── Cover (page 1) ── */
 .cover{
-  background:var(--ink);
-  border-radius:var(--r);
-  padding:0;overflow:hidden;
-  position:relative;min-height:420px;
-  display:flex;flex-direction:column;
-  margin-bottom:16px;
+background:var(–ink);
+border-radius:var(–r);
+padding:0;overflow:hidden;
+position:relative;min-height:420px;
+display:flex;flex-direction:column;
+margin-bottom:16px;
 }
 .cover-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(196,150,90,0.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(196,150,90,0.06) 1px,transparent 1px);
-  background-size:40px 40px;
+position:absolute;inset:0;
+background-image:
+linear-gradient(rgba(196,150,90,0.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(196,150,90,0.06) 1px,transparent 1px);
+background-size:40px 40px;
 }
-.cover-top{height:3px;background:var(--gold);position:relative;z-index:1}
+.cover-top{height:3px;background:var(–gold);position:relative;z-index:1}
 .cover-body{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:48px 24px 36px;position:relative;z-index:1;
+flex:1;display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+padding:48px 24px 36px;position:relative;z-index:1;
 }
 .cover-en{
-  font-size:12px;letter-spacing:6px;color:rgba(196,150,90,0.5);
-  text-transform:uppercase;margin-bottom:16px;
+font-size:12px;letter-spacing:6px;color:rgba(196,150,90,0.5);
+text-transform:uppercase;margin-bottom:16px;
 }
 .cover-deco{display:flex;align-items:center;gap:14px;margin-bottom:12px}
 .cover-deco-line{width:48px;height:1px;background:rgba(196,150,90,0.35)}
-.cover-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.cover-diamond{width:5px;height:5px;background:var(–gold);transform:rotate(45deg)}
 .cover-title{
-  font-family:'Noto Serif TC',serif;
-  font-size:clamp(64px,18vw,96px);
-  color:var(--cream);letter-spacing:6px;line-height:1;
-  margin-bottom:12px;
+font-family:‘Noto Serif TC’,serif;
+font-size:clamp(64px,18vw,96px);
+color:var(–cream);letter-spacing:6px;line-height:1;
+margin-bottom:12px;
 }
 .cover-deco2{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .cover-deco2-line{width:48px;height:1px;background:rgba(196,150,90,0.35)}
 .cover-year{
-  font-size:clamp(22px,6vw,32px);color:var(--gold);
-  letter-spacing:8px;font-weight:300;margin-bottom:8px;
+font-size:clamp(22px,6vw,32px);color:var(–gold);
+letter-spacing:8px;font-weight:300;margin-bottom:8px;
 }
 .cover-date{font-size:13px;color:rgba(245,240,232,0.4);letter-spacing:5px}
 .cover-footer{
-  border-top:1px solid rgba(196,150,90,0.2);
-  padding:14px 24px;display:flex;
-  justify-content:space-between;align-items:center;
-  position:relative;z-index:1;
+border-top:1px solid rgba(196,150,90,0.2);
+padding:14px 24px;display:flex;
+justify-content:space-between;align-items:center;
+position:relative;z-index:1;
 }
 .cover-footer-txt{font-size:11px;color:rgba(245,240,232,0.25);letter-spacing:2px;text-transform:uppercase}
-
 /* ── Download button ── */
 .dl-bar{
-  position:fixed;right:14px;bottom:14px;
-  background:transparent;border:none;padding:0;
-  z-index:120;display:block;
+position:fixed;right:14px;bottom:14px;
+background:transparent;border:none;padding:0;
+z-index:120;display:block;
 }
 .dl-btn{
-  width:42px;height:42px;border-radius:50%;
-  border:1px solid rgba(196,150,90,0.28);
-  background:rgba(28,26,22,0.20);
-  backdrop-filter:blur(4px);
-  color:rgba(245,240,232,0.72);
-  font-size:10px;font-weight:700;letter-spacing:1px;
-  cursor:pointer;
-  font-family:'Noto Sans TC',sans-serif;
-  transition:all .18s ease;
-  box-shadow:0 4px 16px rgba(0,0,0,0.10);
+width:42px;height:42px;border-radius:50%;
+border:1px solid rgba(196,150,90,0.28);
+background:rgba(28,26,22,0.20);
+backdrop-filter:blur(4px);
+color:rgba(245,240,232,0.72);
+font-size:10px;font-weight:700;letter-spacing:1px;
+cursor:pointer;
+font-family:‘Noto Sans TC’,sans-serif;
+transition:all .18s ease;
+box-shadow:0 4px 16px rgba(0,0,0,0.10);
 }
 .dl-btn:hover{
-  background:rgba(28,26,22,0.42);
-  color:var(--gold);
-  border-color:rgba(196,150,90,0.45);
+background:rgba(28,26,22,0.42);
+color:var(–gold);
+border-color:rgba(196,150,90,0.45);
 }
 .dl-btn.secondary{display:none}
-
 /* ── Bag grid ── */
 .bag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 22px 16px}
-.bag-item{background:var(--ink2);border-radius:10px;padding:12px 14px}
-.bag-cat{font-size:11px;color:var(--dim2);letter-spacing:1px;margin-bottom:6px}
-.bag-val{font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px}
-.bag-note{font-size:11px;color:var(--dim2);line-height:1.55}
-
+.bag-item{background:var(–ink2);border-radius:10px;padding:12px 14px}
+.bag-cat{font-size:11px;color:var(–dim2);letter-spacing:1px;margin-bottom:6px}
+.bag-val{font-size:14px;font-weight:700;color:var(–cream);margin-bottom:4px}
+.bag-note{font-size:11px;color:var(–dim2);line-height:1.55}
 /* ── Responsive ── */
 @media(max-width:400px){
-  .split{grid-template-columns:1fr}
-  .person-grid{grid-template-columns:1fr}
-  .bag-grid{grid-template-columns:1fr}
+.split{grid-template-columns:1fr}
+.person-grid{grid-template-columns:1fr}
+.bag-grid{grid-template-columns:1fr}
 }
-
 /* ── Print/PDF ── */
 @media print{
-  .nav,.dl-bar{display:none}
-  .page{display:block!important;padding:0;max-width:100%}
-  .card{margin-bottom:0;break-after:page;border-radius:0}
+.nav,.dl-bar{display:none}
+.page{display:block!important;padding:0;max-width:100%}
+.card{margin-bottom:0;break-after:page;border-radius:0}
 }
-
-
 /* ── Layout tuning ── */
 @media (min-width:1024px){
-  .page{
-    max-width:100%;
-    padding:32px 60px;
-  }
+.page{
+max-width:100%;
+padding:32px 60px;
+}
 }
 @media (min-width:1400px){
-  .page{
-    padding:40px 120px;
-  }
+.page{
+padding:40px 120px;
+}
 }
 @media (max-width:768px){
-  .page{
-    padding:14px;
-    max-width:600px;
-  }
+.page{
+padding:14px;
+max-width:600px;
 }
-
+}
 /* ── Cleaner print / PDF ── */
 @media print{
-  @page{
-    size:A4;
-    margin:12mm;
-  }
-  html,body{
-    background:#fff !important;
-  }
-  .nav,.dl-bar{
-    display:none !important;
-  }
-  .page{
-    display:block !important;
-    width:100% !important;
-    max-width:100% !important;
-    padding:0 !important;
-    margin:0 !important;
-  }
-  .card,.cover{
-    margin:0 0 10mm 0 !important;
-    break-inside:avoid;
-    page-break-inside:avoid;
-    break-after:page;
-    border-radius:0 !important;
-    box-shadow:none !important;
-  }
-  .page:last-of-type .card,
-  .page:last-of-type .cover{
-    break-after:auto;
-  }
-  a, .place-link{
-    color:inherit !important;
-    text-decoration:none !important;
-    border-bottom:none !important;
-  }
+@page{
+size:A4;
+margin:12mm;
 }
-
-
+html,body{
+background:#fff !important;
+}
+.nav,.dl-bar{
+display:none !important;
+}
+.page{
+display:block !important;
+width:100% !important;
+max-width:100% !important;
+padding:0 !important;
+margin:0 !important;
+}
+.card,.cover{
+margin:0 0 10mm 0 !important;
+break-inside:avoid;
+page-break-inside:avoid;
+break-after:page;
+border-radius:0 !important;
+box-shadow:none !important;
+}
+.page:last-of-type .card,
+.page:last-of-type .cover{
+break-after:auto;
+}
+a, .place-link{
+color:inherit !important;
+text-decoration:none !important;
+border-bottom:none !important;
+}
+}
 @media (max-width:768px){
-  .bp-body{
-    padding:14px 12px;
-  }
-  .bp-city{
-    min-width:68px;
-  }
-  .bp-code{
-    font-size:24px;
-  }
-  .bp-stub{
-    width:64px;
-    padding:0 6px;
-  }
-  .bp-strip{
-    gap:10px;
-    flex-wrap:wrap;
-    padding:8px 12px;
-  }
-  .bp-field{
-    min-width:calc(33.333% - 7px);
-  }
+.bp-body{
+padding:14px 12px;
 }
-
-
+.bp-city{
+min-width:68px;
+}
+.bp-code{
+font-size:24px;
+}
+.bp-stub{
+width:64px;
+padding:0 6px;
+}
+.bp-strip{
+gap:10px;
+flex-wrap:wrap;
+padding:8px 12px;
+}
+.bp-field{
+min-width:calc(33.333% - 7px);
+}
+}
 #card-cafe .cafe-list{
-  padding-top:16px;
+padding-top:16px;
 }
-
-
 /* ── Fullscreen cover ── */
 #p0{
-  max-width:100% !important;
-  padding:0 !important;
+max-width:100% !important;
+padding:0 !important;
 }
 #p0 .cover{
-  min-height:100vh;
-  border-radius:0;
-  margin-bottom:0;
+min-height:100vh;
+border-radius:0;
+margin-bottom:0;
 }
 @supports (height: 100dvh){
-  #p0 .cover{
-    min-height:100dvh;
-  }
+#p0 .cover{
+min-height:100dvh;
 }
-
+}
 /* ── PDF export as mobile full-page ── */
 body.pdf-export{
-  background:#fff !important;
+background:#fff !important;
 }
 body.pdf-export .nav,
 body.pdf-export .dl-bar{
-  display:none !important;
+display:none !important;
 }
 body.pdf-export .page{
-  display:none !important;
-  padding:0 !important;
-  margin:0 auto !important;
-  width:390px !important;
-  max-width:390px !important;
-  min-width:390px !important;
+display:none !important;
+padding:0 !important;
+margin:0 auto !important;
+width:390px !important;
+max-width:390px !important;
+min-width:390px !important;
 }
 body.pdf-export .page.exporting{
-  display:block !important;
+display:block !important;
 }
 body.pdf-export .card,
 body.pdf-export .cover{
-  width:390px !important;
-  max-width:390px !important;
-  min-width:390px !important;
-  margin:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
+width:390px !important;
+max-width:390px !important;
+min-width:390px !important;
+margin:0 !important;
+border-radius:0 !important;
+box-shadow:none !important;
 }
 body.pdf-export #p0 .cover{
-  min-height:844px !important;
+min-height:844px !important;
 }
 body.pdf-export #p1 .card{
-  min-height:844px !important;
+min-height:844px !important;
 }
 body.pdf-export .card.dark,
 body.pdf-export .card{
-  background-clip:padding-box;
+background-clip:padding-box;
 }
-
-
 /* ── Fullscreen flight page ── */
 #p1{
-  max-width:100% !important;
-  padding:0 !important;
+max-width:100% !important;
+padding:0 !important;
 }
 #p1 .card{
-  border-radius:0;
-  margin-bottom:0;
+border-radius:0;
+margin-bottom:0;
 }
-
-
 /* ── Fullscreen cost page ── */
 #p6{
-  max-width:100% !important;
-  padding:0 !important;
+max-width:100% !important;
+padding:0 !important;
 }
 #p6 .card{
-  border-radius:0;
-  margin-bottom:0;
+border-radius:0;
+margin-bottom:0;
 }
-
-
-/* ── Day 2 afternoon options mobile fix ── */
+/* ── Day 2 afternoon options mobile fix ── /
 @media (max-width:768px){
-  #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
-    grid-template-columns:1fr !important;
-  }
+#p3 .split[style=“grid-template-columns:1fr 1fr 1fr”]{
+grid-template-columns:1fr !important;
 }
-
-
+}
 /* ── Mobile fixes ── */
 @media (max-width:768px){
-  #p0{
-    height:100vh;
-    overflow:hidden;
-    padding:0 !important;
-  }
-  @supports (height:100dvh){
-    #p0{height:100dvh;}
-  }
-  #p0 .cover{
-    min-height:100vh !important;
-    margin:0 !important;
-  }
-  @supports (height:100dvh){
-    #p0 .cover{min-height:100dvh !important;}
-  }
-
-  .bp{
-    width:calc(100% - 16px) !important;
-    margin:0 8px 10px !important;
-  }
-  .bp-body{
-    padding:14px 14px !important;
-  }
-  .bp-city{
-    min-width:78px !important;
-  }
-  .bp-stub{
-    width:78px !important;
-  }
-
-  #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
-    grid-template-columns:1fr !important;
-  }
+#p0{
+height:100vh;
+overflow:hidden;
+padding:0 !important;
+}
+@supports (height:100dvh){
+#p0{height:100dvh;}
+}
+#p0 .cover{
+min-height:100vh !important;
+margin:0 !important;
+}
+@supports (height:100dvh){
+#p0 .cover{min-height:100dvh !important;}
+}
+.bp{
+width:calc(100% - 16px) !important;
+margin:0 8px 10px !important;
+}
+.bp-body{
+padding:14px 14px !important;
+}
+.bp-city{
+min-width:78px !important;
+}
+.bp-stub{
+width:78px !important;
+}
+#p3 .split[style*=“grid-template-columns:1fr 1fr 1fr”]{
+grid-template-columns:1fr !important;
+}
 }
 #card-day1 .opt .opt-item:last-child{margin-bottom:0;}
 #card-day1 .choice-info{
-  margin-top:8px;
-  display:inline-block;
-  font-size:11px;
-  font-weight:700;
-  background:var(--ink);
-  color:var(--gold);
-  padding:4px 10px;
-  border-radius:4px;
-  text-decoration:none;
+margin-top:8px;
+display:inline-block;
+font-size:11px;
+font-weight:700;
+background:var(–ink);
+color:var(–gold);
+padding:4px 10px;
+border-radius:4px;
+text-decoration:none;
 }
 #card-day1 .choice-info:hover{opacity:.9}
-
-
-#pdf-export-wrap #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"],
-body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 1fr"]{
-  grid-template-columns:1fr !important;
+#pdf-export-wrap #p3 .split[style*=“grid-template-columns:1fr 1fr 1fr”],
+body [style*=“left: -99999px”] #p3 .split[style*=“grid-template-columns:1fr 1fr 1fr”]{
+grid-template-columns:1fr !important;
 }
-
-
 /* ── Mobile cover lock ── */
 @media (max-width:768px){
-  body.cover-lock{
-    height:100vh;
-    overflow:hidden;
-  }
-  @supports (height:100dvh){
-    body.cover-lock{
-      height:100dvh;
-    }
-  }
-  #p0{
-    height:100vh !important;
-    overflow:hidden !important;
-  }
-  @supports (height:100dvh){
-    #p0{
-      height:100dvh !important;
-    }
-  }
-  #p0 .cover{
-    height:100vh !important;
-    min-height:100vh !important;
-    overflow:hidden !important;
-  }
-  @supports (height:100dvh){
-    #p0 .cover{
-      height:100dvh !important;
-      min-height:100dvh !important;
-    }
-  }
+body.cover-lock{
+height:100vh;
+overflow:hidden;
 }
-
-
+@supports (height:100dvh){
+body.cover-lock{
+height:100dvh;
+}
+}
+#p0{
+height:100vh !important;
+overflow:hidden !important;
+}
+@supports (height:100dvh){
+#p0{
+height:100dvh !important;
+}
+}
+#p0 .cover{
+height:100vh !important;
+min-height:100vh !important;
+overflow:hidden !important;
+}
+@supports (height:100dvh){
+#p0 .cover{
+height:100dvh !important;
+min-height:100dvh !important;
+}
+}
+}
 @media (min-width:1024px){
-  .page{min-height:100vh;}
+.page{min-height:100vh;}
 }
-
 .map-summary{padding:0 22px 30px;display:flex;flex-direction:column;gap:14px;}
-.map-group{background:var(--cream2);border-radius:10px;padding:14px 16px;}
-.map-group-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.map-group{background:var(–cream2);border-radius:10px;padding:14px 16px;}
+.map-group-title{font-size:14px;font-weight:700;color:var(–ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .map-links{display:flex;flex-direction:column;gap:8px;}
 .map-link-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid rgba(0,0,0,0.06);}
 .map-link-row:first-child{border-top:none;padding-top:0;}
-.map-link-name{font-size:12px;color:var(--ink);line-height:1.5;}
-.map-icon-link{flex-shrink:0;width:24px;height:24px;border-radius:999px;background:var(--ink);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:700;}
+.map-link-name{font-size:12px;color:var(–ink);line-height:1.5;}
+.map-icon-link{flex-shrink:0;width:24px;height:24px;border-radius:999px;background:var(–ink);color:var(–gold);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:12px;font-weight:700;}
 .map-icon-link:hover{opacity:.9;}
 </style>
 </head>
@@ -839,12 +791,14 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
           泡菜 / キムチ<br/>
           小黃瓜漬 / きゅうり漬け
 
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">神戶牛 燒肉 神戸牛</div>
-          神戶牛里脊（菲力）/ 神戸牛ヒレ<br/>
-          神戶牛肋眼 / 神戸牛リブロース<br/>
-          神戶牛上等五花 / 神戸牛上カルビ<br/>
-          神戶牛牛舌 / 神戸牛タン<br/>
-          神戶牛特選稀少部位 / 神戸牛希少部位<br/>
+      <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">神戶牛 燒肉 神戸牛</div>
+      神戶牛里脊（菲力）/ 神戸牛ヒレ<br/>
+      神戶牛肋眼 / 神戸牛リブロース<br/>
+      神戶牛上等五花 / 神戸牛上カルビ<br/>
+      神戶牛牛舌 / 神戸牛タン<br/>
+      神戶牛特選稀少部位 / 神戸牛希少部位<br/>
+
+
 <span style="color:var(--dim);font-size:11px">※ 稀少部位依當日進貨而定</span>
 <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">一般燒肉 和牛</div>
           黑毛和牛上等五花 / 黒毛和牛上カルビ<br/>
@@ -852,19 +806,21 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
           牛腸 / ホルモン<br/>
           豬五花 / 豚バラ
 
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">蔬菜・配菜</div>
-          包燒蔬菜拼盤 / 焼き野菜盛り合わせ<br/>
-          石鍋拌飯 / 石焼ビビンバ<br/>
-          冷麵 / 冷麺<br/>
-          白飯 / ライス
+      <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">蔬菜・配菜</div>
+      包燒蔬菜拼盤 / 焼き野菜盛り合わせ<br/>
+      石鍋拌飯 / 石焼ビビンバ<br/>
+      冷麵 / 冷麺<br/>
+      白飯 / ライス
 
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">甜點</div>
-          抹茶冰淇淋 / 抹茶アイス<br/>
-          香草冰淇淋 / バニラアイス
+      <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">甜點</div>
+      抹茶冰淇淋 / 抹茶アイス<br/>
+      香草冰淇淋 / バニラアイス
 
-          <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">飲料</div>
-          生啤酒 / 生ビール · 燒酎 / 焼酎<br/>
-          無酒精飲料 / ソフトドリンク<br/>
+      <div style="font-weight:700;color:var(--gold);margin:8px 0 2px">飲料</div>
+      生啤酒 / 生ビール · 燒酎 / 焼酎<br/>
+      無酒精飲料 / ソフトドリンク<br/>
+
+
 <span style="color:var(--red);font-size:11px">※ 含稅・服務費另計。菜單內容依時節調整</span>
 </div>
 </div></div>
@@ -1503,9 +1459,7 @@ body [style*="left: -99999px"] #p3 .split[style*="grid-template-columns:1fr 1fr 
 </a>
 </div>
 <hr class="divider"/>
-<div class="section-label">地標分類總覽</div><div class="map-summary"><div class="map-group"><div class="map-group-title">🏨 住宿・交通</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">艾美麗 Hotel Monte Hermana Kobe Amalie</div><a aria-label="艾美麗 Hotel Monte Hermana Kobe Amalie 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶機場</div><a aria-label="神戶機場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三宮站</div><a aria-label="三宮站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">元町站</div><a aria-label="元町站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 1 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">生田神社</div><a aria-label="生田神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ikuta+Shrine+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">VAGUE KOBE</div><a aria-label="VAGUE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">麵包超人博物館</div><a aria-label="麵包超人博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Concerto 協奏曲號</div><a aria-label="Concerto 協奏曲號 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">石田屋・神戶牛燒肉</div><a aria-label="石田屋・神戶牛燒肉 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%9F%B3%E7%94%B0%E5%B1%8B+%E7%A5%9E%E6%88%B8%E7%89%9B%E7%87%92%E8%82%89+%E4%B8%89%E5%AE%AE" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 2 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">FREUNDLIEB 教堂咖啡廳</div><a aria-label="FREUNDLIEB 教堂咖啡廳 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E3%83%95%E3%83%AD%E3%82%A4%E3%83%B3%E3%83%89%E3%83%AA%E3%83%BC%E3%83%96+Freundlieb+%E7%A5%9E%E6%88%B8%E7%94%9F%E7%94%B0%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野異人館區</div><a aria-label="北野異人館區 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野天滿神社</div><a aria-label="北野天滿神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Tenmangu+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">兵庫縣立美術館</div><a aria-label="兵庫縣立美術館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hyogo+Prefectural+Museum+of+Art" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">竹中大工道具館</div><a aria-label="竹中大工道具館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Takenaka+Carpentry+Tools+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Harborland</div><a aria-label="Harborland 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">摩天輪（umie旁）</div><a aria-label="摩天輪（umie旁） 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">蛸之壺本店</div><a aria-label="蛸之壺本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%9B%B8%E4%B9%8B%E5%A3%BA+%E6%9C%AC%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">唐吉訶德 三宮</div><a aria-label="唐吉訶德 三宮 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗺️ Day 3 路線 A｜港區</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">神戶塔</div><a aria-label="神戶塔 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">美利堅公園・BE KOBE</div><a aria-label="美利堅公園・BE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶海洋博物館</div><a aria-label="神戶海洋博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Maritime+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AQUALIVE 神戶水族館</div><a aria-label="AQUALIVE 神戶水族館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 美利堅公園店</div><a aria-label="星巴克 美利堅公園店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Starbucks+Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">PORT TERRACE</div><a aria-label="PORT TERRACE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=PORT+TERRACE+Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶煉瓦倉庫</div><a aria-label="神戶煉瓦倉庫 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Renga+Soko" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ル・パン総本店</div><a aria-label="ル・パン総本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Le+Pan+Kobe+Kitano+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">カフェ モロゾフ umie店</div><a aria-label="カフェ モロゾフ umie店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Cafe+Morozoff+Kobe+Harborland+umie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ICE CREAM UNITED</div><a aria-label="ICE CREAM UNITED 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ICE+CREAM+UNITED+Kobe+Harborland" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌊 Day 3 路線 B｜須磨</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">須磨海濱公園</div><a aria-label="須磨海濱公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Seaside+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">須磨シーワールド</div><a aria-label="須磨シーワールド 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Sea+World+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">NORTHSHORE Suma</div><a aria-label="NORTHSHORE Suma 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=NORTHSHORE+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">sweets cafe Riche</div><a aria-label="sweets cafe Riche 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=sweets+cafe+Riche+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">YURT CAFE &amp; BBQ PARK</div><a aria-label="YURT CAFE &amp; BBQ PARK 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=YURT+CAFE+BBQ+PARK+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Tooth Tooth シーサイドカフェ</div><a aria-label="Tooth Tooth シーサイドカフェ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Patisserie+Tooth+Tooth+Seaside+Cafe+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌉 Day 3 路線 C｜舞子</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">舞子公園</div><a aria-label="舞子公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Maiko+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">明石海峽大橋</div><a aria-label="明石海峽大橋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Akashi+Kaikyo+Bridge" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">孫中山紀念館</div><a aria-label="孫中山紀念館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sun+Yat-sen+Memorial+Hall+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AWAWA Cafe</div><a aria-label="AWAWA Cafe 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AWAWA+Cafe+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三井 Outlet Marine Pia 神戶</div><a aria-label="三井 Outlet Marine Pia 神戶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MITSUI+OUTLET+PARK+Marine+Pia+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🍰 Day 3 路線 D｜芦屋</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">Daniel 本店</div><a aria-label="Daniel 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">芦屋川河岸散步</div><a aria-label="芦屋川河岸散步 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ashiya+River+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BIGOT 法式麵包</div><a aria-label="BIGOT 法式麵包 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BIGOT+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">café BradipO</div><a aria-label="café BradipO 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=cafe+BradipO+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">テアモ</div><a aria-label="テアモ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Teamo+Cafe+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Accesoir</div><a aria-label="Accesoir 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Accesoir+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ラポルテ芦屋</div><a aria-label="ラポルテ芦屋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Laporte+Ashiya+Shopping" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">☕ 咖啡廳</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">西村咖啡 中山手本館</div><a aria-label="西村咖啡 中山手本館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E4%B8%AD%E5%B1%B1%E6%89%8B%E6%9C%AC%E9%A4%A8+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">西村咖啡 北野坂店</div><a aria-label="西村咖啡 北野坂店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E5%8C%97%E9%87%8E%E5%9D%82%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 北野異人館店</div><a aria-label="星巴克 北野異人館店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E6%98%9F%E5%B7%B4%E5%85%8B+%E5%8C%97%E9%87%8E%E7%89%A9%E8%AA%9E%E9%A4%A8+%E7%A5%9E%E6%88%B8+Starbucks" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Kitano Moore House Café</div><a aria-label="Kitano Moore House Café 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+%E7%A5%9E%E6%88%B8%E5%8C%97%E9%87%8E" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">KOBE EVIAN COFFEE</div><a aria-label="KOBE EVIAN COFFEE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+%E5%85%83%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">MOTOMACHI 喫茶</div><a aria-label="MOTOMACHI 喫茶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MOTOMACHI%E5%96%AB%E8%8C%B6+%E7%A5%9E%E6%88%B8%E5%85%83%E7%94%BA" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">⭐ 補充清單</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">南京町</div><a aria-label="南京町 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">布引香草園＋纜車</div><a aria-label="布引香草園＋纜車 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Nunobiki+Herb+Gardens+%26+Ropeway" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">相樂園</div><a aria-label="相樂園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sorakuen+Garden+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BE KOBE 雕字</div><a aria-label="BE KOBE 雕字 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BE+KOBE+Meriken+Park" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Steakland 神戶館</div><a aria-label="Steakland 神戶館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Steakland+Kobe-kan" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">老祥記</div><a aria-label="老祥記 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%80%81%E7%A5%A5%E8%A8%98+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">觀音屋 元町本店</div><a aria-label="觀音屋 元町本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kannonya+Motomachi+Honten" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ISUZU BAKERY 本店</div><a aria-label="ISUZU BAKERY 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ISUZU+BAKERY+Honten+Kobe" target="_blank">↗</a></div></div></div></div>
-
-<hr class="divider"/>
+<div class="section-label">地標分類總覽</div><div class="map-summary"><div class="map-group"><div class="map-group-title">🏨 住宿・交通</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">艾美麗 Hotel Monte Hermana Kobe Amalie</div><a aria-label="艾美麗 Hotel Monte Hermana Kobe Amalie 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hotel+Monte+Hermana+Kobe+Amalie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶機場</div><a aria-label="神戶機場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Airport" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三宮站</div><a aria-label="三宮站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sannomiya+Station+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">元町站</div><a aria-label="元町站 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Motomachi+Station+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 1 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">生田神社</div><a aria-label="生田神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ikuta+Shrine+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">VAGUE KOBE</div><a aria-label="VAGUE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=VAGUE+KOBE" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">麵包超人博物館</div><a aria-label="麵包超人博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Anpanman+Children%27s+Museum+%26+Mall" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Concerto 協奏曲號</div><a aria-label="Concerto 協奏曲號 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=THE+KOBE+CRUISE+Concerto" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">石田屋・神戶牛燒肉</div><a aria-label="石田屋・神戶牛燒肉 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%9F%B3%E7%94%B0%E5%B1%8B+%E7%A5%9E%E6%88%B8%E7%89%9B%E7%87%92%E8%82%89+%E4%B8%89%E5%AE%AE" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗓️ Day 2 更新版</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">FREUNDLIEB 教堂咖啡廳</div><a aria-label="FREUNDLIEB 教堂咖啡廳 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E3%83%95%E3%83%AD%E3%82%A4%E3%83%B3%E3%83%89%E3%83%AA%E3%83%BC%E3%83%96+Freundlieb+%E7%A5%9E%E6%88%B8%E7%94%9F%E7%94%B0%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野異人館區</div><a aria-label="北野異人館區 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Ijinkan-Gai+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">北野天滿神社</div><a aria-label="北野天滿神社 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Tenmangu+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">兵庫縣立美術館</div><a aria-label="兵庫縣立美術館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Hyogo+Prefectural+Museum+of+Art" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">竹中大工道具館</div><a aria-label="竹中大工道具館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Takenaka+Carpentry+Tools+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Harborland</div><a aria-label="Harborland 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">摩天輪（umie旁）</div><a aria-label="摩天輪（umie旁） 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Harborland+umie+Mosaic+Big+Ferris+Wheel" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">蛸之壺本店</div><a aria-label="蛸之壺本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%9B%B8%E4%B9%8B%E5%A3%BA+%E6%9C%AC%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">唐吉訶德 三宮</div><a aria-label="唐吉訶德 三宮 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Don+Quijote+Sannomiya+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🗺️ Day 3 路線 A｜港區</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">神戶塔</div><a aria-label="神戶塔 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">美利堅公園・BE KOBE</div><a aria-label="美利堅公園・BE KOBE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶海洋博物館</div><a aria-label="神戶海洋博物館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Maritime+Museum" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AQUALIVE 神戶水族館</div><a aria-label="AQUALIVE 神戶水族館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AQUALIVE+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 美利堅公園店</div><a aria-label="星巴克 美利堅公園店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Starbucks+Meriken+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">PORT TERRACE</div><a aria-label="PORT TERRACE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=PORT+TERRACE+Kobe+Port+Tower" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">神戶煉瓦倉庫</div><a aria-label="神戶煉瓦倉庫 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Renga+Soko" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">馬賽克廣場</div><a aria-label="馬賽克廣場 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=umie+MOSAIC+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ル・パン総本店</div><a aria-label="ル・パン総本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Le+Pan+Kobe+Kitano+Harborland" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">カフェ モロゾフ umie店</div><a aria-label="カフェ モロゾフ umie店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Cafe+Morozoff+Kobe+Harborland+umie" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ICE CREAM UNITED</div><a aria-label="ICE CREAM UNITED 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ICE+CREAM+UNITED+Kobe+Harborland" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌊 Day 3 路線 B｜須磨</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">須磨海濱公園</div><a aria-label="須磨海濱公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Seaside+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">須磨シーワールド</div><a aria-label="須磨シーワールド 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Suma+Sea+World+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">NORTHSHORE Suma</div><a aria-label="NORTHSHORE Suma 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=NORTHSHORE+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">sweets cafe Riche</div><a aria-label="sweets cafe Riche 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=sweets+cafe+Riche+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">YURT CAFE &amp; BBQ PARK</div><a aria-label="YURT CAFE &amp; BBQ PARK 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=YURT+CAFE+BBQ+PARK+Suma+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Tooth Tooth シーサイドカフェ</div><a aria-label="Tooth Tooth シーサイドカフェ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Patisserie+Tooth+Tooth+Seaside+Cafe+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🌉 Day 3 路線 C｜舞子</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">舞子公園</div><a aria-label="舞子公園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Maiko+Park+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">明石海峽大橋</div><a aria-label="明石海峽大橋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Akashi+Kaikyo+Bridge" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">孫中山紀念館</div><a aria-label="孫中山紀念館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sun+Yat-sen+Memorial+Hall+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">AWAWA Cafe</div><a aria-label="AWAWA Cafe 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=AWAWA+Cafe+Maiko+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">三井 Outlet Marine Pia 神戶</div><a aria-label="三井 Outlet Marine Pia 神戶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MITSUI+OUTLET+PARK+Marine+Pia+Kobe" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">🍰 Day 3 路線 D｜芦屋</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">Daniel 本店</div><a aria-label="Daniel 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Daniel+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">芦屋川河岸散步</div><a aria-label="芦屋川河岸散步 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Ashiya+River+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BIGOT 法式麵包</div><a aria-label="BIGOT 法式麵包 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BIGOT+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">café BradipO</div><a aria-label="café BradipO 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=cafe+BradipO+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">テアモ</div><a aria-label="テアモ 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Teamo+Cafe+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Accesoir</div><a aria-label="Accesoir 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Accesoir+Ashiya+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ラポルテ芦屋</div><a aria-label="ラポルテ芦屋 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Laporte+Ashiya+Shopping" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">☕ 咖啡廳</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">西村咖啡 中山手本館</div><a aria-label="西村咖啡 中山手本館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E4%B8%AD%E5%B1%B1%E6%89%8B%E6%9C%AC%E9%A4%A8+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">西村咖啡 北野坂店</div><a aria-label="西村咖啡 北野坂店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97+%E5%8C%97%E9%87%8E%E5%9D%82%E5%BA%97+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">星巴克 北野異人館店</div><a aria-label="星巴克 北野異人館店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E6%98%9F%E5%B7%B4%E5%85%8B+%E5%8C%97%E9%87%8E%E7%89%A9%E8%AA%9E%E9%A4%A8+%E7%A5%9E%E6%88%B8+Starbucks" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Kitano Moore House Café</div><a aria-label="Kitano Moore House Café 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kitano+Moore+House+cafe+%E7%A5%9E%E6%88%B8%E5%8C%97%E9%87%8E" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">KOBE EVIAN COFFEE</div><a aria-label="KOBE EVIAN COFFEE 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=KOBE+EVIAN+COFFEE+%E5%85%83%E7%94%BA" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">MOTOMACHI 喫茶</div><a aria-label="MOTOMACHI 喫茶 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=MOTOMACHI%E5%96%AB%E8%8C%B6+%E7%A5%9E%E6%88%B8%E5%85%83%E7%94%BA" target="_blank">↗</a></div></div></div><div class="map-group"><div class="map-group-title">⭐ 補充清單</div><div class="map-links"><div class="map-link-row"><div class="map-link-name">南京町</div><a aria-label="南京町 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Nankinmachi+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">布引香草園＋纜車</div><a aria-label="布引香草園＋纜車 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kobe+Nunobiki+Herb+Gardens+%26+Ropeway" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">相樂園</div><a aria-label="相樂園 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Sorakuen+Garden+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">BE KOBE 雕字</div><a aria-label="BE KOBE 雕字 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=BE+KOBE+Meriken+Park" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">Steakland 神戶館</div><a aria-label="Steakland 神戶館 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Steakland+Kobe-kan" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">老祥記</div><a aria-label="老祥記 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=%E8%80%81%E7%A5%A5%E8%A8%98+Kobe" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">觀音屋 元町本店</div><a aria-label="觀音屋 元町本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=Kannonya+Motomachi+Honten" target="_blank">↗</a></div><div class="map-link-row"><div class="map-link-name">ISUZU BAKERY 本店</div><a aria-label="ISUZU BAKERY 本店 地圖連結" class="map-icon-link" href="https://maps.google.com/?q=ISUZU+BAKERY+Honten+Kobe" target="_blank">↗</a></div></div></div></div><hr class="divider"/>
 <div class="section-label">Google My Maps 匯入方式</div>
 <div class="info-block">
 <div class="info-row cream-bg">
@@ -1542,205 +1496,166 @@ function showPage(id, btn) {
   }
   btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   window.scrollTo(0,0);
+}async function renderNodeToCanvas(node, width, scale=2) {
+return await html2canvas(node, {
+scale,
+useCORS: true,
+logging: false,
+backgroundColor: ‘#FFFFFF’,
+width,
+windowWidth: width,
+scrollX: 0,
+scrollY: 0
+});
 }
-
-async function renderNodeToCanvas(node, width, scale=2) {
-  return await html2canvas(node, {
-    scale,
-    useCORS: true,
-    logging: false,
-    backgroundColor: '#FFFFFF',
-    width,
-    windowWidth: width,
-    scrollX: 0,
-    scrollY: 0
-  });
-async function renderNodeToCanvas(node, width, scale=2) {
-  const height = node.scrollHeight || node.offsetHeight || 10000;
-  return await html2canvas(node, {
-    scale,
-    useCORS: true,
-    logging: false,
-    backgroundColor: '#FFFFFF',
-    width,
-    height,
-    windowWidth: width,
-    windowHeight: height,
-    scrollX: 0,
-    scrollY: 0
-  });
-}
-
-
 function collectLinks(container) {
-  const rect = container.getBoundingClientRect();
-  return Array.from(container.querySelectorAll('a[href]')).map(a => {
-    const r = a.getBoundingClientRect();
-    return {
-      href: a.href,
-      left: r.left - rect.left,
-      top: r.top - rect.top,
-      width: r.width,
-      height: r.height
-    };
-  }).filter(l => l.width > 0 && l.height > 0);
+const rect = container.getBoundingClientRect();
+return Array.from(container.querySelectorAll(‘a[href]’)).map(a => {
+const r = a.getBoundingClientRect();
+return {
+href: a.href,
+left: r.left - rect.left,
+top: r.top - rect.top,
+width: r.width,
+height: r.height
+};
+}).filter(l => l.width > 0 && l.height > 0);
 }
-
 // ── Download PDF: cover only first page, then one continuous long page ──
 async function downloadAllPages() {
-  const { jsPDF } = window.jspdf;
-  const btn = document.querySelector('.dl-btn');
-  if (!btn) return;
+const { jsPDF } = window.jspdf;
+const btn = document.querySelector(’.dl-btn’);
+if (!btn) return;
+btn.textContent = ‘…’;
+btn.disabled = true;
+const activePage = document.querySelector(’.page.active’);
+const activeBtn = document.querySelector(’.nav-btn.active’);
+const MOBILE_W = 390;
+const COVER_H = 844;
+const SCALE = 2;
+let coverWrap = null;
+let bodyWrap = null;
+try {
+// ––––– Cover wrap –––––
+coverWrap = document.createElement(‘div’);
+coverWrap.style.position = ‘absolute’;
+coverWrap.style.left = ‘-99999px’;
+coverWrap.style.top = ‘0’;
+coverWrap.style.width = MOBILE_W + ‘px’;
+coverWrap.style.background = ‘#ffffff’;
 
-  btn.textContent = '...';
-  btn.disabled = true;
+const coverClone = document.querySelector('#p0').cloneNode(true);
+coverClone.classList.add('active');
+coverClone.style.display = 'block';
+coverClone.style.width = MOBILE_W + 'px';
+coverClone.style.maxWidth = MOBILE_W + 'px';
+coverClone.style.minWidth = MOBILE_W + 'px';
+coverClone.style.padding = '0';
+coverClone.style.margin = '0 auto';
+const coverNode = coverClone.querySelector('.cover, .card');
+if (coverNode) {
+  coverNode.style.width = MOBILE_W + 'px';
+  coverNode.style.maxWidth = MOBILE_W + 'px';
+  coverNode.style.minWidth = MOBILE_W + 'px';
+  coverNode.style.margin = '0';
+  coverNode.style.borderRadius = '0';
+  coverNode.style.boxShadow = 'none';
+  coverNode.style.minHeight = COVER_H + 'px';
+}
+coverWrap.appendChild(coverClone);
+document.body.appendChild(coverWrap);
+await new Promise(r => setTimeout(r, 220));
 
-  const activePage = document.querySelector('.page.active');
-  const activeBtn = document.querySelector('.nav-btn.active');
+const realCoverNode = coverWrap.querySelector('.cover, .card');
+const coverLinks = collectLinks(realCoverNode);
+const coverCanvas = await renderNodeToCanvas(realCoverNode, MOBILE_W, SCALE);
 
-  const MOBILE_W = 390;
-  const COVER_H = 844;
-  const SCALE = 2;
+// ---------- Body wrap: all pages except cover combined with NO gaps ----------
+bodyWrap = document.createElement('div');
+bodyWrap.style.position = 'absolute';
+bodyWrap.style.left = '-99999px';
+bodyWrap.style.top = '0';
+bodyWrap.style.width = MOBILE_W + 'px';
+bodyWrap.style.background = '#ffffff';
 
-  let coverWrap = null;
-  let bodyWrap = null;
+Array.from(document.querySelectorAll('.page'))
+  .filter(p => p.id !== 'p0')
+  .forEach(page => {
+    const clone = page.cloneNode(true);
+    clone.classList.add('active');
+    clone.style.display = 'block';
+    clone.style.width = MOBILE_W + 'px';
+    clone.style.maxWidth = MOBILE_W + 'px';
+    clone.style.minWidth = MOBILE_W + 'px';
+    clone.style.padding = '0';
+    clone.style.margin = '0 auto';
+    clone.style.background = '#ffffff';
 
-  try {
-    // ---------- Cover wrap ----------
-    coverWrap = document.createElement('div');
-    coverWrap.style.position = 'absolute';
-    coverWrap.style.left = '-99999px';
-    coverWrap.style.top = '0';
-    coverWrap.style.width = MOBILE_W + 'px';
-    coverWrap.style.background = '#ffffff';
-
-    const coverClone = document.querySelector('#p0').cloneNode(true);
-    coverClone.classList.add('active');
-    coverClone.style.display = 'block';
-    coverClone.style.width = MOBILE_W + 'px';
-    coverClone.style.maxWidth = MOBILE_W + 'px';
-    coverClone.style.minWidth = MOBILE_W + 'px';
-    coverClone.style.padding = '0';
-    coverClone.style.margin = '0 auto';
-    const coverNode = coverClone.querySelector('.cover, .card');
-    if (coverNode) {
-      coverNode.style.width = MOBILE_W + 'px';
-      coverNode.style.maxWidth = MOBILE_W + 'px';
-      coverNode.style.minWidth = MOBILE_W + 'px';
-      coverNode.style.margin = '0';
-      coverNode.style.borderRadius = '0';
-      coverNode.style.boxShadow = 'none';
-      coverNode.style.minHeight = COVER_H + 'px';
+    const node = clone.querySelector('.card, .cover');
+    if (node) {
+      node.style.width = MOBILE_W + 'px';
+      node.style.maxWidth = MOBILE_W + 'px';
+      node.style.minWidth = MOBILE_W + 'px';
+      node.style.margin = '0';
+      node.style.borderRadius = '0';
+      node.style.boxShadow = 'none';
     }
-    coverWrap.appendChild(coverClone);
-    document.body.appendChild(coverWrap);
-    await new Promise(r => setTimeout(r, 220));
 
-    const realCoverNode = coverWrap.querySelector('.cover, .card');
-    const coverLinks = collectLinks(realCoverNode);
-    const coverCanvas = await renderNodeToCanvas(realCoverNode, MOBILE_W, SCALE);
+    bodyWrap.appendChild(clone);
+  });
 
-    // ---------- Body wrap: all pages except cover combined with NO gaps ----------
-    bodyWrap = document.createElement('div');
-    bodyWrap.style.position = 'absolute';
-    bodyWrap.style.left = '-99999px';
-    bodyWrap.style.top = '0';
-    bodyWrap.style.width = MOBILE_W + 'px';
-    bodyWrap.style.background = '#ffffff';
+document.body.appendChild(bodyWrap);
+await new Promise(r => setTimeout(r, 260));
 
-    Array.from(document.querySelectorAll('.page'))
-      .filter(p => p.id !== 'p0')
-      .forEach(page => {
-        const clone = page.cloneNode(true);
-        clone.classList.add('active');
-        clone.style.display = 'block';
-        clone.style.width = MOBILE_W + 'px';
-        clone.style.maxWidth = MOBILE_W + 'px';
-        clone.style.minWidth = MOBILE_W + 'px';
-        clone.style.padding = '0';
-        clone.style.margin = '0 auto';
-        clone.style.background = '#ffffff';
+const bodyLinks = collectLinks(bodyWrap);
+const bodyCanvas = await renderNodeToCanvas(bodyWrap, MOBILE_W, SCALE);
 
-        const node = clone.querySelector('.card, .cover');
-        if (node) {
-          node.style.width = MOBILE_W + 'px';
-          node.style.maxWidth = MOBILE_W + 'px';
-          node.style.minWidth = MOBILE_W + 'px';
-          node.style.margin = '0';
-          node.style.borderRadius = '0';
-          node.style.boxShadow = 'none';
-        }
+// Create a single PDF page tall enough for the whole body
+const BODY_H = bodyCanvas.height / SCALE;
 
-        bodyWrap.appendChild(clone);
-      });
+const pdf = new jsPDF({
+  orientation: 'portrait',
+  unit: 'px',
+  format: [MOBILE_W, COVER_H]
+});
 
-    document.body.appendChild(bodyWrap);
-    await new Promise(r => setTimeout(r, 260));
-
-    const bodyLinks = collectLinks(bodyWrap);
-    // 強制取得正確高度
-    const bodyTotalH = Math.max(
-      bodyWrap.scrollHeight,
-      bodyWrap.offsetHeight,
-      Array.from(bodyWrap.children).reduce((h, c) => h + c.offsetHeight, 0)
-    ) || 15000;
-    const bodyCanvas = await html2canvas(bodyWrap, {
-      scale: SCALE,
-      useCORS: true,
-      logging: false,
-      backgroundColor: '#FFFFFF',
-      width: MOBILE_W,
-      height: bodyTotalH,
-      windowWidth: MOBILE_W,
-      windowHeight: bodyTotalH,
-      scrollX: 0,
-      scrollY: 0
-    });
-
-
-
-    // Create a single PDF page tall enough for the whole body
-    const BODY_H = bodyCanvas.height / SCALE;
-
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'px',
-      format: [MOBILE_W, COVER_H]
-    });
-
-    // Page 1: cover
-    pdf.addImage(coverCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, MOBILE_W, COVER_H);
-    coverLinks.forEach(link => {
-      if (/^https?:/i.test(link.href)) {
-        pdf.link(link.left, link.top, link.width, Math.max(6, link.height), { url: link.href });
-      }
-    });
-
-    // Page 2: one continuous long page
-    pdf.addPage([MOBILE_W, BODY_H], 'portrait');
-    pdf.addImage(bodyCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, MOBILE_W, BODY_H);
-    bodyLinks.forEach(link => {
-      if (/^https?:/i.test(link.href)) {
-        pdf.link(link.left, link.top, link.width, Math.max(6, link.height), { url: link.href });
-      }
-    });
-
-    pdf.save('神戶2026_封面單頁_其餘長頁.pdf');
-  } catch (e) {
-    alert('PDF 產生失敗，請再試一次');
-    console.error(e);
-  } finally {
-    if (coverWrap && coverWrap.parentNode) coverWrap.parentNode.removeChild(coverWrap);
-    if (bodyWrap && bodyWrap.parentNode) bodyWrap.parentNode.removeChild(bodyWrap);
-
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    if (activePage) activePage.classList.add('active');
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    if (activeBtn) activeBtn.classList.add('active');
-
-    btn.textContent = 'PDF';
-    btn.disabled = false;
+// Page 1: cover
+pdf.addImage(coverCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, MOBILE_W, COVER_H);
+coverLinks.forEach(link => {
+  if (/^https?:/i.test(link.href)) {
+    pdf.link(link.left, link.top, link.width, Math.max(6, link.height), { url: link.href });
   }
+});
+
+// Page 2: one continuous long page
+pdf.addPage([MOBILE_W, BODY_H], 'portrait');
+pdf.addImage(bodyCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', 0, 0, MOBILE_W, BODY_H);
+bodyLinks.forEach(link => {
+  if (/^https?:/i.test(link.href)) {
+    pdf.link(link.left, link.top, link.width, Math.max(6, link.height), { url: link.href });
+  }
+});
+
+pdf.save('神戶2026_封面單頁_其餘長頁.pdf');
+
+
+} catch (e) {
+alert(‘PDF 產生失敗，請再試一次’);
+console.error(e);
+} finally {
+if (coverWrap && coverWrap.parentNode) coverWrap.parentNode.removeChild(coverWrap);
+if (bodyWrap && bodyWrap.parentNode) bodyWrap.parentNode.removeChild(bodyWrap);
+
+document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+if (activePage) activePage.classList.add('active');
+document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+if (activeBtn) activeBtn.classList.add('active');
+
+btn.textContent = 'PDF';
+btn.disabled = false;
+
+
+}
 }
 </script>
 </body>
